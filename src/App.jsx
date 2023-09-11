@@ -6,18 +6,13 @@ import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
 import { LightingEffect, AmbientLight, _SunLight as SunLight } from '@deck.gl/core';
 import { scaleThreshold } from 'd3-scale';
-import datas from "../data/municipalities.json"
-import datas2 from "./output3.json"
-import datas3 from "./bina3D_4326.json"
-import datas4 from "./output6.json"
-import bagimsiz from "./bagimsizBolum.json"
-import kapi from "./kapi.json"
-import parsel3d from "./parsel3D.json"
-import ekYapi from "./EkYapi3D.json"
-import yol from "./yol.json"
-import bina2BCatidan from "./Bina_2B_Catidan.json"
-import mapStyle from "./mapStyle.json"
-
+import bina3D from "../data/bina3D.json"
+import bagimsiz from "../data/bagimsizBolum.json"
+import kapi from "../data/kapi.json"
+import parsel3d from "../data/parsel3D.json"
+import ekYapi from "../data/EkYapi3D.json"
+import yol from "../data/yol.json"
+import bina2BCatidan from "../data/Bina_2B_Catidan.json";
 
 // Source data GeoJSON
 const DATA_URL =
@@ -41,15 +36,10 @@ const DATA_URL =
       },
       "properties": { "valuePerSqm": 4563, "growth": 0.3592 }
     },
-
-    //{ "type": "Feature", "geometry": { "type": "Polygon", "coordinates": [[[-123.0713722, 37.2720583], [-123.0697150, 49.2720458], [-123.0697259, 49.2715034], [-123.0713824, 49.2715159], [-123.0713722, 49.2720583]]] }, "properties": { "valuePerSqm": 2270, "growth": 0.2653 } }
+    
   ],
 
 }
-datas2.features.map(main => DATA_URL.features.push(main))
-console.log(DATA_URL)
-
-const token = "pk.eyJ1IjoiYWJkdWxsYWh1Z3VyIiwiYSI6ImNqcHRnaDgxbDA1dWo0NXF3NDIzenFtcGIifQ.64t6cmzJ79MTvJzQNjShMA"
 
 export const COLOR_SCALE = scaleThreshold()
   .domain([-0.6, -0.45, -0.3, -0.15, 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2])
@@ -79,7 +69,7 @@ const INITIAL_VIEW_STATE = {
   bearing: 0
 };
 
-const MAP_STYLE = "mapbox://styles/mapbox/dark-v9";
+const MAP_STYLE = "https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json";
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
@@ -116,12 +106,29 @@ function getTooltip({ object }) {
   );
 }
 
-export default function App({ data = [bagimsiz, datas4, kapi, parsel3d, ekYapi, yol, bina2BCatidan], mapStyle = MAP_STYLE }) {
+function App({ data = [bagimsiz, bina3D, kapi, parsel3d, ekYapi, yol, bina2BCatidan], mapStyle = MAP_STYLE }) 
+{
   const [effects] = useState(() => {
     const lightingEffect = new LightingEffect({ ambientLight, dirLight });
     lightingEffect.shadowColor = [0, 0, 0, 0.5];
     return [lightingEffect];
+});
+
+const createGeoJsonLayer = (id, data) => {
+  return new GeoJsonLayer({
+    id: id,
+    data: data,
+    opacity: 0.8,
+    stroked: false,
+    filled: true,
+    extruded: true,
+    wireframe: true,
+    getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
+    getFillColor: f => COLOR_SCALE(f.properties.growth),
+    getLineColor: [232,36,30],
+    pickable: true
   });
+};
 
   const layers = [
     // only needed when using shadows - a plane for shadows to drop on
@@ -130,89 +137,90 @@ export default function App({ data = [bagimsiz, datas4, kapi, parsel3d, ekYapi, 
       data: landCover,
       stroked: false,
       getPolygon: f => f,
-      getFillColor: [0, 0, 0, 0],
+      getFillColor: [232,36,30, 0],
     }),
+    ...data.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
 
-    new GeoJsonLayer({
-      id: 'geojson',
-      data: data[0],
-      opacity: 0.8,
-      stroked: false,
-      filled: true,
-      extruded: true,
-      wireframe: true,
-      getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-      getFillColor: f => COLOR_SCALE(f.properties.growth),
-      getLineColor: [240, 255, 255],
-      pickable: true
-    }),
+    // new GeoJsonLayer({
+    //   id: 'geojson',
+    //   data: data[0],
+    //   opacity: 0.8,
+    //   stroked: false,
+    //   filled: true,
+    //   extruded: true,
+    //   wireframe: true,
+    //   getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
+    //   getFillColor: f => COLOR_SCALE(f.properties.growth),
+    //   getLineColor: [240, 255, 255],
+    //   pickable: true
+    // }),
 
-    new GeoJsonLayer({
-      id: 'geojson',
-      data: data[2],
-      opacity: 0.8,
-      stroked: false,
-      filled: true,
-      extruded: true,
-      wireframe: true,
-      getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-      getFillColor: f => COLOR_SCALE(f.properties.growth),
-      getLineColor: [255, 255, 255],
-      pickable: true
-    }),
-    new GeoJsonLayer({
-      id: 'geojson',
-      data: data[1],
-      opacity: 0.8,
-      stroked: false,
-      filled: true,
-      extruded: true,
-      wireframe: true,
-      getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-      getFillColor: f => COLOR_SCALE(f.properties.growth),
-      getLineColor: [255, 255, 255],
-      pickable: true
-    }),
+    // new GeoJsonLayer({
+    //   id: 'geojson',
+    //   data: data[2],
+    //   opacity: 0.8,
+    //   stroked: false,
+    //   filled: true,
+    //   extruded: true,
+    //   wireframe: true,
+    //   getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
+    //   getFillColor: f => COLOR_SCALE(f.properties.growth),
+    //   getLineColor: [255, 255, 255],
+    //   pickable: true
+    // }),
+    // new GeoJsonLayer({
+    //   id: 'geojson',
+    //   data: data[1],
+    //   opacity: 0.8,
+    //   stroked: false,
+    //   filled: true,
+    //   extruded: true,
+    //   wireframe: true,
+    //   getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
+    //   getFillColor: f => COLOR_SCALE(f.properties.growth),
+    //   getLineColor: [255, 255, 255],
+    //   pickable: true
+    // }),
 
-    new GeoJsonLayer({
-      id: 'geojson',
-      data: data[3],
-      opacity: 0.8,
-      stroked: false,
-      filled: true,
-      extruded: true,
-      wireframe: true,
-      getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-      getFillColor: f => COLOR_SCALE(f.properties.growth),
-      getLineColor: [255, 255, 255],
-      pickable: true
-    }),
-    new GeoJsonLayer({
-      id: 'geojson',
-      data: data[4],
-      opacity: 0.8,
-      stroked: false,
-      filled: true,
-      extruded: true,
-      wireframe: true,
-      getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-      getFillColor: f => COLOR_SCALE(f.properties.growth),
-      getLineColor: [255, 255, 255],
-      pickable: true
-    }),
-    new GeoJsonLayer({
-      id: 'geojson',
-      data: data[5],
-      opacity: 0.8,
-      stroked: false,
-      filled: true,
-      extruded: true,
-      wireframe: true,
-      getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-      getFillColor: f => COLOR_SCALE(f.properties.growth),
-      getLineColor: [255, 255, 255],
-      pickable: true
-    }),
+    // new GeoJsonLayer({
+    //   id: 'geojson',
+    //   data: data[3],
+    //   opacity: 0.8,
+    //   stroked: false,
+    //   filled: true,
+    //   extruded: true,
+    //   wireframe: true,
+    //   getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
+    //   getFillColor: f => COLOR_SCALE(f.properties.growth),
+    //   getLineColor: [255, 255, 255],
+    //   pickable: true
+    // }),
+    // new GeoJsonLayer({
+    //   id: 'geojson',
+    //   data: data[4],
+    //   opacity: 0.8,
+    //   stroked: false,
+    //   filled: true,
+    //   extruded: true,
+    //   wireframe: true,
+    //   getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
+    //   getFillColor: f => COLOR_SCALE(f.properties.growth),
+    //   getLineColor: [255, 255, 255],
+    //   pickable: true
+    // }),
+    // new GeoJsonLayer({
+    //   id: 'geojson',
+    //   data: data[5],
+    //   opacity: 0.8,
+    //   stroked: false,
+    //   filled: true,
+    //   extruded: true,
+    //   wireframe: true,
+    //   getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
+    //   getFillColor: f => COLOR_SCALE(f.properties.growth),
+    //   getLineColor: [255, 255, 255],
+    //   pickable: true
+    // }),
   ];
 
   return (
@@ -222,10 +230,10 @@ export default function App({ data = [bagimsiz, datas4, kapi, parsel3d, ekYapi, 
       initialViewState={INITIAL_VIEW_STATE}
       controller={true}
       getTooltip={getTooltip}
-    >
-      <JsonLayer />
-      <Map reuseMaps mapLib={maplibregl} mapStyle={`https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json`} preventStyleDiffing={true} />
+    >   
+      <Map reuseMaps mapLib={maplibregl} mapStyle={MAP_STYLE} preventStyleDiffing={true} />
     </DeckGL>
   );
 }
 
+export default App;
