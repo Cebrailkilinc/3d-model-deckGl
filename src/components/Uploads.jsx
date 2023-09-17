@@ -33,8 +33,7 @@ const Uploads = () => {
           method: "POST",
           body: formData
         }
-      ).then((response) => response.json()).then((result) => {
-        
+      ).then((response) => response.json()).then((result) => {        
         dispatch(addData(result))
       })
 
@@ -42,8 +41,6 @@ const Uploads = () => {
       console.error("Hata:", error.message);
     }
   }
-
-
 
   return (
     <form onSubmit={sendFile} className='file-upload-container' >

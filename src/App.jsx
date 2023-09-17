@@ -39,7 +39,7 @@ const DATA_URL =
       },
       "properties": { "valuePerSqm": 4563, "growth": 0.3592 }
     },
-    
+
   ],
 
 }
@@ -109,36 +109,35 @@ function getTooltip({ object }) {
   );
 }
 
-function App({ mapStyle = MAP_STYLE }) 
-{
+function App({ mapStyle = MAP_STYLE }) {
   const [effects] = useState(() => {
     const lightingEffect = new LightingEffect({ ambientLight, dirLight });
     lightingEffect.shadowColor = [0, 0, 0, 0.5];
     return [lightingEffect];
-});
-const data = []
-const count = useSelector((state) => state.counter.value)
-const dispatch = useDispatch()
-data.push(count)
-console.log(count)
-
-
-
-const createGeoJsonLayer = (id, data) => {
-  return new GeoJsonLayer({
-    id: id,
-    data:data,
-    opacity: 0.8,
-    stroked: false,
-    filled: true,
-    extruded: true,
-    wireframe: true,
-    getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-    getFillColor: f => COLOR_SCALE(f.properties.growth),
-    getLineColor: [232,36,30],
-    pickable: true
   });
-};
+  
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
+
+  console.log(typeof(count))
+
+
+
+  const createGeoJsonLayer = (id, data) => {
+    return new GeoJsonLayer({
+      id: id,
+      data: data,
+      opacity: 0.8,
+      stroked: false,
+      filled: true,
+      extruded: true,
+      wireframe: true,
+      getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
+      getFillColor: f => COLOR_SCALE(f.properties.growth),
+      getLineColor: [232, 36, 30],
+      pickable: true
+    });
+  };
 
   const layers = [
     // only needed when using shadows - a plane for shadows to drop on
@@ -147,11 +146,11 @@ const createGeoJsonLayer = (id, data) => {
       data: landCover,
       stroked: false,
       getPolygon: f => f,
-      getFillColor: [232,36,30, 0],
+      getFillColor: [232, 36, 30, 0],
     }),
     new GeoJsonLayer({
       id: 1,
-      data:count ,
+      data: backendBina,
       opacity: 0.8,
       stroked: false,
       filled: true,
@@ -159,26 +158,12 @@ const createGeoJsonLayer = (id, data) => {
       wireframe: true,
       getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
       getFillColor: f => COLOR_SCALE(f.properties.growth),
-      getLineColor: [232,36,30],
+      getLineColor: [232, 36, 30],
       pickable: true
     })
 
     //...data.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
 
-    // new GeoJsonLayer({
-    //   id: 'geojson',
-    //   data: data[0],
-    //   opacity: 0.8,
-    //   stroked: false,
-    //   filled: true,
-    //   extruded: true,
-    //   wireframe: true,
-    //   getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-    //   getFillColor: f => COLOR_SCALE(f.properties.growth),
-    //   getLineColor: [240, 255, 255],
-    //   pickable: true
-    // }),
-   
   ];
 
   return (
@@ -188,10 +173,10 @@ const createGeoJsonLayer = (id, data) => {
       initialViewState={INITIAL_VIEW_STATE}
       controller={true}
       getTooltip={getTooltip}
-    >  
-     <Uploads/>
+    >
+      <Uploads />
       <Map mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
-     
+
     </DeckGL>
   );
 }
