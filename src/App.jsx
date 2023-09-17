@@ -109,7 +109,7 @@ function getTooltip({ object }) {
   );
 }
 
-function App({ mapStyle = MAP_STYLE }) {
+function App() {
   const [effects] = useState(() => {
     const lightingEffect = new LightingEffect({ ambientLight, dirLight });
     lightingEffect.shadowColor = [0, 0, 0, 0.5];
