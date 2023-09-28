@@ -15,8 +15,8 @@ const Properties = () => {
             <h1 className='properties-head' >Öznitelik Değerler</h1>
             <div className='properties-body' >
                 {
-                    propertiesValues.length != 0 ? entries.map(([key, value]) => {
-                        return <div className='properties-container-row' >
+                    propertiesValues.length != 0 ? entries.map(([key, value],i) => {
+                        return <div key={i} className='properties-container-row' >
                             <h6 className='row-first-name' >{`${key}:`}</h6>
                             <h6 className='row-last-name'>{`${value}`}</h6>
                         </div>

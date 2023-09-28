@@ -16,7 +16,7 @@ import Sidebar from './layout/sidebar/Sidebar';
 import Navbar from './layout/navbar/Navbar';
 import Properties from './layout/properties/Properties';
 
-export const COLOR_SCALE = scaleThreshold()
+const COLOR_SCALE = scaleThreshold()
   .domain([-0.6, -0.45, -0.3, -0.15, 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2])
   .range([
     [65, 182, 196],
@@ -75,20 +75,26 @@ function getTooltip({ object }) {
   );
 }
 
+
 function App() {
+
   const count = useSelector((state) => state.counter.value)
   const dispatch = useDispatch();
 
-  const handleBuildProperties = (event) => {
-    const clickedObject = event.object;
-      
-    // Eğer tıklanan bir öğe varsa, rengini değiştirin
+  const [color, setColor] = useState("")
+
+  const handleBuildProperties = (e) => {
+    const clickedObject = e.object;
+    console.log(e)
     if (clickedObject) {
-      clickedObject.update({
-        getFillColor: [255, 0, 0] // Örneğin, tıklanan öğenin rengini kırmızı yapın
-      });
+      console.log(clickedObject);
+      dispatch(addPropertiesData(clickedObject))
+      setColor(clickedObject.properties.GBB_Id)     
+    } else {
+      console.log("unclickedObjec")
     }
   }
+
   const createGeoJsonLayer = (id, data) => {
     return new GeoJsonLayer({
       id: id,
@@ -99,12 +105,31 @@ function App() {
       extruded: true,
       wireframe: true,
       getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-      getFillColor: f => COLOR_SCALE(f.properties.growth),
-      getLineColor: [255, 0, 0],
-      
+      getFillColor: (object, index) => {
+        // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
+        const value = object.properties.MB_ID || object.properties.GBB_Id // Örnek bir özellik
+        if (value === color) {
+          return [255,255,0]; // sarı renk       
+        } else {
+          return [173,255,47]; // Mavi renk
+        }
+      }, // Rengi seçilen nesneye göre değiştir
+      updateTriggers: {
+        getFillColor: [color],
+        getLineColor: [color], // count değeri değiştiğinde renk güncellemesini tetikle
+      },
+      getLineColor: (object, index) => {
+        // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
+        const value = object.properties.GBB_Id; // Örnek bir özellik
+        if (value === color) {
+          return [255,255,224]; //      
+        } else {
+          return [220,20,60]; // Kırmızı renk  
+        }
+      }, // Rengi seçilen nesneye göre değiştir
       pickable: true,
-      onClick:()=>{ handleBuildProperties }
-
+      onClick: (e) => { handleBuildProperties(e) },
+   
     });
   };
 
