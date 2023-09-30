@@ -6,15 +6,12 @@ import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
 import { LightingEffect, AmbientLight, _SunLight as SunLight } from '@deck.gl/core';
 import { scaleThreshold } from 'd3-scale';
-import { Layout, Space } from 'antd';
-
-
-
 import { useSelector, useDispatch } from 'react-redux'
 import { addPropertiesData } from './redux/slices/propertiesSlice';
 import Sidebar from './layout/sidebar/Sidebar';
 import Navbar from './layout/navbar/Navbar';
 import Properties from './layout/properties/Properties';
+import LayerModal from './components/LayerModal';
 
 const COLOR_SCALE = scaleThreshold()
   .domain([-0.6, -0.45, -0.3, -0.15, 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2])
@@ -79,9 +76,13 @@ function getTooltip({ object }) {
 function App() {
 
   const count = useSelector((state) => state.counter.value)
+ 
+  
   const dispatch = useDispatch();
 
+  
   const [color, setColor] = useState("")
+
 
   const handleBuildProperties = (e) => {
     const clickedObject = e.object;
@@ -89,12 +90,14 @@ function App() {
     if (clickedObject) {
       console.log(clickedObject);
       dispatch(addPropertiesData(clickedObject))
-      setColor(clickedObject.properties.GBB_Id)     
+      setColor(clickedObject.properties.GBB_Id)
     } else {
       console.log("unclickedObjec")
     }
   }
 
+
+  console.log("first")
   const createGeoJsonLayer = (id, data) => {
     return new GeoJsonLayer({
       id: id,
@@ -109,9 +112,9 @@ function App() {
         // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
         const value = object.properties.MB_ID || object.properties.GBB_Id // Örnek bir özellik
         if (value === color) {
-          return [255,255,0]; // sarı renk       
+          return [255, 255, 0]; // sarı renk       
         } else {
-          return [173,255,47]; // Mavi renk
+          return [173, 255, 47]; // Mavi renk
         }
       }, // Rengi seçilen nesneye göre değiştir
       updateTriggers: {
@@ -122,14 +125,14 @@ function App() {
         // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
         const value = object.properties.GBB_Id; // Örnek bir özellik
         if (value === color) {
-          return [255,255,224]; //      
+          return [255, 255, 224]; //      
         } else {
-          return [220,20,60]; // Kırmızı renk  
+          return [220, 20, 60]; // Kırmızı renk  
         }
       }, // Rengi seçilen nesneye göre değiştir
       pickable: true,
       onClick: (e) => { handleBuildProperties(e) },
-   
+
     });
   };
 
@@ -145,10 +148,11 @@ function App() {
     ...count.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
 
   ];
-
+ 
   return (
 
     <div className='map-container'  >
+      <LayerModal />
       <div>
         <Navbar />
       </div>
@@ -169,6 +173,7 @@ function App() {
             onError={(err) => {
               console.log("Deck_ERROR", err); // not triggered
             }}
+            
           >
 
             <Map style={{ width: 600, height: 400, zIndex: "2" }} mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />

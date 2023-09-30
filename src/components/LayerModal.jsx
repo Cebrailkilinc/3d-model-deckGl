@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { closeModal,openModal } from '../redux/slices/modalSlice';
+import Uploads from './Uploads';
 const LayerModal = () => {
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    
+    const modalControl = useSelector((state) => state.modalControl.openModel)
+    const dispatch = useDispatch();
 
     const showModal = () => {
-        setIsModalOpen(true);
+        dispatch(openModal());
     };
     const handleOk = () => {
-        setIsModalOpen(false);
+        dispatch(closeModal());
     };
     const handleCancel = () => {
-        setIsModalOpen(false);
+        dispatch(closeModal());
     };
+
 
 
     return (
         <>
-            <Button type="primary" onClick={showModal}>
-                Open Modal
-            </Button>
-            <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+           
+            <Modal title="Basic Modal" open={modalControl} onOk={handleOk} onCancel={handleCancel}>
+               <Uploads/>
             </Modal>
         </>
     )

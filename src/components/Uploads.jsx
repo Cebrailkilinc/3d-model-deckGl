@@ -33,7 +33,7 @@ const Uploads = () => {
           method: "POST",
           body: formData
         }
-      ).then((response) => response.json()).then((result) => {        
+      ).then((response) => response.json()).then((result) => {
         dispatch(addData(result))
       })
 
@@ -43,10 +43,12 @@ const Uploads = () => {
   }
 
   return (
-    <form onSubmit={sendFile} className='file-upload-container' >
-      <input type='file' onChange={handleInputChange} multiple />
-      <button type='submit'>Send</button>
-    </form>
+    <div className='upload-container' >
+      <form onSubmit={sendFile} className='file-upload-container' >
+        <input type='file' onChange={handleInputChange} multiple />
+        <button className='form-submit-button' type='submit'>Send</button>
+      </form>
+    </div>
   )
 }
 

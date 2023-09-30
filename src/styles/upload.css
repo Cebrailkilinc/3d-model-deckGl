@@ -1,3 +1,29 @@
 .file-upload-container{
-    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
+
+input::file-selector-button {
+    font-weight: bold;
+    color: dodgerblue;
+    padding: 0.5em;    
+    background-color: white;
+    border:1px solid ;
+    border-radius: 50%;
+    padding-right: 5px;
+    width: 100px;
+    height: 100px;
+   
+  }
+
+  .form-submit-button{
+    background-color: #5C6AE8;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10%;
+  }

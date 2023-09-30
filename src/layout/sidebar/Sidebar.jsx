@@ -5,7 +5,7 @@ import Uploads from '../../components/Uploads'
 const Sidebar = () => {
   return (
     <div className='sidebar-container' >
-      <Uploads/>
+      
     </div>
   )
 }
