@@ -1,29 +1,35 @@
 .file-upload-container{
     display: flex;
+    flex-direction: column;
+    gap: 50px;
     align-items: center;
     justify-content: center;
     padding: 20px;
 }
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding:20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
 
-input::file-selector-button {
-    font-weight: bold;
-    color: dodgerblue;
-    padding: 0.5em;    
-    background-color: white;
-    border:1px solid ;
-    border-radius: 50%;
-    padding-right: 5px;
-    width: 100px;
-    height: 100px;
-   
-  }
-
-  .form-submit-button{
-    background-color: #5C6AE8;
-    color: white;
+.form-submit-button{  
+    color: #fff;
+    background-color: #e4e4e4;
+    box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 10%;
+    border-radius: 5px;
+    cursor: pointer;
+
   }
+  .form-submit-button:hover{
+    background-color: #3f8fff;
+  }
+ 

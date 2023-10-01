@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    openModel: true,
+    openModel: false,
+    spinControl:false,
+    modalContent:"upload"
 }
 
 export const modalSlice = createSlice({
@@ -13,9 +15,16 @@ export const modalSlice = createSlice({
         },
         closeModal:(state)=>{
             state.openModel = false
-         }
+         },
+
+         openSpin:(state)=>{
+            state.spinControl = true
+         },
+         closeSpin:(state)=>{
+            state.spinControl = false
+         },
     }
 })
 
-export const { openModal,closeModal } = modalSlice.actions
+export const { openModal,closeModal,openSpin,closeSpin } = modalSlice.actions
 export default modalSlice.reducer

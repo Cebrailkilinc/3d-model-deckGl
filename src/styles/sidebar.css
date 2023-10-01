@@ -1,10 +1,20 @@
 .sidebar-container{
     position: fixed;
-    height:calc(100vh - 50px);;
+    height:calc(100vh - 70px);
     width: 200px;
     background-color: rgb(0, 0, 0);
     z-index: 20;
     opacity: 0.8;
     bottom: 0%;
     color: white;
+    
+}
+
+.layer{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
 }

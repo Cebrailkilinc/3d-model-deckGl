@@ -5,32 +5,21 @@ import maplibregl from 'maplibre-gl';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
 import { LightingEffect, AmbientLight, _SunLight as SunLight } from '@deck.gl/core';
-import { scaleThreshold } from 'd3-scale';
 import { useSelector, useDispatch } from 'react-redux'
 import { addPropertiesData } from './redux/slices/propertiesSlice';
 import Sidebar from './layout/sidebar/Sidebar';
 import Navbar from './layout/navbar/Navbar';
 import Properties from './layout/properties/Properties';
 import LayerModal from './components/LayerModal';
-
-const COLOR_SCALE = scaleThreshold()
-  .domain([-0.6, -0.45, -0.3, -0.15, 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2])
-  .range([
-    [65, 182, 196],
-    [127, 205, 187],
-    [199, 233, 180],
-    [237, 248, 177],
-    // zero
-    [255, 255, 204],
-    [255, 237, 160],
-    [254, 217, 118],
-    [254, 178, 76],
-    [253, 141, 60],
-    [252, 78, 42],
-    [227, 26, 28],
-    [189, 0, 38],
-    [128, 0, 38]
-  ]);
+import getTooltip from './utilities/geoTooltip';
+import { landCover } from './utilities/landCover';
+import Loading from './components/Loading';
+import { WebMercatorViewport } from 'deck.gl';
+import { Viewport } from 'deck.gl';
+import BottomBar from './layout/bottombar/BottomBar';
+import mapboxgl from 'mapbox-gl';
+import { Deck } from '@deck.gl/core';
+import { ScatterplotLayer } from '@deck.gl/layers';
 
 const INITIAL_VIEW_STATE = {
   latitude: 40.649687967664747,
@@ -40,64 +29,46 @@ const INITIAL_VIEW_STATE = {
   pitch: 45,
   bearing: 0
 };
-
-
-const dirLight = new SunLight({
-  timestamp: Date.UTC(2019, 7, 1, 22),
-  color: [255, 255, 255],
-  intensity: 1.0,
-  _shadow: true
-});
-
-const landCover = [
-  [
-    [-123.0, 49.196],
-    [-123.0, 49.324],
-    [-123.306, 49.324],
-    [-123.306, 49.196]
-  ]
+const data = [
+  {
+    position: [-74.006, 40.7128, 0], // New York City'nin koordinatları: boylam, enlem, yükseklik
+    radius: 1000, // Noktanın yarıçapı (metre cinsinden)
+  },
+  // Add more points as needed
 ];
-
-function getTooltip({ object }) {
-  return (
-    object && {
-      html: `\
-  <div><b>Average Property Value</b></div>
-  <div>${object.properties} / parcel</div>
-  <div>${object.properties} / m<sup>2</sup></div>
-  <div><b>Growth</b></div>
-  <div>${Math.round(object.properties.growth * 100)}%</div>
-  `
-    }
-  );
-}
 
 
 function App() {
 
+  const [color, setColor] = useState("")
+  const [hoveredCoordinates, setHoveredCoordinates] = useState({ lat: 0, long: 0 });
+
+
   const count = useSelector((state) => state.counter.value)
- 
-  
+  const spinControl = useSelector((state) => state.modalControl.spinControl)
   const dispatch = useDispatch();
 
-  
-  const [color, setColor] = useState("")
-
-
+  const handleMapHover = (event) => {
+    if (event.coordinate && event.coordinate.length >= 2) {
+      setHoveredCoordinates({
+        lat: event.coordinate[0],
+        long: event.coordinate[1]
+      });
+    }
+  }
   const handleBuildProperties = (e) => {
     const clickedObject = e.object;
     console.log(e)
     if (clickedObject) {
       console.log(clickedObject);
       dispatch(addPropertiesData(clickedObject))
-      setColor(clickedObject.properties.GBB_Id)
+      setColor(clickedObject.properties)
     } else {
       console.log("unclickedObjec")
     }
   }
 
 
-  console.log("first")
   const createGeoJsonLayer = (id, data) => {
     return new GeoJsonLayer({
       id: id,
@@ -108,9 +79,9 @@ function App() {
       extruded: true,
       wireframe: true,
       getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-      getFillColor: (object, index) => {
+      getFillColor: (object) => {
         // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
-        const value = object.properties.MB_ID || object.properties.GBB_Id // Örnek bir özellik
+        const value = object.properties
         if (value === color) {
           return [255, 255, 0]; // sarı renk       
         } else {
@@ -121,20 +92,29 @@ function App() {
         getFillColor: [color],
         getLineColor: [color], // count değeri değiştiğinde renk güncellemesini tetikle
       },
+
       getLineColor: (object, index) => {
         // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
         const value = object.properties.GBB_Id; // Örnek bir özellik
         if (value === color) {
           return [255, 255, 224]; //      
         } else {
-          return [220, 20, 60]; // Kırmızı renk  
+          return [173, 255, 47]; // Mavi renk
         }
       }, // Rengi seçilen nesneye göre değiştir
       pickable: true,
       onClick: (e) => { handleBuildProperties(e) },
-
     });
   };
+
+  const data = [
+    {
+      position: [36.006, 38.7128, 20], // Koordinatlar: boylam, enlem, yükseklik
+      radius: 5000, // Noktanın yarıçapı (metre cinsinden)
+      color: [255, 0, 0], // Nokta rengi (RGB formatında)
+    },
+    // Diğer verileri ekleyin
+  ];
 
   const layers = [
     // only needed when using shadows - a plane for shadows to drop on
@@ -147,17 +127,22 @@ function App() {
     }),
     ...count.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
 
+
   ];
- 
+
   return (
 
     <div className='map-container'  >
+      {spinControl ? <Loading /> : null}
       <LayerModal />
+      <div>
+        <BottomBar hoveredCoordinates={hoveredCoordinates} />
+      </div>
       <div>
         <Navbar />
       </div>
       <div >
-        <Sidebar />
+        <Sidebar count={count} />
       </div>
       <div>
         <Properties />
@@ -165,7 +150,7 @@ function App() {
       <div style={{ position: "fixed", width: '100%', height: '100%' }}>
         {
           <DeckGL
-
+            onHover={handleMapHover}
             layers={layers}
             initialViewState={INITIAL_VIEW_STATE}
             controller={true}
@@ -173,22 +158,12 @@ function App() {
             onError={(err) => {
               console.log("Deck_ERROR", err); // not triggered
             }}
-            
           >
-
             <Map style={{ width: 600, height: 400, zIndex: "2" }} mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
           </DeckGL>
         }
+
       </div>
-
-
-
-
-
-
-
-
-
     </div>
   );
 }
