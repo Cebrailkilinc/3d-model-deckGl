@@ -18,3 +18,9 @@
     gap: 10px;
     margin-top: 50px;
 }
+
+.sidebar-container-header{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 20px;
+}

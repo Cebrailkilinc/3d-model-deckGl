@@ -4,7 +4,7 @@ import Map, { Source, Layer } from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
-import { LightingEffect, AmbientLight, _SunLight as SunLight } from '@deck.gl/core';
+import { LightingEffect, AmbientLight, _SunLight as SunLight, PointLight, DirectionalLight, OrbitView } from '@deck.gl/core';
 import { useSelector, useDispatch } from 'react-redux'
 import { addPropertiesData } from './redux/slices/propertiesSlice';
 import Sidebar from './layout/sidebar/Sidebar';
@@ -14,12 +14,12 @@ import LayerModal from './components/LayerModal';
 import getTooltip from './utilities/geoTooltip';
 import { landCover } from './utilities/landCover';
 import Loading from './components/Loading';
-import { WebMercatorViewport } from 'deck.gl';
-import { Viewport } from 'deck.gl';
 import BottomBar from './layout/bottombar/BottomBar';
 import mapboxgl from 'mapbox-gl';
-import { Deck } from '@deck.gl/core';
-import { ScatterplotLayer } from '@deck.gl/layers';
+
+
+
+
 
 const INITIAL_VIEW_STATE = {
   latitude: 40.649687967664747,
@@ -48,6 +48,8 @@ function App() {
   const spinControl = useSelector((state) => state.modalControl.spinControl)
   const dispatch = useDispatch();
 
+  const view = new OrbitView({ id: '3d-scene', controller: true });
+
   const handleMapHover = (event) => {
     if (event.coordinate && event.coordinate.length >= 2) {
       setHoveredCoordinates({
@@ -68,6 +70,25 @@ function App() {
     }
   }
 
+  const date = new Date();
+  const sunlightEffect = new LightingEffect({
+    ambientLight: new AmbientLight({
+      color: [255, 255, 255],
+      intensity: 1.0
+    }),
+
+    dirLight: new SunLight({
+      timestamp: Date.UTC(2023, 7, 1, 10),  //Güneş pozisyonunu ayarlayın    
+      color: [255, 255, 255],
+      intensity: 2,
+      position: [0, 0, 100], // Sahnenin üzerinde bir konumda
+      direction: [0, -1, -1],
+      _shadow: true
+
+    }),
+
+  });
+
 
   const createGeoJsonLayer = (id, data) => {
     return new GeoJsonLayer({
@@ -83,38 +104,23 @@ function App() {
         // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
         const value = object.properties
         if (value === color) {
-          return [255, 255, 0]; // sarı renk       
+          return [139, 101, 139]; // sarı renk       
         } else {
-          return [173, 255, 47]; // Mavi renk
+          return [255, 255, 255]; //beyaz
         }
       }, // Rengi seçilen nesneye göre değiştir
       updateTriggers: {
         getFillColor: [color],
-        getLineColor: [color], // count değeri değiştiğinde renk güncellemesini tetikle
+        // count değeri değiştiğinde renk güncellemesini tetikle
       },
-
-      getLineColor: (object, index) => {
-        // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
-        const value = object.properties.GBB_Id; // Örnek bir özellik
-        if (value === color) {
-          return [255, 255, 224]; //      
-        } else {
-          return [173, 255, 47]; // Mavi renk
-        }
-      }, // Rengi seçilen nesneye göre değiştir
+      getLineColor: [248, 248, 255],
+      // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
       pickable: true,
       onClick: (e) => { handleBuildProperties(e) },
+
     });
   };
 
-  const data = [
-    {
-      position: [36.006, 38.7128, 20], // Koordinatlar: boylam, enlem, yükseklik
-      radius: 5000, // Noktanın yarıçapı (metre cinsinden)
-      color: [255, 0, 0], // Nokta rengi (RGB formatında)
-    },
-    // Diğer verileri ekleyin
-  ];
 
   const layers = [
     // only needed when using shadows - a plane for shadows to drop on
@@ -123,10 +129,9 @@ function App() {
       data: landCover,
       stroked: false,
       getPolygon: f => f,
-      getFillColor: [232, 36, 30, 0],
+      getFillColor: [0, 0, 0, 0],
     }),
     ...count.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-
 
   ];
 
@@ -154,7 +159,8 @@ function App() {
             layers={layers}
             initialViewState={INITIAL_VIEW_STATE}
             controller={true}
-            getTooltip={getTooltip}
+            effects={[sunlightEffect]}
+            OrbitView={view}
             onError={(err) => {
               console.log("Deck_ERROR", err); // not triggered
             }}

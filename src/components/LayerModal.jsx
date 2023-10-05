@@ -3,6 +3,7 @@ import { Button, Modal } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeModal, openModal } from '../redux/slices/modalSlice';
 import Uploads from './Uploads';
+import SunnyLight from './SunnyLight';
 
 const LayerModal = () => {
 
@@ -10,7 +11,7 @@ const LayerModal = () => {
     const modalControl = useSelector((state) => state.modalControl.openModel)
     const modalContentControl = useSelector((state) => state.modalControl.modalContent)
     const dispatch = useDispatch();
-
+    console.log(modalControl)
     const showModal = () => {
         dispatch(openModal());
     };
@@ -28,7 +29,8 @@ const LayerModal = () => {
             <Modal footer={null} title="Dosya Yükleme Modulu"
                 open={modalControl} onOk={handleOk}
                 onCancel={handleCancel}>
-                {modalContentControl == "upload" ? <Uploads /> : null}                
+                {modalContentControl == "upload" ? <Uploads /> : null} 
+                {modalContentControl == "sunnyLight" ? <SunnyLight/> : null}                
             </Modal>
         </>
     )

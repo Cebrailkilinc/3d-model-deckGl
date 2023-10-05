@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     openModel: false,
     spinControl:false,
-    modalContent:"upload"
+    modalContent:""
 }
 
 export const modalSlice = createSlice({
@@ -16,7 +16,9 @@ export const modalSlice = createSlice({
         closeModal:(state)=>{
             state.openModel = false
          },
-
+         handleModalContent:(state,action)=>{
+            state.modalContent = action.payload
+         },
          openSpin:(state)=>{
             state.spinControl = true
          },
@@ -26,5 +28,5 @@ export const modalSlice = createSlice({
     }
 })
 
-export const { openModal,closeModal,openSpin,closeSpin } = modalSlice.actions
+export const { openModal,closeModal,handleModalContent,openSpin,closeSpin } = modalSlice.actions
 export default modalSlice.reducer

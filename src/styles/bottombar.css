@@ -46,7 +46,10 @@
 .bottombar-container-right{
     display: flex;
     align-items: center;
-    gap: 5px;
+ 
     color: white;
-    font-size: 15px;
+    font-size: 12px;
+}
+.bottombar-container-right h3{
+    width: 80px;
 }

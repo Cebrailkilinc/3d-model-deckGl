@@ -26,9 +26,9 @@ const Navbar = () => {
         </div>        
         <div className='menu-user'>
           <div className='menu-user-profile' >
-            <Avatar shape="square"  icon={<CiUser/>} />
+            <Avatar className='avatar' shape="square"  icon={<CiUser/>} />
           </div>
-          <h6>Cebrail</h6>
+          <h6>Cebrail Kılınç</h6>
         </div>
       </div>
     </div>
