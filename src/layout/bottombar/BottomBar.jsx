@@ -45,8 +45,8 @@ const BottomBar = ({ hoveredCoordinates }) => {
                     </div>
                 </div>
                 <div className='bottombar-container-right' >
-                    <h3>lat: {hoveredCoordinates.lat.toFixed(5)}</h3>
-                    <h3>long: {hoveredCoordinates.long.toFixed(5)}</h3>
+                    <h3>lng: {hoveredCoordinates.lat.toFixed(5)}</h3>
+                    <h3>lat: {hoveredCoordinates.long.toFixed(5)}</h3>
                 </div>
             </div>
         </div>

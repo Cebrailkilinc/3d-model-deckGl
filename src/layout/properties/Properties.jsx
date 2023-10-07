@@ -8,7 +8,7 @@ const Properties = () => {
     }    const entries = Object.entries(propertiesValues.properties);
 
     return (
-        <div id='properties' className='properties-container'>
+        <div id='properties' className='properties-container' >
             <h1 id='properties-head'>Öznitelik Bilgisi</h1>
             <div className='properties-body' >
                 {

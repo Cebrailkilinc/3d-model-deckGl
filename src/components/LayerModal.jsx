@@ -11,7 +11,7 @@ const LayerModal = () => {
     const modalControl = useSelector((state) => state.modalControl.openModel)
     const modalContentControl = useSelector((state) => state.modalControl.modalContent)
     const dispatch = useDispatch();
-    console.log(modalControl)
+   
     const showModal = () => {
         dispatch(openModal());
     };

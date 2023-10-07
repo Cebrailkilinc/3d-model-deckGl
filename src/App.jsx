@@ -1,25 +1,30 @@
-import React, { Suspense, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import React, { Suspense, useState, useEffect } from 'react';
+
+//Geograpich layers
 import Map, { Source, Layer } from 'react-map-gl';
-import maplibregl from 'maplibre-gl';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
-import { LightingEffect, AmbientLight, _SunLight as SunLight, PointLight, DirectionalLight, OrbitView } from '@deck.gl/core';
+import {
+  LightingEffect,
+  AmbientLight,
+  _SunLight as SunLight,
+  OrbitView
+} from '@deck.gl/core';
+import SunCalc from 'suncalc';
+//Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { addPropertiesData } from './redux/slices/propertiesSlice';
+
+//Components
 import Sidebar from './layout/sidebar/Sidebar';
 import Navbar from './layout/navbar/Navbar';
 import Properties from './layout/properties/Properties';
 import LayerModal from './components/LayerModal';
-import getTooltip from './utilities/geoTooltip';
-import { landCover } from './utilities/landCover';
 import Loading from './components/Loading';
 import BottomBar from './layout/bottombar/BottomBar';
-import mapboxgl from 'mapbox-gl';
 
-
-
-
+//Utilities
+import { landCover } from './utilities/landCover';
 
 const INITIAL_VIEW_STATE = {
   latitude: 40.649687967664747,
@@ -42,14 +47,34 @@ function App() {
 
   const [color, setColor] = useState("")
   const [hoveredCoordinates, setHoveredCoordinates] = useState({ lat: 0, long: 0 });
-
-
+  const [buildingCenterCoordinate, setBuildingCenterCoordinate] = useState({ latitude: 0, longitude: 0 });
+  const [sunPosition, setSunPosition] = useState({ azimuth: 0, altitude: 0 });
+  //Redux-states
   const count = useSelector((state) => state.counter.value)
   const spinControl = useSelector((state) => state.modalControl.spinControl)
   const dispatch = useDispatch();
 
-  const view = new OrbitView({ id: '3d-scene', controller: true });
+  //Created new date
+  const date = new Date();
 
+  //Properties related to the current date are called
+  const sunDataProperties = SunCalc.getTimes(/*Date*/ date, /*Number*/ 35.8, /*Number*/ 40.6, /*Number (default=0)*/ 5000)
+  //Position sun related current date are called
+  const getSunPosition = SunCalc.getPosition(date, buildingCenterCoordinate.long, buildingCenterCoordinate.lat);
+  console.log(getSunPosition.altitude)
+
+  const earthRadius = 6371; // Dünya'nın yarıçapı (km)
+
+   const x = earthRadius * Math.cos(getSunPosition.altitude) * Math.cos(getSunPosition.azimuth);
+   const y = earthRadius * Math.cos(getSunPosition.altitude) * Math.sin(getSunPosition.azimuth);
+   const z = earthRadius * Math.sin(getSunPosition.altitude);
+
+
+  const year = date.getFullYear().toString().slice(-4); // Yılın son iki rakamını alır
+  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Ayı alır ve gerekirse sıfır ile doldurur
+  const day = date.getDate().toString().padStart(2, '0'); // Günü alır ve gerekirse sıfır ile doldurur
+
+  // Get coordinate data
   const handleMapHover = (event) => {
     if (event.coordinate && event.coordinate.length >= 2) {
       setHoveredCoordinates({
@@ -58,19 +83,23 @@ function App() {
       });
     }
   }
+  //Get properties data from file 
   const handleBuildProperties = (e) => {
     const clickedObject = e.object;
-    console.log(e)
+    console.log(e)   
     if (clickedObject) {
       console.log(clickedObject);
       dispatch(addPropertiesData(clickedObject))
       setColor(clickedObject.properties)
+      const buildingCenter = { lat: e.coordinate[1], long: e.coordinate[0] }
+      setBuildingCenterCoordinate(buildingCenter)
+      console.log(buildingCenterCoordinate)
     } else {
       console.log("unclickedObjec")
     }
   }
 
-  const date = new Date();
+  //Sunlight effect and shadow for building
   const sunlightEffect = new LightingEffect({
     ambientLight: new AmbientLight({
       color: [255, 255, 255],
@@ -78,17 +107,14 @@ function App() {
     }),
 
     dirLight: new SunLight({
-      timestamp: Date.UTC(2023, 7, 1, 10),  //Güneş pozisyonunu ayarlayın    
+      timestamp: Date.UTC(year, month, day, 12),  //Güneş pozisyonunu ayarlayın    
       color: [255, 255, 255],
       intensity: 2,
       position: [0, 0, 100], // Sahnenin üzerinde bir konumda
-      direction: [0, -1, -1],
+      direction: [x, y, -z],
       _shadow: true
-
     }),
-
   });
-
 
   const createGeoJsonLayer = (id, data) => {
     return new GeoJsonLayer({
@@ -117,13 +143,11 @@ function App() {
       // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
       pickable: true,
       onClick: (e) => { handleBuildProperties(e) },
-
     });
   };
 
-
+  //all layers are collected here
   const layers = [
-    // only needed when using shadows - a plane for shadows to drop on
     new PolygonLayer({
       id: 'ground',
       data: landCover,
@@ -132,7 +156,6 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     ...count.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-
   ];
 
   return (
@@ -160,7 +183,7 @@ function App() {
             initialViewState={INITIAL_VIEW_STATE}
             controller={true}
             effects={[sunlightEffect]}
-            OrbitView={view}
+
             onError={(err) => {
               console.log("Deck_ERROR", err); // not triggered
             }}

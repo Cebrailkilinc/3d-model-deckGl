@@ -12,10 +12,7 @@ import { useEffect } from 'react';
 import { closeModal,openSpin,closeSpin } from '../redux/slices/modalSlice';
 import Loading from './Loading';
 
-
-
 const Uploads = () => {
-
   const [selectedFiles, setSelectedFiles] = useState([]);
   const count = useSelector((state) => state.counter.value)
   const dispatch = useDispatch()
@@ -23,7 +20,6 @@ const Uploads = () => {
   const handleInputChange = (e) => {
     setSelectedFiles(e.target.files)
   }
-
 
   const sendFile = async (e) => {
     e.preventDefault()

@@ -11,16 +11,16 @@ const SunnyLight = () => {
             <div className='slider-container-one' >                
                 <div className='slider-container-rod'  >
                     <Slider
-                        min={1}
-                        max={20}
+                        min={0}
+                        max={24}
                         onChange={onChange}
                         value={typeof inputValue === 'number' ? inputValue : 0}
                     />
                 </div>
                 <div className='slider-container-input' >
                     <InputNumber
-                        min={1}
-                        max={20}
+                        min={0}
+                        max={24}
                         style={{
                             margin: '0 16px',
                         }}
