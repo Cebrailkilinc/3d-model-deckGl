@@ -1,12 +1,12 @@
 .bottombar-container{
     position: fixed;
     align-items: center;
-    height: 50px;    
+    height: 30px;    
     background-color: #4a5ae5;
     opacity: 0.9;
     z-index: 20;   
     bottom: 0%;
-    left: 200px;
+    left: 150px;
     display: flex;
     align-items: center;
     justify-content: start;    
@@ -33,22 +33,20 @@
     color: #b36f30;
 }
 .bottombar-menus-item-img{
-    width: 25px;
+    width: 15px;
+    height: auto;
     cursor: pointer;   
-    padding: 5px;
-    
+    padding: 2px;    
 }
 .bottombar-menus-item-img:hover{
-    border-radius: 10px;
+    border-radius: 2px;
     background-color: rgb(221, 221, 221);
 }
-
 .bottombar-container-right{
     display: flex;
-    align-items: center;
- 
+    align-items: center; 
     color: white;
-    font-size: 12px;
+    font-size: 9px;
 }
 .bottombar-container-right h3{
     width: 80px;

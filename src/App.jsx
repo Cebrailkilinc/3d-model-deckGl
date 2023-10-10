@@ -1,14 +1,17 @@
 import React, { Suspense, useState, useEffect } from 'react';
+import { MdLocationPin } from "react-icons/md"
 
 //Geograpich layers
 import Map, { Source, Layer } from 'react-map-gl';
 import DeckGL from '@deck.gl/react';
-import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
 import {
   LightingEffect,
   AmbientLight,
   _SunLight as SunLight,
-  OrbitView
+  OrbitView,
+  PointLight,
+
 } from '@deck.gl/core';
 import SunCalc from 'suncalc';
 //Redux
@@ -26,6 +29,8 @@ import BottomBar from './layout/bottombar/BottomBar';
 //Utilities
 import { landCover } from './utilities/landCover';
 
+import iconss from "./assets/icon.png"
+
 const INITIAL_VIEW_STATE = {
   latitude: 40.649687967664747,
   longitude: 35.809093508628486,
@@ -34,13 +39,11 @@ const INITIAL_VIEW_STATE = {
   pitch: 45,
   bearing: 0
 };
-const data = [
-  {
-    position: [-74.006, 40.7128, 0], // New York City'nin koordinatları: boylam, enlem, yükseklik
-    radius: 1000, // Noktanın yarıçapı (metre cinsinden)
-  },
-  // Add more points as needed
-];
+
+const ICON_MAPPING = {
+  marker: { width: 8, height: 8 }
+};
+
 
 
 function App() {
@@ -58,21 +61,23 @@ function App() {
   const date = new Date();
 
   //Properties related to the current date are called
-  const sunDataProperties = SunCalc.getTimes(/*Date*/ date, /*Number*/ 35.8, /*Number*/ 40.6, /*Number (default=0)*/ 5000)
+  const sunDataProperties = SunCalc.getTimes(/*Date*/ date, buildingCenterCoordinate.long, buildingCenterCoordinate.lat, /*Number (default=0)*/ 500)
+
+
   //Position sun related current date are called
   const getSunPosition = SunCalc.getPosition(date, buildingCenterCoordinate.long, buildingCenterCoordinate.lat);
-  console.log(getSunPosition.altitude)
 
+  //Calculate sun position  
   const earthRadius = 6371; // Dünya'nın yarıçapı (km)
-
-   const x = earthRadius * Math.cos(getSunPosition.altitude) * Math.cos(getSunPosition.azimuth);
-   const y = earthRadius * Math.cos(getSunPosition.altitude) * Math.sin(getSunPosition.azimuth);
-   const z = earthRadius * Math.sin(getSunPosition.altitude);
+  const x = earthRadius * Math.cos(getSunPosition.altitude) * Math.cos(getSunPosition.azimuth);
+  const y = earthRadius * Math.cos(getSunPosition.altitude) * Math.sin(getSunPosition.azimuth);
+  const z = earthRadius * Math.sin(getSunPosition.altitude);
 
 
   const year = date.getFullYear().toString().slice(-4); // Yılın son iki rakamını alır
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Ayı alır ve gerekirse sıfır ile doldurur
   const day = date.getDate().toString().padStart(2, '0'); // Günü alır ve gerekirse sıfır ile doldurur
+
 
   // Get coordinate data
   const handleMapHover = (event) => {
@@ -86,14 +91,12 @@ function App() {
   //Get properties data from file 
   const handleBuildProperties = (e) => {
     const clickedObject = e.object;
-    console.log(e)   
     if (clickedObject) {
       console.log(clickedObject);
       dispatch(addPropertiesData(clickedObject))
       setColor(clickedObject.properties)
       const buildingCenter = { lat: e.coordinate[1], long: e.coordinate[0] }
       setBuildingCenterCoordinate(buildingCenter)
-      console.log(buildingCenterCoordinate)
     } else {
       console.log("unclickedObjec")
     }
@@ -105,15 +108,15 @@ function App() {
       color: [255, 255, 255],
       intensity: 1.0
     }),
-
     dirLight: new SunLight({
       timestamp: Date.UTC(year, month, day, 12),  //Güneş pozisyonunu ayarlayın    
       color: [255, 255, 255],
       intensity: 2,
-      position: [0, 0, 100], // Sahnenin üzerinde bir konumda
+      position: [x, y, z], // Sahnenin üzerinde bir konumda
       direction: [x, y, -z],
-      _shadow: true
+      _shadow: true,
     }),
+
   });
 
   const createGeoJsonLayer = (id, data) => {
@@ -146,6 +149,15 @@ function App() {
     });
   };
 
+  const data = [
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.81, 40.65] }]
+
+
+
+  const icon = () => {
+    return <MdLocationPin />
+  }
+
   //all layers are collected here
   const layers = [
     new PolygonLayer({
@@ -156,6 +168,55 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     ...count.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
+    new ScatterplotLayer({
+      data: [{ position: [35.81, 40.65], color: [255, 0, 0, 128], radius: 100 }],       
+      getFillColor: d => d.color,
+      getRadius: d => d.radius
+    }),
+
+    new IconLayer({
+      id: 'IconLayer',
+      data,
+      // alphaCutoff: 0.05,
+      // billboard: true,
+      // getAngle: 0,
+      getColor: d => [Math.sqrt(d.exits), 140, 0],
+      getIcon: d => 'marker',
+      // getPixelOffset: [0, 0],
+      getPosition: d => d.coordinates,
+      getSize: d => 5,
+      iconAtlas: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
+      iconMapping: {
+        marker: {
+          x: 0,
+          y: 0,
+          width: 128,
+          height: 128,
+          anchorY: 128,
+          mask: true
+        }
+      },
+      // onIconError: null,
+      // sizeMaxPixels: Number.MAX_SAFE_INTEGER,
+      // sizeMinPixels: 0,
+      sizeScale: 8,
+      // sizeUnits: 'pixels',
+      // textureParameters: null,
+
+      /* props inherited from Layer class */
+
+      // autoHighlight: false,
+      // coordinateOrigin: [0, 0, 0],
+      // coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
+      // highlightColor: [0, 0, 128, 128],
+      // modelMatrix: null,
+      // opacity: 1,
+      pickable: true,
+      // visible: true,
+      // wrapLongitude: false,
+    })
+
+
   ];
 
   return (
@@ -183,7 +244,6 @@ function App() {
             initialViewState={INITIAL_VIEW_STATE}
             controller={true}
             effects={[sunlightEffect]}
-
             onError={(err) => {
               console.log("Deck_ERROR", err); // not triggered
             }}

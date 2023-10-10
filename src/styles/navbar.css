@@ -27,7 +27,7 @@
 }
 .menu-head{
     color: white;
-    font-size: xx-large;
+    font-size: large;
 }
 .menu-user{
     display: flex;
@@ -43,5 +43,5 @@
     gap: 20px;
 }
 .menu-logo{
-    width: 50px;
+    width: 40px;
 }
