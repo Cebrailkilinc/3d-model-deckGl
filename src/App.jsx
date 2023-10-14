@@ -28,7 +28,8 @@ import BottomBar from './layout/bottombar/BottomBar';
 
 //Utilities
 import { landCover } from './utilities/landCover';
-
+import { iconLayer } from './utilities/iconLayer';
+import { createGeoJsonLayer } from './utilities/geoJsonLayer';
 import iconss from "./assets/icon.png"
 
 const INITIAL_VIEW_STATE = {
@@ -39,12 +40,6 @@ const INITIAL_VIEW_STATE = {
   pitch: 45,
   bearing: 0
 };
-
-const ICON_MAPPING = {
-  marker: { width: 8, height: 8 }
-};
-
-
 
 function App() {
 
@@ -63,7 +58,6 @@ function App() {
   //Properties related to the current date are called
   const sunDataProperties = SunCalc.getTimes(/*Date*/ date, buildingCenterCoordinate.long, buildingCenterCoordinate.lat, /*Number (default=0)*/ 500)
 
-
   //Position sun related current date are called
   const getSunPosition = SunCalc.getPosition(date, buildingCenterCoordinate.long, buildingCenterCoordinate.lat);
 
@@ -72,7 +66,6 @@ function App() {
   const x = earthRadius * Math.cos(getSunPosition.altitude) * Math.cos(getSunPosition.azimuth);
   const y = earthRadius * Math.cos(getSunPosition.altitude) * Math.sin(getSunPosition.azimuth);
   const z = earthRadius * Math.sin(getSunPosition.altitude);
-
 
   const year = date.getFullYear().toString().slice(-4); // Yılın son iki rakamını alır
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Ayı alır ve gerekirse sıfır ile doldurur
@@ -101,7 +94,6 @@ function App() {
       console.log("unclickedObjec")
     }
   }
-
   //Sunlight effect and shadow for building
   const sunlightEffect = new LightingEffect({
     ambientLight: new AmbientLight({
@@ -119,45 +111,13 @@ function App() {
 
   });
 
-  const createGeoJsonLayer = (id, data) => {
-    return new GeoJsonLayer({
-      id: id,
-      data: data,
-      opacity: 0.8,
-      stroked: false,
-      filled: true,
-      extruded: true,
-      wireframe: true,
-      getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-      getFillColor: (object) => {
-        // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
-        const value = object.properties
-        if (value === color) {
-          return [139, 101, 139]; // sarı renk       
-        } else {
-          return [255, 255, 255]; //beyaz
-        }
-      }, // Rengi seçilen nesneye göre değiştir
-      updateTriggers: {
-        getFillColor: [color],
-        // count değeri değiştiğinde renk güncellemesini tetikle
-      },
-      getLineColor: [248, 248, 255],
-      // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
-      pickable: true,
-      onClick: (e) => { handleBuildProperties(e) },
-    });
-  };
 
+  //icon marker
   const data = [
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.81, 40.65] }]
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.81, 40.65] }
+  ]
 
-
-
-  const icon = () => {
-    return <MdLocationPin />
-  }
-
+  const a = iconLayer(data);
   //all layers are collected here
   const layers = [
     new PolygonLayer({
@@ -167,56 +127,13 @@ function App() {
       getPolygon: f => f,
       getFillColor: [0, 0, 0, 0],
     }),
-    ...count.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
+    ...count.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData, handleBuildProperties, color)),
     new ScatterplotLayer({
-      data: [{ position: [35.81, 40.65], color: [255, 0, 0, 128], radius: 100 }],       
+      data: [{ position: [35.81, 40.65], color: [255, 0, 0, 128], radius: 100 }],
       getFillColor: d => d.color,
       getRadius: d => d.radius
     }),
-
-    new IconLayer({
-      id: 'IconLayer',
-      data,
-      // alphaCutoff: 0.05,
-      // billboard: true,
-      // getAngle: 0,
-      getColor: d => [Math.sqrt(d.exits), 140, 0],
-      getIcon: d => 'marker',
-      // getPixelOffset: [0, 0],
-      getPosition: d => d.coordinates,
-      getSize: d => 5,
-      iconAtlas: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
-      iconMapping: {
-        marker: {
-          x: 0,
-          y: 0,
-          width: 128,
-          height: 128,
-          anchorY: 128,
-          mask: true
-        }
-      },
-      // onIconError: null,
-      // sizeMaxPixels: Number.MAX_SAFE_INTEGER,
-      // sizeMinPixels: 0,
-      sizeScale: 8,
-      // sizeUnits: 'pixels',
-      // textureParameters: null,
-
-      /* props inherited from Layer class */
-
-      // autoHighlight: false,
-      // coordinateOrigin: [0, 0, 0],
-      // coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
-      // highlightColor: [0, 0, 128, 128],
-      // modelMatrix: null,
-      // opacity: 1,
-      pickable: true,
-      // visible: true,
-      // wrapLongitude: false,
-    })
-
-
+    //iconLayer(data),
   ];
 
   return (

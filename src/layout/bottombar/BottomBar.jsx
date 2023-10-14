@@ -20,7 +20,7 @@ const BottomBar = ({ hoveredCoordinates }) => {
     return (
         <div
             style={{
-                width: propertiesValues.length !== 0 ? `calc(100% - 500px)` : "100%"
+                width: propertiesValues.length !== 0 ? `calc(100% - 450px)` : "100%"
             }}
             className='bottombar-container' >
             <div style={{
