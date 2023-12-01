@@ -34,9 +34,8 @@ const Uploads = () => {
           method: "POST",
           body: formData
         }
-      ).then((response) => response.json()).then((result) => {
-        dispatch(addData(result))
-        
+      ).then((response) => response.json()).then((result) => {        
+        dispatch(addData(result))        
         dispatch(closeSpin())        
       })
     } catch (error) {
