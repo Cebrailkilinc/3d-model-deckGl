@@ -47,7 +47,7 @@ const ICON_MAPPING = {
 
 
 function App() {
-
+ //CEBRAİL KILINÇ
   const [color, setColor] = useState("")
   const [hoveredCoordinates, setHoveredCoordinates] = useState({ lat: 0, long: 0 });
   const [buildingCenterCoordinate, setBuildingCenterCoordinate] = useState({ latitude: 0, longitude: 0 });
