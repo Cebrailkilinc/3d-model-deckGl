@@ -9,8 +9,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addData } from "../redux/slices/dataSlice"
 import Item from 'antd/es/list/Item';
 import { useEffect } from 'react';
-import { closeModal,openSpin,closeSpin } from '../redux/slices/modalSlice';
+import { closeModal, openSpin, closeSpin } from '../redux/slices/modalSlice';
 import Loading from './Loading';
+import fs from "fs";
+
 
 const Uploads = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -34,15 +36,24 @@ const Uploads = () => {
           method: "POST",
           body: formData
         }
-      ).then((response) => response.json()).then((result) => {        
-        dispatch(addData(result))        
-        dispatch(closeSpin())        
+      ).then((response) => response.json()).then((result) => {
+        console.log(result)
+
+        const jsonString = JSON.stringify(result, null, 2);
+        const filePath = '../../data/cebrail.json';
+
+        console.log(result)
+        dispatch(addData(result))
+        dispatch(closeSpin())
       })
     } catch (error) {
       console.error("Hata:", error.message);
     }
     dispatch(closeModal())
   }
+
+
+
 
   return (
     <div>

@@ -29,7 +29,9 @@ import BottomBar from './layout/bottombar/BottomBar';
 //Utilities
 import { landCover } from './utilities/landCover';
 
-import iconss from "./assets/icon.png"
+//import datas
+import bagimsizBolum from "../data/new/bagimsizBolum.json"
+import bina3D from "../data/new/bina3D.json"
 
 const INITIAL_VIEW_STATE = {
   latitude: 40.649687967664747,
@@ -47,7 +49,7 @@ const ICON_MAPPING = {
 
 
 function App() {
- //CEBRAİL KILINÇ
+  //CEBRAİL KILINÇ
   const [color, setColor] = useState("")
   const [hoveredCoordinates, setHoveredCoordinates] = useState({ lat: 0, long: 0 });
   const [buildingCenterCoordinate, setBuildingCenterCoordinate] = useState({ latitude: 0, longitude: 0 });
@@ -152,6 +154,7 @@ function App() {
   const data = [
     { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.81, 40.65] }]
 
+  const datas = [bina3D, bagimsizBolum]
   //all layers are collected here
   const layers = [
     new PolygonLayer({
@@ -161,9 +164,9 @@ function App() {
       getPolygon: f => f,
       getFillColor: [0, 0, 0, 0],
     }),
-    ...count.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
+    datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
     new ScatterplotLayer({
-      data: [{ position: [35.81, 40.65], color: [255, 0, 0, 128], radius: 100 }],       
+      data: [{ position: [35.81, 40.65], color: [255, 0, 0, 128], radius: 100 }],
       getFillColor: d => d.color,
       getRadius: d => d.radius
     }),
