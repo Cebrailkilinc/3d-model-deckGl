@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import zoning from "../../assets/zoning.png"
+
 const RightPropertiesBar = ({ allData }) => {
     const propertiesValues = useSelector((state) => state.properties.propertiesValue)
  
