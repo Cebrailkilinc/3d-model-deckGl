@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import zoning from "../../assets/zoning.png"
 const RightPropertiesBar = ({ allData }) => {
     const propertiesValues = useSelector((state) => state.properties.propertiesValue)
-    console.log(allData)
+ 
     return (
         <div
             style={{

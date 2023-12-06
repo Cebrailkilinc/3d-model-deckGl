@@ -105,7 +105,7 @@ function App() {
   const bagimsizOfBuilding = [];
   
   useEffect(() => {
-    console.log("useEffect çalışıyor...");
+   
   
     if (clickedType === "MimariBina") {
       const filteredBagimsizBolum = bagimsizBolum.features.filter((item) => item.properties.gml_pare_1 === buildingId.binaId);
@@ -147,7 +147,7 @@ function App() {
       if (clickedObject.properties._5 && clickedObject.properties._5 === "Balkon") {
         setClickedType("Balkon")
       }
-      console.log(buildingId.parselId)
+   
       setBuildingId((prevBuildingId) => ({
         ...prevBuildingId,
         binaId: clickedObject.properties.MB_ID,
@@ -163,6 +163,7 @@ function App() {
     }
   }
 
+  
   //Sunlight effect and shadow for building
   const sunlightEffect = new LightingEffect({
     ambientLight: new AmbientLight({
@@ -297,6 +298,7 @@ function App() {
             controller={true}
             effects={[sunlightEffect]}
             onError={(err) => {
+
               console.log("Deck_ERROR", err); // not triggered
             }}
             style={{
