@@ -10,7 +10,7 @@ const RightPropertiesBar = ({ allData }) => {
                 position: "fixed",
                 backgroundColor: "#E8E8E8",
                 width: "25%",
-                height: "290px",
+                height: "60%",
                 right: "1px",
                 padding: "20px",
 

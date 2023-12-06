@@ -9,7 +9,7 @@ const LeftPropertiesBar = () => {
             <div style={{
                 position: "fixed",
                 backgroundColor: "#E8E8E8",
-                height: "270px",
+                height: "60%",
                 width: "25%",
                 padding: "20px",
                 zIndex:2,
@@ -24,7 +24,7 @@ const LeftPropertiesBar = () => {
                     color: "white",
                     padding: "10px",
                     display: "flex",
-                    alignItems: "center",
+                    alignItems: "",
                     gap: "20px",
 
                 }} >

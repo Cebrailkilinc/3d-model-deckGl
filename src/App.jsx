@@ -73,6 +73,8 @@ function App() {
       binaOzellkleri: null,
     })
 
+    const [mapSize, setMapSize] = useState({ width: '50%', height: '60%' });
+
   //Redux-states
   const count = useSelector((state) => state.counter.value)
   const spinControl = useSelector((state) => state.modalControl.spinControl)
@@ -80,7 +82,19 @@ function App() {
 
   //Created new date
   const date = new Date();
-
+  useEffect(() => {
+    // Event listener ekleyerek tarayıcı penceresi boyutu değiştiğinde mapSize'ı güncelle
+    const handleResize = () => {
+      setMapSize({
+        width: window.innerWidth > 1920 ? '50%' : '40%', // Örnekte 768 pikselin altında tamamen responsive olması için
+        height: window.innerWidth > 1920 ? '60%' : '40%',
+      });
+    };
+    return () => {
+      window.removeEventListener('resize', handleResize());
+    };
+  }, []);
+  
 
   //Properties related to the current date are called
   const sunDataProperties = SunCalc.getTimes(/*Date*/ date, buildingCenterCoordinate.long, buildingCenterCoordinate.lat, /*Number (default=0)*/ 500)
@@ -288,8 +302,9 @@ function App() {
         <Navbar />
       </div>
 
+      
+      <div style={{ backgroundColor:"red" }}>
       <LeftPropertiesBar />
-      <div style={{ position: "fixed", width: '100%', height: '100%',backgroundColor:"#E8E8E8" }}>
         {
           <DeckGL
             onHover={handleMapHover}
@@ -298,24 +313,16 @@ function App() {
             controller={true}
             effects={[sunlightEffect]}
             onError={(err) => {
-
               console.log("Deck_ERROR", err); // not triggered
-            }}
-            style={{
-              width: "602px",
-              height: "300px",
-              zIndex: 2,
-              top: "170px",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              borderRadius: "5px"
-            }}
+            }}   
+            style={{ width: "50%", height:"60%", marginLeft:"25%",marginTop:"4%",zIndex:-1}}       
           >
-            <Map style={{ width: 600, height: 400, zIndex: "2" }} mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
+            <Map style={{  }} mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
           </DeckGL>
         }
+        <RightPropertiesBar allData = {allData} />
       </div>
-      <RightPropertiesBar allData = {allData} />
+      
       <BottomProperties allData = {allData}  />
     </div>
   );
