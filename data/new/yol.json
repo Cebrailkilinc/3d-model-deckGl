@@ -1,0 +1,529 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 2894,
+                "FID_Yollar": 542497,
+                "osm_id": "220230454",
+                "code": 5115,
+                "fclass": "tertiary",
+                "name": "Prof. Dr. Necmettin Erbakan Caddesi",
+                "ref": null,
+                "oneway": "F",
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": "F",
+                "tunnel": "F",
+                "FID_İller": 4,
+                "ID": "05",
+                "NAME_1": "Amasya",
+                "AREA": 5645.14968666,
+                "TOTPOP_CY": 341479,
+                "ISO_CODE": "TR05",
+                "ISO_SUB": "05",
+                "ISO2_CC": "TR",
+                "ISO3_CC": "TUR",
+                "Shape__Are": 9835242332.77,
+                "Shape__Len": 621668.916165,
+                "Shape_Leng": 0.00481244381541
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.80898529973183,
+                        40.64852919996264
+                    ],
+                    [
+                        35.80895219928465,
+                        40.64856290025767
+                    ],
+                    [
+                        35.80852229996424,
+                        40.649018899702526
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 2895,
+                "FID_Yollar": 542500,
+                "osm_id": "220230871",
+                "code": 5115,
+                "fclass": "tertiary",
+                "name": "Prof. Dr. Necmettin Erbakan Caddesi",
+                "ref": null,
+                "oneway": "T",
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": "F",
+                "tunnel": "F",
+                "FID_İller": 4,
+                "ID": "05",
+                "NAME_1": "Amasya",
+                "AREA": 5645.14968666,
+                "TOTPOP_CY": 341479,
+                "ISO_CODE": "TR05",
+                "ISO_SUB": "05",
+                "ISO2_CC": "TR",
+                "ISO3_CC": "TUR",
+                "Shape__Are": 9835242332.77,
+                "Shape__Len": 621668.916165,
+                "Shape_Leng": 0.00536389882983
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.80892002914397,
+                        40.64847022710234
+                    ],
+                    [
+                        35.80850159936938,
+                        40.64889249998896
+                    ],
+                    [
+                        35.80839679957268,
+                        40.64899790053272
+                    ],
+                    [
+                        35.80825479931957,
+                        40.64914080010789
+                    ],
+                    [
+                        35.808123099901195,
+                        40.649334500586804
+                    ],
+                    [
+                        35.808126999361605,
+                        40.64938500021765
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 3433,
+                "FID_Yollar": 648741,
+                "osm_id": "252051396",
+                "code": 5122,
+                "fclass": "residential",
+                "name": null,
+                "ref": null,
+                "oneway": "B",
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": "F",
+                "tunnel": "F",
+                "FID_İller": 4,
+                "ID": "05",
+                "NAME_1": "Amasya",
+                "AREA": 5645.14968666,
+                "TOTPOP_CY": 341479,
+                "ISO_CODE": "TR05",
+                "ISO_SUB": "05",
+                "ISO2_CC": "TR",
+                "ISO3_CC": "TUR",
+                "Shape__Are": 9835242332.77,
+                "Shape__Len": 621668.916165,
+                "Shape_Leng": 0.000127245091908
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.80839679957268,
+                        40.64899790053272
+                    ],
+                    [
+                        35.80852229996424,
+                        40.649018899702526
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 3438,
+                "FID_Yollar": 648746,
+                "osm_id": "252051401",
+                "code": 5122,
+                "fclass": "residential",
+                "name": null,
+                "ref": null,
+                "oneway": "B",
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": "F",
+                "tunnel": "F",
+                "FID_İller": 4,
+                "ID": "05",
+                "NAME_1": "Amasya",
+                "AREA": 5645.14968666,
+                "TOTPOP_CY": 341479,
+                "ISO_CODE": "TR05",
+                "ISO_SUB": "05",
+                "ISO2_CC": "TR",
+                "ISO3_CC": "TUR",
+                "Shape__Are": 9835242332.77,
+                "Shape__Len": 621668.916165,
+                "Shape_Leng": 0.00689003498118
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.811532315958296,
+                        40.64948861650282
+                    ],
+                    [
+                        35.81126860016582,
+                        40.64941230003768
+                    ],
+                    [
+                        35.8107596999003,
+                        40.64927389977072
+                    ],
+                    [
+                        35.810405000090725,
+                        40.64914930049986
+                    ],
+                    [
+                        35.810178700086965,
+                        40.64906990025577
+                    ],
+                    [
+                        35.80924730012288,
+                        40.648650899819245
+                    ],
+                    [
+                        35.80898529973183,
+                        40.64852919996264
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 4146,
+                "FID_Yollar": 875893,
+                "osm_id": "358186537",
+                "code": 5122,
+                "fclass": "residential",
+                "name": null,
+                "ref": null,
+                "oneway": "B",
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": "F",
+                "tunnel": "F",
+                "FID_İller": 4,
+                "ID": "05",
+                "NAME_1": "Amasya",
+                "AREA": 5645.14968666,
+                "TOTPOP_CY": 341479,
+                "ISO_CODE": "TR05",
+                "ISO_SUB": "05",
+                "ISO2_CC": "TR",
+                "ISO3_CC": "TUR",
+                "Shape__Are": 9835242332.77,
+                "Shape__Len": 621668.916165,
+                "Shape_Leng": 0.00280145983399
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.811232799953814,
+                        40.650065500122764
+                    ],
+                    [
+                        35.811532315958296,
+                        40.64948861650282
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 5402,
+                "FID_Yollar": 1046992,
+                "osm_id": "498888522",
+                "code": 5122,
+                "fclass": "residential",
+                "name": null,
+                "ref": null,
+                "oneway": "B",
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": "F",
+                "tunnel": "F",
+                "FID_İller": 4,
+                "ID": "05",
+                "NAME_1": "Amasya",
+                "AREA": 5645.14968666,
+                "TOTPOP_CY": 341479,
+                "ISO_CODE": "TR05",
+                "ISO_SUB": "05",
+                "ISO2_CC": "TR",
+                "ISO3_CC": "TUR",
+                "Shape__Are": 9835242332.77,
+                "Shape__Len": 621668.916165,
+                "Shape_Leng": 0.00230918204078
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.810035917265814,
+                        40.64968144185188
+                    ],
+                    [
+                        35.81042133707049,
+                        40.64915503936893
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 5487,
+                "FID_Yollar": 1049226,
+                "osm_id": "499929333",
+                "code": 5115,
+                "fclass": "tertiary",
+                "name": "Necip Fazıl Caddesi",
+                "ref": null,
+                "oneway": "B",
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": "F",
+                "tunnel": "F",
+                "FID_İller": 4,
+                "ID": "05",
+                "NAME_1": "Amasya",
+                "AREA": 5645.14968666,
+                "TOTPOP_CY": 341479,
+                "ISO_CODE": "TR05",
+                "ISO_SUB": "05",
+                "ISO2_CC": "TR",
+                "ISO3_CC": "TUR",
+                "Shape__Are": 9835242332.77,
+                "Shape__Len": 621668.916165,
+                "Shape_Leng": 0.00381786353199
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.81092295294815,
+                        40.650718259545165
+                    ],
+                    [
+                        35.810649499674696,
+                        40.65058399975186
+                    ],
+                    [
+                        35.808126999361605,
+                        40.64938500021765
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 5491,
+                "FID_Yollar": 1049230,
+                "osm_id": "499929337",
+                "code": 5115,
+                "fclass": "tertiary",
+                "name": "Prof. Dr. Necmettin Erbakan Caddesi",
+                "ref": null,
+                "oneway": "F",
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": "F",
+                "tunnel": "F",
+                "FID_İller": 4,
+                "ID": "05",
+                "NAME_1": "Amasya",
+                "AREA": 5645.14968666,
+                "TOTPOP_CY": 341479,
+                "ISO_CODE": "TR05",
+                "ISO_SUB": "05",
+                "ISO2_CC": "TR",
+                "ISO3_CC": "TUR",
+                "Shape__Are": 9835242332.77,
+                "Shape__Len": 621668.916165,
+                "Shape_Leng": 0.000541932040799
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.80852229996424,
+                        40.649018899702526
+                    ],
+                    [
+                        35.808188899697996,
+                        40.6493540005867
+                    ],
+                    [
+                        35.808126999361605,
+                        40.64938500021765
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 5492,
+                "FID_Yollar": 1049231,
+                "osm_id": "499929338",
+                "code": 5122,
+                "fclass": "residential",
+                "name": "İrfan Özbakır Caddesi",
+                "ref": null,
+                "oneway": "B",
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": "F",
+                "tunnel": "F",
+                "FID_İller": 4,
+                "ID": "05",
+                "NAME_1": "Amasya",
+                "AREA": 5645.14968666,
+                "TOTPOP_CY": 341479,
+                "ISO_CODE": "TR05",
+                "ISO_SUB": "05",
+                "ISO2_CC": "TR",
+                "ISO3_CC": "TUR",
+                "Shape__Are": 9835242332.77,
+                "Shape__Len": 621668.916165,
+                "Shape_Leng": 0.00465856540839
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.80852229996424,
+                        40.649018899702526
+                    ],
+                    [
+                        35.81007899944632,
+                        40.64970029982902
+                    ],
+                    [
+                        35.811159199437554,
+                        40.650042200487235
+                    ],
+                    [
+                        35.811232799953814,
+                        40.650065500122764
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 0,
+                "FID_Yollar": 0,
+                "osm_id": null,
+                "code": 0,
+                "fclass": null,
+                "name": null,
+                "ref": null,
+                "oneway": null,
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": null,
+                "tunnel": null,
+                "FID_İller": 0,
+                "ID": null,
+                "NAME_1": null,
+                "AREA": 0,
+                "TOTPOP_CY": 0,
+                "ISO_CODE": null,
+                "ISO_SUB": null,
+                "ISO2_CC": null,
+                "ISO3_CC": null,
+                "Shape__Are": 0,
+                "Shape__Len": 0,
+                "Shape_Leng": 0
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.810035917265814,
+                        40.64968144185188
+                    ],
+                    [
+                        35.80970863545794,
+                        40.65013678642475
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 0,
+                "FID_Yollar": 0,
+                "osm_id": null,
+                "code": 0,
+                "fclass": null,
+                "name": null,
+                "ref": null,
+                "oneway": null,
+                "maxspeed": 0,
+                "layer": 0,
+                "bridge": null,
+                "tunnel": null,
+                "FID_İller": 0,
+                "ID": null,
+                "NAME_1": null,
+                "AREA": 0,
+                "TOTPOP_CY": 0,
+                "ISO_CODE": null,
+                "ISO_SUB": null,
+                "ISO2_CC": null,
+                "ISO3_CC": null,
+                "Shape__Are": 0,
+                "Shape__Len": 0,
+                "Shape_Leng": 0
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        35.811232799953814,
+                        40.650065500122764
+                    ],
+                    [
+                        35.81092295294815,
+                        40.650718259545165
+                    ]
+                ]
+            }
+        }
+    ]
+}

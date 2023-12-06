@@ -1,0 +1,1580 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Arsa",
+                "parselNo": "6",
+                "adaNo": "1451",
+                "ON_CEPHE_S": 3,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "K",
+                "YAPI_NIZ": "BL",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat İrtifak",
+                "PARSEL_KUL": "Karma Kullanım",
+                "ON_CEPHE_U": 31.14,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 1983.03,
+                "EGIM": 3.70291,
+                "PuanPARSEL": 4.01374,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 27.4,
+                "PuanPars_1": 17.9,
+                "PuanAdaKon": 67.6,
+                "PuanMulkiy": 24.9,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 74.5629,
+                "PuanON_CEP": 75,
+                "PuanON_C_1": 43.0348,
+                "Shape_Leng": 0.00177446866768,
+                "Shape_Area": 1.96110985719e-7,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725825,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 21.0554
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.810935942739604,
+                            40.65055729078637,
+                            0
+                        ],
+                        [
+                            35.811110677415854,
+                            40.650116388260756,
+                            0
+                        ],
+                        [
+                            35.81092000135703,
+                            40.65006000166778,
+                            0
+                        ],
+                        [
+                            35.810770000734976,
+                            40.650010002959334,
+                            0
+                        ],
+                        [
+                            35.81053000135853,
+                            40.650429998945356,
+                            0
+                        ],
+                        [
+                            35.81068000108121,
+                            40.65050000127411,
+                            0
+                        ],
+                        [
+                            35.81088000131109,
+                            40.65060000138902,
+                            0
+                        ],
+                        [
+                            35.810935942739604,
+                            40.65055729078637,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "4 Katli Betonarme Apartman Ve Arsasi",
+                "parselNo": "3",
+                "adaNo": "1451",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "BL",
+                "TAKS": "0.3",
+                "KAKS": "0.9",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Karma Kullanım",
+                "ON_CEPHE_U": 20.17,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 1114.27,
+                "EGIM": 4.10133,
+                "PuanPARSEL": 3.63507,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 27.4,
+                "PuanPars_1": 17.9,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 45,
+                "PuanPars_2": 41.8971,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 27.8745,
+                "Shape_Leng": 0.00146496288994,
+                "Shape_Area": 1.19499703575e-7,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725824,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.6768
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.8105500013815,
+                            40.64994000063058,
+                            0
+                        ],
+                        [
+                            35.810270000160415,
+                            40.65031000420339,
+                            0
+                        ],
+                        [
+                            35.81053000135853,
+                            40.650429998945356,
+                            0
+                        ],
+                        [
+                            35.810770000734976,
+                            40.650010002959334,
+                            0
+                        ],
+                        [
+                            35.8105500013815,
+                            40.64994000063058,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "4 Katli Betonarme Apartman Ve Arsasi",
+                "parselNo": "4",
+                "adaNo": "1450",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "0.9",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Karma Kullanım",
+                "ON_CEPHE_U": 21.669,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 832.66,
+                "EGIM": 4.31344,
+                "PuanPARSEL": 3.63659,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 17.9,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 45,
+                "PuanPars_2": 31.3084,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 29.9461,
+                "Shape_Leng": 0.00124895393781,
+                "Shape_Area": 8.89995660252e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725819,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.6783
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.80928999903426,
+                            40.64985000187613,
+                            0
+                        ],
+                        [
+                            35.80954000067055,
+                            40.649549999732756,
+                            0
+                        ],
+                        [
+                            35.809320001317076,
+                            40.6494500023158,
+                            0
+                        ],
+                        [
+                            35.80908000104125,
+                            40.64975000176122,
+                            0
+                        ],
+                        [
+                            35.80928999903426,
+                            40.64985000187613,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "4 Katli Kargir Apartman Ve Arsasi",
+                "parselNo": "3",
+                "adaNo": "1450",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "0.9",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Karma Kullanım",
+                "ON_CEPHE_U": 17.0941,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 667.19,
+                "EGIM": 9.20961,
+                "PuanPARSEL": 3.5149,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 17.9,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 20,
+                "PuanTAKS": 60,
+                "PuanKAKS": 45,
+                "PuanPars_2": 25.0867,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 23.6237,
+                "Shape_Leng": 0.00115073110063,
+                "Shape_Area": 7.11007659599e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725818,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.5566
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.8091400002109,
+                            40.64937999998705,
+                            0
+                        ],
+                        [
+                            35.80889999993508,
+                            40.64967000076996,
+                            0
+                        ],
+                        [
+                            35.80908000104125,
+                            40.64975000176122,
+                            0
+                        ],
+                        [
+                            35.809320001317076,
+                            40.6494500023158,
+                            0
+                        ],
+                        [
+                            35.8091400002109,
+                            40.64937999998705,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "A Ve B Bloklu 4 Katli Betonarme Bina Ve Arsasi",
+                "parselNo": "1",
+                "adaNo": "1450",
+                "ON_CEPHE_S": 3,
+                "ON_CEPHE_Y": 20,
+                "PARSEL_KON": "K",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "0.9",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Karma Kullanım",
+                "ON_CEPHE_U": 43.7776,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 1670.45,
+                "EGIM": 8.00531,
+                "PuanPARSEL": 4.4848,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 17.9,
+                "PuanAdaKon": 67.6,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 21.2,
+                "PuanEgim": 20,
+                "PuanTAKS": 60,
+                "PuanKAKS": 45,
+                "PuanPars_2": 62.8097,
+                "PuanON_CEP": 75,
+                "PuanON_C_1": 60.4997,
+                "Shape_Leng": 0.00169346134622,
+                "Shape_Area": 1.76049626692e-7,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725816,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 21.5265
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.8083300006291,
+                            40.649400000909395,
+                            0
+                        ],
+                        [
+                            35.808759999774225,
+                            40.64959999934052,
+                            0
+                        ],
+                        [
+                            35.808990001387485,
+                            40.64931000215495,
+                            0
+                        ],
+                        [
+                            35.808630000074515,
+                            40.64915999973425,
+                            0
+                        ],
+                        [
+                            35.80844999986766,
+                            40.6491800033545,
+                            0
+                        ],
+                        [
+                            35.80831000060607,
+                            40.64932999858064,
+                            0
+                        ],
+                        [
+                            35.8083300006291,
+                            40.649400000909395,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "5 Katli Betonarme Apartman Ve Arsasi",
+                "parselNo": "7",
+                "adaNo": "1330",
+                "ON_CEPHE_S": 1,
+                "ON_CEPHE_Y": 7,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 18.97,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 503.31,
+                "EGIM": 8.19545,
+                "PuanPARSEL": 3.58831,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 23.2,
+                "PuanEgim": 20,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 18.9247,
+                "PuanON_CEP": 25,
+                "PuanON_C_1": 26.2161,
+                "Shape_Leng": 0.000950037505618,
+                "Shape_Area": 5.47007687287e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725500,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.63
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.81097999962731,
+                            40.64939000314621,
+                            0
+                        ],
+                        [
+                            35.810770000734976,
+                            40.64932999858064,
+                            0
+                        ],
+                        [
+                            35.81064999879845,
+                            40.649549999732756,
+                            0
+                        ],
+                        [
+                            35.81084000036577,
+                            40.649610003399005,
+                            0
+                        ],
+                        [
+                            35.81086000128806,
+                            40.64962000206151,
+                            0
+                        ],
+                        [
+                            35.81097999962731,
+                            40.64939000314621,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Betonarme Bina Ve Arsasi",
+                "parselNo": "6",
+                "adaNo": "1330",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 10,
+                "PARSEL_KON": "K",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 28.08,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 740.02,
+                "EGIM": 4.20228,
+                "PuanPARSEL": 4.13498,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 67.6,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 23.2,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 27.8251,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 38.806,
+                "Shape_Leng": 0.00114330153144,
+                "Shape_Area": 8.10996333026e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725499,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 21.1767
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.81126000084839,
+                            40.6494800019006,
+                            0
+                        ],
+                        [
+                            35.81097999962731,
+                            40.64939000314621,
+                            0
+                        ],
+                        [
+                            35.81086000128806,
+                            40.64962000206151,
+                            0
+                        ],
+                        [
+                            35.81099000098783,
+                            40.64966000210745,
+                            0
+                        ],
+                        [
+                            35.811170001194625,
+                            40.64972000037778,
+                            0
+                        ],
+                        [
+                            35.81127000130954,
+                            40.64950000102431,
+                            0
+                        ],
+                        [
+                            35.81126000084839,
+                            40.6494800019006,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Arsa",
+                "parselNo": "3",
+                "adaNo": "1330",
+                "ON_CEPHE_S": 1,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat İrtifak",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 20.95,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 601.33,
+                "EGIM": 4.77485,
+                "PuanPARSEL": 2.981,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 24.9,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 22.6103,
+                "PuanON_CEP": 25,
+                "PuanON_C_1": 28.9525,
+                "Shape_Leng": 0.00102678645515,
+                "Shape_Area": 6.45497886224e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725498,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.0227
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.810480000851385,
+                            40.6497800004467,
+                            0
+                        ],
+                        [
+                            35.81071000066606,
+                            40.64985000187613,
+                            0
+                        ],
+                        [
+                            35.81084000036577,
+                            40.649610003399005,
+                            0
+                        ],
+                        [
+                            35.81064999879845,
+                            40.649549999732756,
+                            0
+                        ],
+                        [
+                            35.81061000234979,
+                            40.64954000196957,
+                            0
+                        ],
+                        [
+                            35.810480000851385,
+                            40.6497800004467,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "5 Katli Betonarme Apartman Ve Arsasi",
+                "parselNo": "12",
+                "adaNo": "1330",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 7,
+                "PARSEL_KON": "K",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 32.81,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 910,
+                "EGIM": 5.49765,
+                "PuanPARSEL": 4.23707,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 67.6,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 23.2,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 34.2164,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 45.3427,
+                "Shape_Leng": 0.00129345105689,
+                "Shape_Area": 9.57504898533e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725503,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 21.2788
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.81058000006698,
+                            40.64927000210895,
+                            0
+                        ],
+                        [
+                            35.810410002119966,
+                            40.64921999710526,
+                            0
+                        ],
+                        [
+                            35.81025999969927,
+                            40.64942999869555,
+                            0
+                        ],
+                        [
+                            35.81044000080544,
+                            40.6494800019006,
+                            0
+                        ],
+                        [
+                            35.81047000039024,
+                            40.64949000326112,
+                            0
+                        ],
+                        [
+                            35.81061000234979,
+                            40.64954000196957,
+                            0
+                        ],
+                        [
+                            35.81064999879845,
+                            40.649549999732756,
+                            0
+                        ],
+                        [
+                            35.810770000734976,
+                            40.64932999858064,
+                            0
+                        ],
+                        [
+                            35.81058000006698,
+                            40.64927000210895,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Betonarme Bina Ve Arsasi",
+                "parselNo": "11",
+                "adaNo": "1330",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "K",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat İrtifak",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 34.94,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 947.91,
+                "EGIM": 4.09864,
+                "PuanPARSEL": 3.58122,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 67.6,
+                "PuanMulkiy": 24.9,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 35.6419,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 48.2863,
+                "Shape_Leng": 0.00129378005068,
+                "Shape_Area": 9.98502339719e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725502,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.6229
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.810480000851385,
+                            40.6497800004467,
+                            0
+                        ],
+                        [
+                            35.81061000234979,
+                            40.64954000196957,
+                            0
+                        ],
+                        [
+                            35.81047000039024,
+                            40.64949000326112,
+                            0
+                        ],
+                        [
+                            35.81044000080544,
+                            40.6494800019006,
+                            0
+                        ],
+                        [
+                            35.81025999969927,
+                            40.64942999869555,
+                            0
+                        ],
+                        [
+                            35.81011000087591,
+                            40.64963999938652,
+                            0
+                        ],
+                        [
+                            35.810290000183386,
+                            40.64971000081596,
+                            0
+                        ],
+                        [
+                            35.810350002050995,
+                            40.64973000083893,
+                            0
+                        ],
+                        [
+                            35.810480000851385,
+                            40.6497800004467,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Betonarma Bina Ve Arsasi",
+                "parselNo": "10",
+                "adaNo": "1330",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "K",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 31.79,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 882.72,
+                "EGIM": 6.09029,
+                "PuanPARSEL": 4.18669,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 67.6,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 20,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 33.1907,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 43.9331,
+                "Shape_Leng": 0.00124126811782,
+                "Shape_Area": 9.37494645244e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725501,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 21.2284
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.81086999995057,
+                            40.64990000058464,
+                            0
+                        ],
+                        [
+                            35.81103000103377,
+                            40.649950000192405,
+                            0
+                        ],
+                        [
+                            35.81105999971925,
+                            40.649950000192405,
+                            0
+                        ],
+                        [
+                            35.811170001194625,
+                            40.64972000037778,
+                            0
+                        ],
+                        [
+                            35.81099000098783,
+                            40.64966000210745,
+                            0
+                        ],
+                        [
+                            35.81086000128806,
+                            40.64962000206151,
+                            0
+                        ],
+                        [
+                            35.81084000036577,
+                            40.649610003399005,
+                            0
+                        ],
+                        [
+                            35.81071000066606,
+                            40.64985000187613,
+                            0
+                        ],
+                        [
+                            35.81086999995057,
+                            40.64990000058464,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Arsa",
+                "parselNo": "9",
+                "adaNo": "1329",
+                "ON_CEPHE_S": 1,
+                "ON_CEPHE_Y": 7,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat İrtifak",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 13.59,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 356.89,
+                "EGIM": 5.0645,
+                "PuanPARSEL": 2.84121,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 24.9,
+                "PuanOnCeph": 23.2,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 13.4192,
+                "PuanON_CEP": 25,
+                "PuanON_C_1": 18.7811,
+                "Shape_Leng": 0.000814105627442,
+                "Shape_Area": 3.68999229319e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725457,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 19.8829
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.81000000119917,
+                            40.649320000817454,
+                            0
+                        ],
+                        [
+                            35.81017000094482,
+                            40.64911999878899,
+                            0
+                        ],
+                        [
+                            35.81002999988465,
+                            40.6490600023173,
+                            0
+                        ],
+                        [
+                            35.809870000600085,
+                            40.649259998050525,
+                            0
+                        ],
+                        [
+                            35.81000000119917,
+                            40.649320000817454,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Arsa",
+                "parselNo": "8",
+                "adaNo": "1329",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 7,
+                "PARSEL_KON": "K",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat İrtifak",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 28.61,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 463.26,
+                "EGIM": 4.03552,
+                "PuanPARSEL": 3.33964,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 67.6,
+                "PuanMulkiy": 24.9,
+                "PuanOnCeph": 23.2,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 17.4188,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 39.5384,
+                "Shape_Leng": 0.000911044739503,
+                "Shape_Area": 5.04504936613e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725456,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.3813
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.81031999976824,
+                            40.6491800033545,
+                            0
+                        ],
+                        [
+                            35.81017000094482,
+                            40.64911999878899,
+                            0
+                        ],
+                        [
+                            35.81000000119917,
+                            40.649320000817454,
+                            0
+                        ],
+                        [
+                            35.81000999986168,
+                            40.649320000817454,
+                            0
+                        ],
+                        [
+                            35.810190000068474,
+                            40.64941000226986,
+                            0
+                        ],
+                        [
+                            35.810330001128705,
+                            40.649210003838675,
+                            0
+                        ],
+                        [
+                            35.81031999976824,
+                            40.6491800033545,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Bes Katli Betonarme Bina Ve Arsa",
+                "parselNo": "5",
+                "adaNo": "1329",
+                "ON_CEPHE_S": 1,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 34.7072,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 970,
+                "EGIM": 2.40124,
+                "PuanPARSEL": 3.89613,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 36.4725,
+                "PuanON_CEP": 25,
+                "PuanON_C_1": 47.9646,
+                "Shape_Leng": 0.00132004460673,
+                "Shape_Area": 1.02799687666e-7,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725454,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.9378
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.80967000126958,
+                            40.6494500023158,
+                            0
+                        ],
+                        [
+                            35.80983000055414,
+                            40.64923999982619,
+                            0
+                        ],
+                        [
+                            35.80959000117764,
+                            40.649130003746734,
+                            0
+                        ],
+                        [
+                            35.809470000140436,
+                            40.64908000323959,
+                            0
+                        ],
+                        [
+                            35.80930999995661,
+                            40.649299999895106,
+                            0
+                        ],
+                        [
+                            35.80967000126958,
+                            40.6494500023158,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "2 Adet 5 Katli Betonarme Apartman Ve Arsasi",
+                "parselNo": "17",
+                "adaNo": "1329",
+                "ON_CEPHE_S": 1,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 42.0461,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 1172.75,
+                "EGIM": 5.79664,
+                "PuanPARSEL": 4.02725,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 44.096,
+                "PuanON_CEP": 25,
+                "PuanON_C_1": 58.1068,
+                "Shape_Leng": 0.00148227959886,
+                "Shape_Area": 1.24750412609e-7,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725467,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 21.0689
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.809050002355775,
+                            40.64888999987363,
+                            0
+                        ],
+                        [
+                            35.80888000081143,
+                            40.649110001025804,
+                            0
+                        ],
+                        [
+                            35.80902000097234,
+                            40.649170003792676,
+                            0
+                        ],
+                        [
+                            35.809160000233874,
+                            40.64923000116369,
+                            0
+                        ],
+                        [
+                            35.80930999995661,
+                            40.649299999895106,
+                            0
+                        ],
+                        [
+                            35.809470000140436,
+                            40.64908000323959,
+                            0
+                        ],
+                        [
+                            35.809430000993814,
+                            40.6490600023173,
+                            0
+                        ],
+                        [
+                            35.8093300008789,
+                            40.64901000091089,
+                            0
+                        ],
+                        [
+                            35.809240000325815,
+                            40.64898000132604,
+                            0
+                        ],
+                        [
+                            35.80919000071799,
+                            40.64894999904328,
+                            0
+                        ],
+                        [
+                            35.809070002378746,
+                            40.64889999943546,
+                            0
+                        ],
+                        [
+                            35.809050002355775,
+                            40.64888999987363,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Kargir Apartman Ve Arsasi",
+                "parselNo": "16",
+                "adaNo": "1329",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 15,
+                "PARSEL_KON": "K",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 35.9863,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 950.08,
+                "EGIM": 6.18061,
+                "PuanPARSEL": 4.23993,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 67.6,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 17.8,
+                "PuanEgim": 20,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 35.7235,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 49.7323,
+                "Shape_Leng": 0.00131644481737,
+                "Shape_Area": 1.02000872937e-7,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725465,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 21.2816
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.80983000055414,
+                            40.64923999982619,
+                            0
+                        ],
+                        [
+                            35.80967000126958,
+                            40.6494500023158,
+                            0
+                        ],
+                        [
+                            35.80984000191461,
+                            40.64953000330706,
+                            0
+                        ],
+                        [
+                            35.810039999446474,
+                            40.649610003399005,
+                            0
+                        ],
+                        [
+                            35.810190000068474,
+                            40.64941000226986,
+                            0
+                        ],
+                        [
+                            35.81000999986168,
+                            40.649320000817454,
+                            0
+                        ],
+                        [
+                            35.81000000119917,
+                            40.649320000817454,
+                            0
+                        ],
+                        [
+                            35.809870000600085,
+                            40.649259998050525,
+                            0
+                        ],
+                        [
+                            35.80983000055414,
+                            40.64923999982619,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Iki Adet Bes Katli Kargir Apartman  Arsasi",
+                "parselNo": "15",
+                "adaNo": "1329",
+                "ON_CEPHE_S": 1,
+                "ON_CEPHE_Y": 7,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 51.43,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 1357.4,
+                "EGIM": 4.23511,
+                "PuanPARSEL": 4.17162,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 23.2,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 51.0389,
+                "PuanON_CEP": 25,
+                "PuanON_C_1": 71.0752,
+                "Shape_Leng": 0.00166275644326,
+                "Shape_Area": 1.44899334778e-7,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725463,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 21.2133
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.80959000117764,
+                            40.64884999982769,
+                            0
+                        ],
+                        [
+                            35.80939999961032,
+                            40.64877000513167,
+                            0
+                        ],
+                        [
+                            35.80923000166331,
+                            40.648690002341766,
+                            0
+                        ],
+                        [
+                            35.809070002378746,
+                            40.64889999943546,
+                            0
+                        ],
+                        [
+                            35.80919000071799,
+                            40.64894999904328,
+                            0
+                        ],
+                        [
+                            35.809240000325815,
+                            40.64898000132604,
+                            0
+                        ],
+                        [
+                            35.8093300008789,
+                            40.64901000091089,
+                            0
+                        ],
+                        [
+                            35.809430000993814,
+                            40.6490600023173,
+                            0
+                        ],
+                        [
+                            35.809470000140436,
+                            40.64908000323959,
+                            0
+                        ],
+                        [
+                            35.80959000117764,
+                            40.649130003746734,
+                            0
+                        ],
+                        [
+                            35.80974999956288,
+                            40.64892999991963,
+                            0
+                        ],
+                        [
+                            35.80959000117764,
+                            40.64884999982769,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "Arsa",
+                "parselNo": "14",
+                "adaNo": "1329",
+                "ON_CEPHE_S": 2,
+                "ON_CEPHE_Y": 20,
+                "PARSEL_KON": "K",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat İrtifak",
+                "PARSEL_KUL": "Karma Kullanım",
+                "ON_CEPHE_U": 26.522,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 572,
+                "EGIM": 8.26467,
+                "PuanPARSEL": 3.30309,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 17.9,
+                "PuanAdaKon": 67.6,
+                "PuanMulkiy": 24.9,
+                "PuanOnCeph": 21.2,
+                "PuanEgim": 20,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 21.5075,
+                "PuanON_CEP": 50,
+                "PuanON_C_1": 36.6528,
+                "Shape_Leng": 0.00102519991195,
+                "Shape_Area": 6.2399495898e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725461,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.3448
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.80902000097234,
+                            40.648600002688,
+                            0
+                        ],
+                        [
+                            35.80883000120366,
+                            40.64879000155736,
+                            0
+                        ],
+                        [
+                            35.809050002355775,
+                            40.64888999987363,
+                            0
+                        ],
+                        [
+                            35.809070002378746,
+                            40.64889999943546,
+                            0
+                        ],
+                        [
+                            35.80923000166331,
+                            40.648690002341766,
+                            0
+                        ],
+                        [
+                            35.80902000097234,
+                            40.648600002688,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nitelik": "1 Bodrum 1 Zemin 3 Normal Katli Kargir Apartman Ve Arsasi",
+                "parselNo": "10",
+                "adaNo": "1329",
+                "ON_CEPHE_S": 1,
+                "ON_CEPHE_Y": 7,
+                "PARSEL_KON": "A",
+                "YAPI_NIZ": "A",
+                "TAKS": "0.3",
+                "KAKS": "1.2",
+                "Mulkiyet_D": "Kat Mülkiyet",
+                "PARSEL_KUL": "Konut/Mesken",
+                "ON_CEPHE_U": 27.74,
+                "ZEMIN_DURU": "orta",
+                "Parsel_Ala": 739.85,
+                "EGIM": 4.51082,
+                "PuanPARSEL": 3.7649,
+                "PuanZeminD": 50,
+                "PuanYapi_N": 49.4,
+                "PuanPars_1": 25,
+                "PuanAdaKon": 32.4,
+                "PuanMulkiy": 50.3,
+                "PuanOnCeph": 23.2,
+                "PuanEgim": 31.2,
+                "PuanTAKS": 60,
+                "PuanKAKS": 60,
+                "PuanPars_2": 27.8187,
+                "PuanON_CEP": 25,
+                "PuanON_C_1": 38.3361,
+                "Shape_Leng": 0.00112968240432,
+                "Shape_Area": 7.65996409539e-8,
+                "MAHALLEKOD": 126976,
+                "PARCELID": 124725459,
+                "PuanMahall": 17.0417,
+                "PUANPARS_3": 20.8066
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            35.80959000117764,
+                            40.649130003746734,
+                            0
+                        ],
+                        [
+                            35.80983000055414,
+                            40.64923999982619,
+                            0
+                        ],
+                        [
+                            35.809870000600085,
+                            40.649259998050525,
+                            0
+                        ],
+                        [
+                            35.81002999988465,
+                            40.6490600023173,
+                            0
+                        ],
+                        [
+                            35.80974999956288,
+                            40.64892999991963,
+                            0
+                        ],
+                        [
+                            35.80959000117764,
+                            40.649130003746734,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
+}

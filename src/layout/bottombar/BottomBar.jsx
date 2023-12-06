@@ -20,11 +20,11 @@ const BottomBar = ({ hoveredCoordinates }) => {
     return (
         <div
             style={{
-                width: propertiesValues.length !== 0 ? `calc(100% - 450px)` : "100%"
+                width:"100%"
             }}
             className='bottombar-container' >
             <div style={{
-                paddingRight: propertiesValues.length !== 0 ? `0` : "250px"
+               
             }} className='bottombar-container-menu' >
                 <div className='bottombar-container-left'>
                     <div className='bottombar-menus-add-layer' >

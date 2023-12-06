@@ -1,0 +1,356 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.80926534183083,
+                    40.649589610761794
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.80911672847042,
+                    40.649556179014624
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.80859552423976,
+                    40.64935516355776
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.808702800161335,
+                    40.64937965943594
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.81057037460825,
+                    40.649332121106156
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.81085995181578,
+                    40.64983106134256
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.810798368108536,
+                    40.64953519782672
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.81106420491588,
+                    40.64964411191525
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.810630941494544,
+                    40.64974698730834
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.809204519513216,
+                    40.64907430893005
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.80990511305861,
+                    40.64949386678485
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.80945458980736,
+                    40.6489152174289
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.80938713437921,
+                    40.64888457632459
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.80897189831869,
+                    40.648814870715896
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.80985891888234,
+                    40.64903004327027
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.81006032102023,
+                    40.64920466786493
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.81019348843882,
+                    40.6493117529637
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.809520712917525,
+                    40.64933328570862
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.81075404122393,
+                    40.65031197029191
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.81087237594634,
+                    40.65035145586639
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.81087223043305,
+                    40.65020594866882
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": "DOOR",
+                "LAYER": "Unknown Point Feature",
+                "DGN_LEVEL": 1034
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.81066213870287,
+                    40.65011009319412
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAME": null,
+                "LAYER": null,
+                "DGN_LEVEL": 0
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    35.810332213473444,
+                    40.64967077225557
+                ]
+            }
+        }
+    ]
+}
