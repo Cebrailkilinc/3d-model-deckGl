@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Col, InputNumber, Row, Slider, Space } from 'antd';
-import "../styles/SunnyLight.css"
+
 const SunnyLight = () => {
     const [inputValue, setInputValue] = useState(1);
     const onChange = (newValue) => {
