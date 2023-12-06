@@ -302,9 +302,9 @@ function App() {
         <Navbar />
       </div>
 
-      
-      <div style={{ backgroundColor:"red" }}>
       <LeftPropertiesBar />
+      <div style={{ position: "fixed", width: '100%', height: '100%', top:"0%", zIndex:-1 }}>
+      
         {
           <DeckGL
             onHover={handleMapHover}
@@ -315,14 +315,14 @@ function App() {
             onError={(err) => {
               console.log("Deck_ERROR", err); // not triggered
             }}   
-            style={{ width: "50%", height:"60%", marginLeft:"25%",marginTop:"4%",zIndex:-1}}       
+            style={{ width: "50%", height:"60%", marginLeft:"25%",marginTop:"4%", zIndex:-1}}       
           >
-            <Map style={{  }} mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
+            <Map  style={{ }} mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
           </DeckGL>
         }
-        <RightPropertiesBar allData = {allData} />
+       
       </div>
-      
+      <RightPropertiesBar allData = {allData} />
       <BottomProperties allData = {allData}  />
     </div>
   );
