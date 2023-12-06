@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, InputNumber, Row, Slider, Space } from 'antd';
+import {InputNumber,Slider } from 'antd';
 
 const SunnyLight = () => {
     const [inputValue, setInputValue] = useState(1);

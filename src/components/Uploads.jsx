@@ -1,17 +1,9 @@
 import React, { useState } from 'react'
 import "../styles/upload.css"
-
-import { UploadOutlined } from '@ant-design/icons';
-import { Button, message, Upload } from 'antd';
-
-import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux'
 import { addData } from "../redux/slices/dataSlice"
-import Item from 'antd/es/list/Item';
-import { useEffect } from 'react';
 import { closeModal, openSpin, closeSpin } from '../redux/slices/modalSlice';
-import Loading from './Loading';
-import fs from "fs";
+
 
 
 const Uploads = () => {
