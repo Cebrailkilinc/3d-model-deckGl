@@ -22,7 +22,7 @@ const BottomProperties = ({ allData }) => {
                 justifyContent: "space-between"
 
             }}>
-                <div style={{ backgroundColor: "#4a5ae5", height: "90%", width: "90%", color: "white", borderRadius: "5px", overflowY: "auto" }} >
+                <div style={{ backgroundColor: "#4a5ae5", height: "90%", width: "90%", color: "white", borderRadius: "5px", overflowY: "auto",fontSize: "15px" }} >
                     <div style={{ padding: "10px" }}>
                         <div style={{display:"flex", gap:"20px"}}>
                             <img style={{position:"relative", top:"30px"}} width="80" height="80" title="" src="https://www.arcgis.com/sharing/rest/content/items/6475911dd83c45c1a2615f730bcc65eb/resources/images/widget_63/1654629737883.png" alt="" />
@@ -71,7 +71,7 @@ const BottomProperties = ({ allData }) => {
                         </div>
                     </div>
                 </div>
-                <div style={{ backgroundColor: "#4a5ae5", height: "90%", width: "90%", borderRadius: "5px", color: "white", overflowY: "auto" }}>
+                <div style={{ backgroundColor: "#4a5ae5", height: "90%", width: "90%", borderRadius: "5px", color: "white", overflowY: "auto",fontSize: "15px" }}>
                     <div style={{ padding: "10px" }} >
                         <div style={{ display: "flex", gap: "30px" }} >
                             <img style={{ position: "relative", top: "30px" }} width="64" height="64" src="https://img.icons8.com/dusk/64/museum.png" alt="museum" />
@@ -108,7 +108,7 @@ const BottomProperties = ({ allData }) => {
                         </div>
                     </div>
                 </div>
-                <div style={{ backgroundColor: "#4a5ae5", height: "90%", width: "90%", borderRadius: "5px", color: "white", overflowY: "auto" }}>
+                <div style={{ backgroundColor: "#4a5ae5", height: "90%", width: "90%", borderRadius: "5px", color: "white", overflowY: "auto",fontSize: "15px" }}>
                     <div style={{ padding: "10px" }} >
                         <div style={{ display: "flex", gap: "20px" }} >
                             <img style={{ position: "relative", top: "30px" }} width="96" height="96" src="https://img.icons8.com/emoji/96/bus-stop-emoji.png" alt="bus-stop-emoji" />
@@ -146,7 +146,7 @@ const BottomProperties = ({ allData }) => {
                 </div>
                 <div style={{ backgroundColor: "#4a5ae5", height: "90%", width: "90%", borderRadius: "5px", color: "white", overflowY: "auto" }}>
                     <div style={{ padding: "10px" }} >
-                        <div style={{ display: "flex", gap: "20px" }} >
+                        <div style={{ display: "flex", gap: "20px",fontSize: "15px", }} >
                             <img style={{ position: "relative", top: "30px" }} width="64" height="64" src="https://img.icons8.com/external-tulpahn-outline-color-tulpahn/64/external-hospital-healthcare-tulpahn-outline-color-tulpahn.png" alt="external-hospital-healthcare-tulpahn-outline-color-tulpahn" />
                             <div>
                                 <h1 style={{ fontSize: "15px", fontWeight: 'bold', marginTop: "10px" }}>Sağlık Tesislerine Mesafe</h1>

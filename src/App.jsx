@@ -194,16 +194,16 @@ function App() {
         // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
         const value = object.properties
         if (value === color) {
-          return [139, 101, 139]; // sarı renk       
+          return [205, 204, 34]; // Tıklanıldığı andakli renk #kırmızı    
         } else {
-          return [255, 255, 255]; //beyaz
+          return [255, 0, 0]; //beyaz
         }
       }, // Rengi seçilen nesneye göre değiştir
       updateTriggers: {
         getFillColor: [color],
         // count değeri değiştiğinde renk güncellemesini tetikle
       },
-      getLineColor: [248, 248, 255],
+      getLineColor: [255, 255, 255],
       // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
       pickable: true,
       onClick: (e) => { handleBuildProperties(e) },

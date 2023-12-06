@@ -22,6 +22,7 @@ const RightPropertiesBar = ({ allData }) => {
                     height: "100%",
                     borderRadius: "5px",
                     overflowY: "auto",
+                    fontSize: "15px"
                     
                 }} >
                 <div style={{
@@ -32,10 +33,10 @@ const RightPropertiesBar = ({ allData }) => {
                     color: "white",
                     padding: "10px",
                     display: "flex",                    
-                    gap: "20px",
+                    gap: "50px",
 
                 }} >
-                    <img style={{position:"relative", top:"50px",}} width="64" height="64" title="" src="https://www.arcgis.com/sharing/rest/content/items/6475911dd83c45c1a2615f730bcc65eb/resources/images/widget_68/1654630726344.png" />
+                    <img style={{position:"relative", top:"80px",left:"20px"}} width="64" height="64" title="" src="https://www.arcgis.com/sharing/rest/content/items/6475911dd83c45c1a2615f730bcc65eb/resources/images/widget_68/1654630726344.png" />
                     <div style={{display:"flex", flexDirection:"column", gap:"20px"}} >
                         <h1 style={{ fontSize: "25px", fontWeight: 'bold' }} >İmar Özellikleri</h1>
                         <div  >

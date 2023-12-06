@@ -12,7 +12,8 @@ const LeftPropertiesBar = () => {
                 height: "270px",
                 width: "25%",
                 padding: "20px",
-                zIndex:2
+                zIndex:2,
+                fontSize: "15px"
             }} >
 
                 <div style={{
