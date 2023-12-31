@@ -46,4 +46,9 @@
     z-index: 1;
     right: 260px;
     top: 60px;
+    cursor: pointer;
+}
+.button:hover{
+    border-radius: 2px;
+    background-color: rgb(221, 221, 221);
 }

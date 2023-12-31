@@ -5,9 +5,10 @@ import "./styles/container.css"
 import "mapbox-gl/dist/mapbox-gl.css";
 
 //Geograpich layers
-import Map, { Source, Layer } from 'react-map-gl';
+import Map, { Source, Layer, useControl } from 'react-map-gl';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
+
 import {
   LightingEffect,
   AmbientLight,
@@ -89,6 +90,7 @@ function App() {
       window.removeEventListener('resize', handleResize());
     };
   }, []);
+
 
 
   //Properties related to the current date are called
@@ -305,11 +307,18 @@ function App() {
               console.log("Deck_ERROR", err);
             }}
           >
-           
-            <Map mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
+            <img className='button' width="24" height="24" src="https://img.icons8.com/fluency/48/layers.png" alt="layers" />
+            <Map
+              mapLib={import('mapbox-gl')}
+              initialViewState={{
+                longitude: -122.4,
+                latitude: 37.8,
+                zoom: 14
+              }} 
+              mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
           </DeckGL>
         </div>
-        <div style={{display:"block"}} className='menu-content' >
+        <div style={{ display: "block" }} className='menu-content' >
           <div className="section-top-left">
             Sol üst Bar
           </div>
@@ -335,7 +344,7 @@ function App() {
       <div className='bottom-bar'>
         <BottomBar hoveredCoordinates={hoveredCoordinates} />
       </div>
-     
+
     </div>
 
   );
