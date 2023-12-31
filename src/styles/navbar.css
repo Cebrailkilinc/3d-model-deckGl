@@ -1,11 +1,12 @@
 .navbar-container {   
     align-items: center;
-    height: 70px;
-    width: 100vw;
+    height: 50px;
+    width: 100%;
     background-color: #4a5ae5;
-    opacity: 0.9; 
+    opacity: 0.98; 
     display: flex;
     flex-direction: column;
+    z-index: 80;   
 }
 
 .navbar-container-menu {
@@ -16,6 +17,10 @@
     align-items: center;
 }
 
+.navbar-container{
+    position: fixed;
+    top: 0%;
+}
 .navbar-add-layer {
     cursor: pointer;
     color: white;

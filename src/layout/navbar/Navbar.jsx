@@ -16,7 +16,6 @@ const Navbar = () => {
     dispatch(openModal())
   }
 
-
   return (
     <div style={{ zIndex: 2 }} className='navbar-container' >
       <div style={{ zIndex: 2 }} className='navbar-container-menu'>

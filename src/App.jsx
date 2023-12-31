@@ -1,6 +1,9 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { MdLocationPin } from "react-icons/md"
 
+import "./styles/container.css"
+import "mapbox-gl/dist/mapbox-gl.css";
+
 //Geograpich layers
 import Map, { Source, Layer } from 'react-map-gl';
 import DeckGL from '@deck.gl/react';
@@ -19,11 +22,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addPropertiesData } from './redux/slices/propertiesSlice';
 
 //Components
-import Sidebar from './layout/sidebar/Sidebar';
+
 import Navbar from './layout/navbar/Navbar';
-import Properties from './layout/properties/Properties';
 import LayerModal from './components/LayerModal';
-import Loading from './components/Loading';
 import BottomBar from './layout/bottombar/BottomBar';
 
 //Utilities
@@ -38,9 +39,7 @@ import parsel2d from "../data/new/parsel2d.json"
 import parsel3d from "../data/new/parsel3d.json"
 import ekYapi from "../data/new/ekYapi.json"
 
-import RightPropertiesBar from './layout/properties/RightPropertiesBar';
-import BottomProperties from './layout/properties/BottomProperties';
-import LeftPropertiesBar from './layout/properties/LeftPropertiesBar';
+
 
 
 const INITIAL_VIEW_STATE = {
@@ -56,10 +55,8 @@ const ICON_MAPPING = {
   marker: { width: 8, height: 8 }
 };
 
-
-
 function App() {
-  //CEBRAİL KILINÇ
+
   const [color, setColor] = useState("")
   const [hoveredCoordinates, setHoveredCoordinates] = useState({ lat: 0, long: 0 });
   const [buildingCenterCoordinate, setBuildingCenterCoordinate] = useState({ latitude: 0, longitude: 0 });
@@ -73,11 +70,9 @@ function App() {
       binaOzellkleri: null,
     })
 
-    const [mapSize, setMapSize] = useState({ width: '50%', height: '60%' });
+  const [mapSize, setMapSize] = useState({ width: '50%', height: '60%' });
 
   //Redux-states
-  const count = useSelector((state) => state.counter.value)
-  const spinControl = useSelector((state) => state.modalControl.spinControl)
   const dispatch = useDispatch();
 
   //Created new date
@@ -94,7 +89,7 @@ function App() {
       window.removeEventListener('resize', handleResize());
     };
   }, []);
-  
+
 
   //Properties related to the current date are called
   const sunDataProperties = SunCalc.getTimes(/*Date*/ date, buildingCenterCoordinate.long, buildingCenterCoordinate.lat, /*Number (default=0)*/ 500)
@@ -114,17 +109,16 @@ function App() {
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Ayı alır ve gerekirse sıfır ile doldurur
   const day = date.getDate().toString().padStart(2, '0'); // Günü alır ve gerekirse sıfır ile doldurur
 
- 
+
   const parselOfBuilding = [];
   const bagimsizOfBuilding = [];
-  
+
   useEffect(() => {
-   
-  
+
     if (clickedType === "MimariBina") {
       const filteredBagimsizBolum = bagimsizBolum.features.filter((item) => item.properties.gml_pare_1 === buildingId.binaId);
       const filteredParsel2d = parsel2d.features.filter((item) => item.properties.parselNo === buildingId.parselId);
-  
+
       setAllData((prev) => ({
         ...prev,
         bagimsizBolum: filteredBagimsizBolum.map((item) => item.properties),
@@ -132,8 +126,8 @@ function App() {
       }));
     }
   }, [buildingId.binaId, buildingId.parselId, buildingId.katId]);
-  
-  
+
+
   // Get coordinate data
   const handleMapHover = (event) => {
     if (event.coordinate && event.coordinate.length >= 2) {
@@ -148,11 +142,11 @@ function App() {
   const handleBuildProperties = (e) => {
     const clickedObject = e.object;
     if (clickedObject) {
-      
+
       if (clickedObject.properties._3 && clickedObject.properties._3 === "MimariBina") {
         setClickedType("MimariBina")
         setAllData((prev) => ({ ...prev, binaOzellkleri: clickedObject.properties }))
-        setBuildingId((prev) =>({...prev, parselId:clickedObject.properties.parcelNo}))
+        setBuildingId((prev) => ({ ...prev, parselId: clickedObject.properties.parcelNo }))
 
       }
       if (clickedObject.properties._5 && clickedObject.properties._5 === "BagimsizBolum") {
@@ -161,7 +155,7 @@ function App() {
       if (clickedObject.properties._5 && clickedObject.properties._5 === "Balkon") {
         setClickedType("Balkon")
       }
-   
+
       setBuildingId((prevBuildingId) => ({
         ...prevBuildingId,
         binaId: clickedObject.properties.MB_ID,
@@ -177,7 +171,7 @@ function App() {
     }
   }
 
-  
+
   //Sunlight effect and shadow for building
   const sunlightEffect = new LightingEffect({
     ambientLight: new AmbientLight({
@@ -291,21 +285,16 @@ function App() {
   ];
 
   return (
-
-    <div className='map-container' style={{backgroundColor:"#E8E8E8"}}  >
-
+    <div className='map-container'>
       <LayerModal />
-      <div>
-        <BottomBar hoveredCoordinates={hoveredCoordinates} />
-      </div>
-      <div>
+      <div className='navbar'>
         <Navbar />
       </div>
-
-      <LeftPropertiesBar />
-      <div style={{ position: "fixed", width: '100%', height: '100%', top:"0%", zIndex:-1 }}>
-      
-        {
+      <div className='content'>
+        <div className="section">
+          Sol Bar
+        </div>
+        <div className="section">
           <DeckGL
             onHover={handleMapHover}
             layers={layers}
@@ -313,18 +302,42 @@ function App() {
             controller={true}
             effects={[sunlightEffect]}
             onError={(err) => {
-              console.log("Deck_ERROR", err); // not triggered
-            }}   
-            style={{ width: "50%", height:"60%", marginLeft:"25%",marginTop:"4%", zIndex:-1}}       
+              console.log("Deck_ERROR", err);
+            }}
           >
-            <Map  style={{ }} mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
+           
+            <Map mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
           </DeckGL>
-        }
-       
+        </div>
+        <div style={{display:"block"}} className='menu-content' >
+          <div className="section-top-left">
+            Sol üst Bar
+          </div>
+          <div className="section-top-right">
+            Sağ üst Bar
+          </div>
+          <div className='bottom' >
+            <div className="section-bottom">
+              Sağ Bar1
+            </div>
+            <div className="section-bottom">
+              Sağ Bar2
+            </div>
+            <div className="section-bottom">
+              Sağ Bar3
+            </div>
+            <div className="section-bottom">
+              Sağ Bar4
+            </div>
+          </div>
+        </div>
       </div>
-      <RightPropertiesBar allData = {allData} />
-      <BottomProperties allData = {allData}  />
+      <div className='bottom-bar'>
+        <BottomBar hoveredCoordinates={hoveredCoordinates} />
+      </div>
+     
     </div>
+
   );
 }
 
