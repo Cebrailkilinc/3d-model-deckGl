@@ -1,11 +1,20 @@
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect, useRef } from 'react';
 import { MdLocationPin } from "react-icons/md"
-
+import { Button, Popover } from 'antd';
 import "./styles/container.css"
 import "mapbox-gl/dist/mapbox-gl.css";
-
+import { Input, Radio, Space, Switch } from 'antd';
+import { Deck } from 'deck.gl';
 //Geograpich layers
-import Map, { Source, Layer, useControl } from 'react-map-gl';
+import Map, {
+  Source,
+  Layer,
+  useControl,
+  NavigationControl,
+  FullscreenControl,
+  ScaleControl,
+  GeolocateControl
+} from 'react-map-gl';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
 
@@ -38,10 +47,10 @@ import kapiGirisi from "../data/new/kapiGirisi.json"
 import yol from "../data/new/yol.json"
 import parsel2d from "../data/new/parsel2d.json"
 import parsel3d from "../data/new/parsel3d.json"
-import ekYapi from "../data/new/ekYapi.json"
+import ekYapi from "../data/new/ekYapi.json";
 
-
-
+//Functions
+import { handleBuildProperties } from './functions';
 
 const INITIAL_VIEW_STATE = {
   latitude: 40.649687967664747,
@@ -52,82 +61,66 @@ const INITIAL_VIEW_STATE = {
   bearing: 0
 };
 
-const ICON_MAPPING = {
-  marker: { width: 8, height: 8 }
-};
-
 function App() {
 
   const [color, setColor] = useState("")
   const [hoveredCoordinates, setHoveredCoordinates] = useState({ lat: 0, long: 0 });
-  const [buildingCenterCoordinate, setBuildingCenterCoordinate] = useState({ latitude: 0, longitude: 0 });
-  const [sunPosition, setSunPosition] = useState({ azimuth: 0, altitude: 0 });
   const [buildingId, setBuildingId] = useState({ binaId: "", katId: "", parselId: "" });
   const [clickedType, setClickedType] = useState("")
+  const [switchedControl, setSwitchedControl] = useState(true)
   const [allData, setAllData] = useState(
     {
       bagimsizBolum: null,
       parselOzellikleri: null,
       binaOzellkleri: null,
     })
+  const [mapLayer, setMapLayer] = useState("mapbox://styles/mapbox/satellite-v9");
+  const [clock, setClock] = useState(1)
+  const switchRef = useRef();
 
-  const [mapSize, setMapSize] = useState({ width: '50%', height: '60%' });
+  const onChangeLayer = (e) => {
+    setMapLayer(e.target.value);
+  };
+
+  useEffect(() => {
+    if (clock === 24) {
+      setClock(0)
+    }
+    setTimeout(() => {
+      setClock(clock + 1)
+    }, 2000)
+  }, [clock])
+
+
+  const content = (
+    <Radio.Group onChange={onChangeLayer} value={mapLayer} >
+      <Space direction="vertical">
+        <Radio value={"mapbox://styles/mapbox/satellite-v9"}>Satelite</Radio>
+        <Radio value={"mapbox://styles/mapbox/streets-v12"}>Street</Radio>
+        <Radio value={"mapbox://styles/mapbox/dark-v11"}>Dark Street</Radio>
+        <Radio value={"mapbox://styles/mapbox/navigation-night-v1"} >Navigation Night</Radio>
+        <Radio value={"mapbox://styles/mapbox/navigation-day-v1"} >Navigation Day</Radio>
+      </Space>
+    </Radio.Group>
+  );
 
   //Redux-states
   const dispatch = useDispatch();
 
-  //Created new date
-  const date = new Date();
-  useEffect(() => {
-    // Event listener ekleyerek tarayıcı penceresi boyutu değiştiğinde mapSize'ı güncelle
-    const handleResize = () => {
-      setMapSize({
-        width: window.innerWidth > 1920 ? '50%' : '40%', // Örnekte 768 pikselin altında tamamen responsive olması için
-        height: window.innerWidth > 1920 ? '60%' : '40%',
-      });
-    };
-    return () => {
-      window.removeEventListener('resize', handleResize());
-    };
-  }, []);
-
-
-
-  //Properties related to the current date are called
-  const sunDataProperties = SunCalc.getTimes(/*Date*/ date, buildingCenterCoordinate.long, buildingCenterCoordinate.lat, /*Number (default=0)*/ 500)
-
-
-  //Position sun related current date are called
-  const getSunPosition = SunCalc.getPosition(date, buildingCenterCoordinate.long, buildingCenterCoordinate.lat);
-
-  //Calculate sun position  
-  const earthRadius = 6371; // Dünya'nın yarıçapı (km)
-  const x = earthRadius * Math.cos(getSunPosition.altitude) * Math.cos(getSunPosition.azimuth);
-  const y = earthRadius * Math.cos(getSunPosition.altitude) * Math.sin(getSunPosition.azimuth);
-  const z = earthRadius * Math.sin(getSunPosition.altitude);
-
-
-  const year = date.getFullYear().toString().slice(-4); // Yılın son iki rakamını alır
-  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Ayı alır ve gerekirse sıfır ile doldurur
-  const day = date.getDate().toString().padStart(2, '0'); // Günü alır ve gerekirse sıfır ile doldurur
-
-
-  const parselOfBuilding = [];
-  const bagimsizOfBuilding = [];
 
   useEffect(() => {
+    // if (clickedType === "MimariBina") {
+    //   const filteredBagimsizBolum = bagimsizBolum.features.filter((item) => item.properties.gml_pare_1 === buildingId.binaId);
+    //   const filteredParsel2d = parsel2d.features.filter((item) => item.properties.parselNo === buildingId.parselId);
 
-    if (clickedType === "MimariBina") {
-      const filteredBagimsizBolum = bagimsizBolum.features.filter((item) => item.properties.gml_pare_1 === buildingId.binaId);
-      const filteredParsel2d = parsel2d.features.filter((item) => item.properties.parselNo === buildingId.parselId);
-
-      setAllData((prev) => ({
-        ...prev,
-        bagimsizBolum: filteredBagimsizBolum.map((item) => item.properties),
-        parselOzellikleri: filteredParsel2d.length > 0 ? filteredParsel2d[0].properties : null,
-      }));
-    }
-  }, [buildingId.binaId, buildingId.parselId, buildingId.katId]);
+    //   setAllData((prev) => ({
+    //     ...prev,
+    //     bagimsizBolum: filteredBagimsizBolum.map((item) => item.properties),
+    //     parselOzellikleri: filteredParsel2d.length > 0 ? filteredParsel2d[0].properties : null,
+    //   }));
+    // }
+    console.log(clickedType)
+  }, [buildingId.binaId, buildingId.parselId, buildingId.katId,clickedType]);
 
 
   // Get coordinate data
@@ -140,55 +133,17 @@ function App() {
     }
   }
 
-  //Get properties data from file 
-  const handleBuildProperties = (e) => {
-    const clickedObject = e.object;
-    if (clickedObject) {
+ 
 
-      if (clickedObject.properties._3 && clickedObject.properties._3 === "MimariBina") {
-        setClickedType("MimariBina")
-        setAllData((prev) => ({ ...prev, binaOzellkleri: clickedObject.properties }))
-        setBuildingId((prev) => ({ ...prev, parselId: clickedObject.properties.parcelNo }))
-
-      }
-      if (clickedObject.properties._5 && clickedObject.properties._5 === "BagimsizBolum") {
-        setClickedType("BagimsizBolum")
-      }
-      if (clickedObject.properties._5 && clickedObject.properties._5 === "Balkon") {
-        setClickedType("Balkon")
-      }
-
-      setBuildingId((prevBuildingId) => ({
-        ...prevBuildingId,
-        binaId: clickedObject.properties.MB_ID,
-        parselId: clickedObject.properties.parcelNo
-      }));
-
-      dispatch(addPropertiesData(clickedObject))
-      setColor(clickedObject.properties)
-      const buildingCenter = { lat: e.coordinate[1], long: e.coordinate[0] }
-      setBuildingCenterCoordinate(buildingCenter)
-    } else {
-      console.log("unclickedObjec")
-    }
-  }
-
-
-  //Sunlight effect and shadow for building
   const sunlightEffect = new LightingEffect({
-    ambientLight: new AmbientLight({
-      color: [255, 255, 255],
-      intensity: 1.0
-    }),
     dirLight: new SunLight({
-      timestamp: Date.UTC(year, month, day, 12),  //Güneş pozisyonunu ayarlayın    
+      timestamp: Date.UTC(2024, 10, 5, clock),  //Güneş pozisyonunu ayarlayın    
       color: [255, 255, 255],
       intensity: 2,
-      position: [x, y, z], // Sahnenin üzerinde bir konumda
-      direction: [x, y, -z],
-      _shadow: true,
+      position: [1, 1, 1], // Sahnenin üzerinde bir konumda
+      direction: [1, 1, -1],
+      _shadow: false,
     }),
-
   });
 
   const createGeoJsonLayer = (id, data) => {
@@ -217,12 +172,16 @@ function App() {
       getLineColor: [255, 255, 255],
       // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
       pickable: true,
-      onClick: (e) => { handleBuildProperties(e) },
+      onClick: (e) => {
+        handleBuildProperties(e, setClickedType, setAllData, setBuildingId, dispatch, addPropertiesData, setColor);
+      },
     });
   };
 
-  const data = [
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.81, 40.65] }]
+
+
+  
+
 
   const datas = [bina3D, bagimsizBolum, kapiGirisi, yol, parsel2d, ekYapi]
   //all layers are collected here
@@ -235,55 +194,6 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-    // // new ScatterplotLayer({
-    // //   data: [{ position: [35.81, 40.65], color: [255, 0, 0, 128], radius: 100 }],
-    // //   getFillColor: d => d.color,
-    // //   getRadius: d => d.radius
-    // // }),
-
-    // // new IconLayer({
-    // //   id: 'IconLayer',
-    // //   data,
-    // //   // alphaCutoff: 0.05,
-    // //   // billboard: true,
-    // //   // getAngle: 0,
-    // //   getColor: d => [Math.sqrt(d.exits), 140, 0],
-    // //   getIcon: d => 'marker',
-    // //   // getPixelOffset: [0, 0],
-    // //   getPosition: d => d.coordinates,
-    // //   getSize: d => 5,
-    // //   iconAtlas: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
-    // //   iconMapping: {
-    // //     marker: {
-    // //       x: 0,
-    // //       y: 0,
-    // //       width: 128,
-    // //       height: 128,
-    // //       anchorY: 128,
-    // //       mask: true
-    // //     }
-    // //   },
-    // //   // onIconError: null,
-    // //   // sizeMaxPixels: Number.MAX_SAFE_INTEGER,
-    // //   // sizeMinPixels: 0,
-    // //   sizeScale: 8,
-    // //   // sizeUnits: 'pixels',
-    // //   // textureParameters: null,
-
-    // //   /* props inherited from Layer class */
-
-    // //   // autoHighlight: false,
-    // //   // coordinateOrigin: [0, 0, 0],
-    // //   // coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
-    // //   // highlightColor: [0, 0, 128, 128],
-    // //   // modelMatrix: null,
-    // //   // opacity: 1,
-    // //   pickable: true,
-    // //   // visible: true,
-    // //   // wrapLongitude: false,
-    // // })
-
-
   ];
 
   return (
@@ -302,23 +212,34 @@ function App() {
             layers={layers}
             initialViewState={INITIAL_VIEW_STATE}
             controller={true}
-            effects={[sunlightEffect]}
+            effects={[]}
             onError={(err) => {
               console.log("Deck_ERROR", err);
             }}
           >
-            <img className='button' width="24" height="24" src="https://img.icons8.com/fluency/48/layers.png" alt="layers" />
+            <img style={{ left: switchedControl ? "255px" : "10px", top: switchedControl ? "390px" : "540px" }} className='zoom-in' width="20" height="20" src="https://img.icons8.com/ultraviolet/40/plus-2-math.png" alt="plus-2-math" />
+            <img style={{ left: switchedControl ? "255px" : "10px", top: switchedControl ? "370px" : "520px" }} className='zoom-out' width="20" height="20" src="https://img.icons8.com/ultraviolet/40/minus-2-math.png" alt="minus-2-math" />
+
+            <div style={{ right: switchedControl ? "260px" : "10px" }} className='layer-button' >
+              <Popover placement="leftTop" title={"Select Map Layer"} content={content}>
+                <img
+                  width="24" height="24"
+                  src="https://img.icons8.com/fluency/48/layers.png"
+                  alt="layers" />
+              </Popover>
+            </div>
             <Map
               mapLib={import('mapbox-gl')}
               initialViewState={{
                 longitude: -122.4,
                 latitude: 37.8,
                 zoom: 14
-              }} 
-              mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={"mapbox://styles/mapbox/satellite-v9"} preventStyleDiffing={true} />
+              }}
+              mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={mapLayer} preventStyleDiffing={true}>
+            </Map>
           </DeckGL>
         </div>
-        <div style={{ display: "block" }} className='menu-content' >
+        <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
           <div className="section-top-left">
             Sol üst Bar
           </div>
@@ -342,7 +263,7 @@ function App() {
         </div>
       </div>
       <div className='bottom-bar'>
-        <BottomBar hoveredCoordinates={hoveredCoordinates} />
+        <BottomBar switchRef={switchRef} setSwitchedControl={setSwitchedControl} hoveredCoordinates={hoveredCoordinates} />
       </div>
 
     </div>
