@@ -12,7 +12,10 @@ export const handleBuildProperties = (e, setClickedType, setAllData, setBuilding
         binaId: data.properties.MB_ID,
       }));
     };
-  
+
+    console.log(clickedObject)
+
+     
     if (clickedObject) {
       if (clickedObject.properties._3 && clickedObject.properties._3 === "MimariBina") {
         setBuildingData("MimariBina", clickedObject);

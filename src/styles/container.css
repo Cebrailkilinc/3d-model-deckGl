@@ -2,6 +2,7 @@
     position: fixed;
     height: 60%;
     width: 250px;
+    overflow-y: auto;
     background-color: rebeccapurple;
     top: 50px;
     left: 0%;

@@ -51,6 +51,7 @@ import ekYapi from "../data/new/ekYapi.json";
 
 //Functions
 import { handleBuildProperties } from './functions';
+import LeftTop from './layout/properties/left-top';
 
 const INITIAL_VIEW_STATE = {
   latitude: 40.649687967664747,
@@ -119,6 +120,9 @@ function App() {
     //     parselOzellikleri: filteredParsel2d.length > 0 ? filteredParsel2d[0].properties : null,
     //   }));
     // }
+    if (clickedType === "MimariBina") {
+      
+    }
     console.log(clickedType)
   }, [buildingId.binaId, buildingId.parselId, buildingId.katId,clickedType]);
 
@@ -241,7 +245,7 @@ function App() {
         </div>
         <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
           <div className="section-top-left">
-            Sol üst Bar
+            <LeftTop/>
           </div>
           <div className="section-top-right">
             Sağ üst Bar
