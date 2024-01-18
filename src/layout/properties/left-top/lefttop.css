@@ -1,0 +1,90 @@
+.right-top {
+  border: none;
+  color: white;
+  overflow-y: auto;
+
+}
+
+.right-top .ant-list-bordered {
+  border-radius: 0;
+}
+
+/* Scroll bar'ı inceltme */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  align-items: center;
+  gap: 5px;
+}
+
+.right-top-footer {
+  height: 80px;
+  background-color: rgb(255, 126, 126);
+  position: fixed;
+  width: 250px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  top: 50px;
+}
+.right-top-content {
+  margin-top: 80px;
+  overflow-y: scroll;
+  
+}
+.content-list{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;  
+  
+ 
+}
+.content-list-item{
+  display: flex;
+  align-items: start;
+  gap: 10px;  
+ 
+}
+
+.list-item-value{
+  color: #d3d3d3;
+  font-weight: 900;
+   
+  
+}
+.content-list{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;  
+  
+ 
+}
+.content-list-item{
+  display: flex;
+  align-items: start;
+  gap: 10px;  
+ 
+}
+
+.list-item-value{
+  color: #d3d3d3;
+  font-weight: 900;
+   
+  
+}

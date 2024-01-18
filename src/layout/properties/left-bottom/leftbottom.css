@@ -1,0 +1,27 @@
+.left-bottom{
+    color: white;
+}
+.left-bottom-footer{
+    position: fixed; 
+    color: white;
+    background-color: rgb(255, 126, 126);
+    height: 260px ;
+    width: 100px;
+    display: flex;    
+    justify-content: center;
+}
+.footer-content{
+    margin-top: 15px;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .left-bottom-content{
+    margin-left: 120px;
+  }

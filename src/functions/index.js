@@ -1,6 +1,15 @@
-// functions.js
 
-export const handleBuildProperties = (e, setClickedType, setAllData, setBuildingId, dispatch, addPropertiesData, setColor) => {
+export const handleBuildProperties = (e, 
+  setClickedType, 
+  setAllData, 
+  setBuildingId, 
+  dispatch, 
+  addMimariBina,
+  addBagimsizBolum,
+  addBalkon,
+  addParsel,
+  addYol,
+  setColor) => {
     const clickedObject = e.object;
   
     const setBuildingData = (type, data) => {
@@ -13,15 +22,20 @@ export const handleBuildProperties = (e, setClickedType, setAllData, setBuilding
       }));
     };
 
-    console.log(clickedObject)
-
-     
+    
     if (clickedObject) {
-      if (clickedObject.properties._3 && clickedObject.properties._3 === "MimariBina") {
+      if (clickedObject.properties._3 && clickedObject.properties._3 === "MimariBina") {  
+        console.log(clickedObject)   
         setBuildingData("MimariBina", clickedObject);
-      } else if (clickedObject.properties._5 && clickedObject.properties._5 === "BagimsizBolum") {
+        dispatch(addMimariBina(clickedObject.properties))
+
+      } else if (clickedObject.properties._5 && clickedObject.properties._5 === "BagimsizBolum") { 
+               
         setClickedType("BagimsizBolum");
+        dispatch(addBagimsizBolum(clickedObject.properties))
+
       } else if (clickedObject.properties._5 && clickedObject.properties._5 === "Balkon") {
+        console.log(clickedObject)
         setClickedType("Balkon");
       } else if (clickedObject.properties.PARCELID) {
         setClickedType("parcel");
@@ -29,7 +43,7 @@ export const handleBuildProperties = (e, setClickedType, setAllData, setBuilding
         setClickedType("yol");
       }
   
-      dispatch(addPropertiesData(clickedObject));
+     
       setColor(clickedObject.properties);
     } else {
       console.log("unclickedObject");

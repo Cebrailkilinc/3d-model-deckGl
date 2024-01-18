@@ -5,6 +5,8 @@ import "./styles/container.css"
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Input, Radio, Space, Switch } from 'antd';
 import { Deck } from 'deck.gl';
+
+
 //Geograpich layers
 import Map, {
   Source,
@@ -24,24 +26,36 @@ import {
   _SunLight as SunLight,
   OrbitView,
   PointLight,
-
+  DirectionalLight,
+  _CameraLight as CameraLight
 } from '@deck.gl/core';
 import SunCalc from 'suncalc';
+
 //Redux
-import { useSelector, useDispatch } from 'react-redux'
-import { addPropertiesData } from './redux/slices/propertiesSlice';
+import {
+  addMimariBina,
+  addBagimsizBolum,
+  addBalkon,
+  addParsel,
+  addYol
+} from './redux/slices/propertiesSlice';
+import { useDispatch, useSelector } from "react-redux";
 
 //Components
-
 import Navbar from './layout/navbar/Navbar';
 import LayerModal from './components/LayerModal';
 import BottomBar from './layout/bottombar/BottomBar';
-
+import LeftTop from './layout/properties/left-top/left-top';
+import RightTop from './layout/properties/right-top/right-top';
+import LeftBottom from './layout/properties/left-bottom/left-bottom';
+import MiddleLeftBottom from './layout/properties/middle-left-bottom/middle-left-bottom';
+import MiddleRightBottom from './layout/properties/middle-right-bottom/middle-right-bottom';
+import RightBottom from './layout/properties/right-bottom/right-bottom';
 //Utilities
 import { landCover } from './utilities/landCover';
 
 //import datas
-import bagimsizBolum from "../data/new/bagimsizBolum.json"
+import bagimsizBolum3D from "../data/new/bagimsizBolum.json"
 import bina3D from "../data/new/bina3D.json"
 import kapiGirisi from "../data/new/kapiGirisi.json"
 import yol from "../data/new/yol.json"
@@ -51,7 +65,7 @@ import ekYapi from "../data/new/ekYapi.json";
 
 //Functions
 import { handleBuildProperties } from './functions';
-import LeftTop from './layout/properties/left-top';
+
 
 const INITIAL_VIEW_STATE = {
   latitude: 40.649687967664747,
@@ -77,20 +91,14 @@ function App() {
     })
   const [mapLayer, setMapLayer] = useState("mapbox://styles/mapbox/satellite-v9");
   const [clock, setClock] = useState(1)
+  const dispatch = useDispatch();
   const switchRef = useRef();
 
   const onChangeLayer = (e) => {
     setMapLayer(e.target.value);
   };
 
-  useEffect(() => {
-    if (clock === 24) {
-      setClock(0)
-    }
-    setTimeout(() => {
-      setClock(clock + 1)
-    }, 2000)
-  }, [clock])
+  const { mimariBina, bagimsizBolum } = useSelector(state => state.properties)
 
 
   const content = (
@@ -105,26 +113,40 @@ function App() {
     </Radio.Group>
   );
 
-  //Redux-states
-  const dispatch = useDispatch();
+
+
 
 
   useEffect(() => {
-    // if (clickedType === "MimariBina") {
-    //   const filteredBagimsizBolum = bagimsizBolum.features.filter((item) => item.properties.gml_pare_1 === buildingId.binaId);
-    //   const filteredParsel2d = parsel2d.features.filter((item) => item.properties.parselNo === buildingId.parselId);
 
-    //   setAllData((prev) => ({
-    //     ...prev,
-    //     bagimsizBolum: filteredBagimsizBolum.map((item) => item.properties),
-    //     parselOzellikleri: filteredParsel2d.length > 0 ? filteredParsel2d[0].properties : null,
-    //   }));
-    // }
-    if (clickedType === "MimariBina") {
-      
+    //Binaya tıklanıldığında
+    if (clickedType === "MimariBina" && mimariBina) {
+      var parcelNo = mimariBina?.parcelNo;
+      var resultFeatureParcel = parsel3d.features.find(function (feature) {
+        return feature.properties.parselNo === parcelNo;
+      });
+
+      dispatch(addParsel(resultFeatureParcel.properties))
+    }
+
+    //Binaya tıklanıldığında
+    if (clickedType === "BagimsizBolum" && bagimsizBolum) {
+      var buildingId = bagimsizBolum.gml_pare_1;
+      var resultFeature = bina3D.features.find(function (feature) {
+        return feature.properties.MB_ID === buildingId;
+      });   
+
+      dispatch(addMimariBina(resultFeature.properties))
+
+      var parcelNo = resultFeature?.properties?.parcelNo
+      var resultFeatureParcel = parsel3d.features.find(function (feature) {
+        return feature.properties.parselNo === parcelNo;
+      });
+      dispatch(addParsel(resultFeatureParcel.properties))
+     
     }
     console.log(clickedType)
-  }, [buildingId.binaId, buildingId.parselId, buildingId.katId,clickedType]);
+  },);
 
 
   // Get coordinate data
@@ -136,19 +158,6 @@ function App() {
       });
     }
   }
-
- 
-
-  const sunlightEffect = new LightingEffect({
-    dirLight: new SunLight({
-      timestamp: Date.UTC(2024, 10, 5, clock),  //Güneş pozisyonunu ayarlayın    
-      color: [255, 255, 255],
-      intensity: 2,
-      position: [1, 1, 1], // Sahnenin üzerinde bir konumda
-      direction: [1, 1, -1],
-      _shadow: false,
-    }),
-  });
 
   const createGeoJsonLayer = (id, data) => {
     return new GeoJsonLayer({
@@ -177,17 +186,53 @@ function App() {
       // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
       pickable: true,
       onClick: (e) => {
-        handleBuildProperties(e, setClickedType, setAllData, setBuildingId, dispatch, addPropertiesData, setColor);
+        handleBuildProperties(e,
+          setClickedType,
+          setAllData,
+          setBuildingId,
+          dispatch,
+          addMimariBina,
+          addBagimsizBolum,
+          addBalkon,
+          addParsel,
+          addYol,
+          setColor);
       },
+      // onHover: ({ object, x, y, isPicking }) => {
+
+
+      //   const htmlElement = document.getElementById('map-section'); // Değiştirmek istediğiniz HTML elemanının ID'sini girin
+      //   if (htmlElement) {
+      //     htmlElement.style.cursor = "pointer"
+      //   }
+
+      // },
+
     });
   };
 
 
 
-  
+  var times = SunCalc.getTimes(new Date(), 35.80, 40.64);
+  var sunrisePos = SunCalc.getPosition(times.sunrise, 35.80, 40.64);
+
+  const ambientLight = new AmbientLight({
+    color: [255, 255, 255],
+    intensity: 1.0,
+  });
+
+  const directionalLight = new DirectionalLight({
+    color: [255, 255, 255],
+    intensity: 0.8,
+    direction: [1, 3, -5],
+    _shadow: true,
+  });
+  const sunlightEffect = new LightingEffect({
+    directionalLight, ambientLight
+  });
 
 
-  const datas = [bina3D, bagimsizBolum, kapiGirisi, yol, parsel2d, ekYapi]
+  const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
   //all layers are collected here
   const layers = [
     new PolygonLayer({
@@ -200,6 +245,8 @@ function App() {
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
   ];
 
+
+
   return (
     <div className='map-container'>
       <LayerModal />
@@ -210,13 +257,13 @@ function App() {
         <div className="section">
           Sol Bar
         </div>
-        <div className="section">
+        <div id='map-section' className="section">
           <DeckGL
             onHover={handleMapHover}
             layers={layers}
             initialViewState={INITIAL_VIEW_STATE}
             controller={true}
-            effects={[]}
+            effects={[sunlightEffect]}
             onError={(err) => {
               console.log("Deck_ERROR", err);
             }}
@@ -245,23 +292,23 @@ function App() {
         </div>
         <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
           <div className="section-top-left">
-            <LeftTop/>
+            <LeftTop />
           </div>
           <div className="section-top-right">
-            Sağ üst Bar
+            <RightTop />
           </div>
           <div className='bottom' >
             <div className="section-bottom">
-              Sağ Bar1
+              <LeftBottom/>
             </div>
             <div className="section-bottom">
-              Sağ Bar2
+              <MiddleLeftBottom/>
             </div>
             <div className="section-bottom">
-              Sağ Bar3
+              <MiddleRightBottom/> 
             </div>
             <div className="section-bottom">
-              Sağ Bar4
+              <RightBottom/>
             </div>
           </div>
         </div>

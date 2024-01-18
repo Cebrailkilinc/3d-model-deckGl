@@ -1,0 +1,28 @@
+.middle-right-bottom{
+    color: white;
+}
+.middle-right-bottom-footer{
+    position: fixed; 
+    color: white;
+    background-color: rgb(255, 126, 126);
+    height: 260px ;
+    width: 100px;
+    display: flex;    
+    justify-content: center;
+}
+.middle-footer-content{
+    margin-top: 15px;   
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    align-items: center;
+    gap: 5px;
+  }
+
+  
+.middle-right-bottom-content{
+    margin-left: 120px;
+}
