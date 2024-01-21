@@ -17,55 +17,55 @@ const LeftBottom = () => {
                 <ul className='content-list'>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Alan :</h1>
-                        <h1 className='list-item-value'>{parsel?.alan ?? "220" } m²</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.alan ?? "220" } m²</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Daire No :</h1>
-                        <h1 className='list-item-value'>{parsel?.BB_No ?? "2"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.BB_No ?? "2"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Balkon Sayısı :</h1>
-                        <h1 className='list-item-value'>{parsel?.Balkon ?? "0"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.Balkon ?? "0"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Banyo Sayısı :</h1>
-                        <h1 className='list-item-value'>{parsel?.Banyo ?? "2"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.Banyo ?? "2"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Kat :</h1>
-                        <h1 className='list-item-value'>{parsel?.BulunduguK ?? "3"} m²</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.BulunduguK ?? "3"} m²</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Manzara :</h1>
-                        <h1 className='list-item-value'>{parsel?.MANZARA ?? "Deniz"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.MANZARA ?? "Deniz"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Oda Sayısı :</h1>
-                        <h1 className='list-item-value'>{parsel?.Oda ?? "5"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.Oda ?? "5"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Oda Planlama :</h1>
-                        <h1 className='list-item-value'>{parsel?.Oda_Tipi ?? "3+1"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.Oda_Tipi ?? "3+1"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Block :</h1>
-                        <h1 className='list-item-value'>{parsel?.blockName ?? "A"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.blockName ?? "A"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Cephe :</h1>
-                        <h1 className='list-item-value'>{parsel?.directionT ?? "Kuzey"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.directionT ?? "Kuzey"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Isı Yalıtımı:</h1>
-                        <h1 className='list-item-value'>{parsel?.IsıYalıt ?? "Yok"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.IsıYalıt ?? "Yok"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Çocuk Oyun Alanı :</h1>
-                        <h1 className='list-item-value'>{parsel?.CocukOyunA ?? "Var"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.CocukOyunA ?? "Var"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Asansör :</h1>
-                        <h1 className='list-item-value'>{parsel?.AsansorMev ?? "Var"}</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.AsansorMev ?? "Var"}</h1>
                     </li>                   
                 </ul>
             </div>

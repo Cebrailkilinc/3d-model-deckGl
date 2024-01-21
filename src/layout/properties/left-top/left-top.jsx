@@ -17,7 +17,7 @@ const LeftTop = () => {
         <div className='left-top'>
             <div className='left-top-footer'>
                 <img width="80" height="80" src="https://img.icons8.com/plasticine/100/building.png" alt="building" />
-                <h1>Bİna Özellikleri</h1>
+                <h1>Bina Özellikleri</h1>
 
             </div>
             <div className='left-top-content'>

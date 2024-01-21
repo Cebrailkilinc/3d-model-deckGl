@@ -118,16 +118,15 @@ function App() {
 
 
   useEffect(() => {
-
     //Binaya tıklanıldığında
     if (clickedType === "MimariBina" && mimariBina) {
       var parcelNo = mimariBina?.parcelNo;
       var resultFeatureParcel = parsel3d.features.find(function (feature) {
         return feature.properties.parselNo === parcelNo;
       });
-
       dispatch(addParsel(resultFeatureParcel.properties))
     }
+
 
     //Binaya tıklanıldığında
     if (clickedType === "BagimsizBolum" && bagimsizBolum) {
@@ -135,15 +134,12 @@ function App() {
       var resultFeature = bina3D.features.find(function (feature) {
         return feature.properties.MB_ID === buildingId;
       });   
-
-      dispatch(addMimariBina(resultFeature.properties))
-
+      dispatch(addMimariBina(resultFeature?.properties))
       var parcelNo = resultFeature?.properties?.parcelNo
       var resultFeatureParcel = parsel3d.features.find(function (feature) {
         return feature.properties.parselNo === parcelNo;
       });
-      dispatch(addParsel(resultFeatureParcel.properties))
-     
+      dispatch(addParsel(resultFeatureParcel?.properties))     
     }
     console.log(clickedType)
   },);
@@ -267,6 +263,7 @@ function App() {
             onError={(err) => {
               console.log("Deck_ERROR", err);
             }}
+            
           >
             <img style={{ left: switchedControl ? "255px" : "10px", top: switchedControl ? "390px" : "540px" }} className='zoom-in' width="20" height="20" src="https://img.icons8.com/ultraviolet/40/plus-2-math.png" alt="plus-2-math" />
             <img style={{ left: switchedControl ? "255px" : "10px", top: switchedControl ? "370px" : "520px" }} className='zoom-out' width="20" height="20" src="https://img.icons8.com/ultraviolet/40/minus-2-math.png" alt="minus-2-math" />
