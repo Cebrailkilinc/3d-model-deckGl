@@ -20,6 +20,7 @@ import Map, {
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
 
+
 import {
   LightingEffect,
   AmbientLight,
@@ -133,13 +134,13 @@ function App() {
       var buildingId = bagimsizBolum.gml_pare_1;
       var resultFeature = bina3D.features.find(function (feature) {
         return feature.properties.MB_ID === buildingId;
-      });   
+      });
       dispatch(addMimariBina(resultFeature?.properties))
       var parcelNo = resultFeature?.properties?.parcelNo
       var resultFeatureParcel = parsel3d.features.find(function (feature) {
         return feature.properties.parselNo === parcelNo;
       });
-      dispatch(addParsel(resultFeatureParcel?.properties))     
+      dispatch(addParsel(resultFeatureParcel?.properties))
     }
     console.log(clickedType)
   },);
@@ -228,6 +229,8 @@ function App() {
   });
 
 
+
+
   const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
   //all layers are collected here
   const layers = [
@@ -239,6 +242,7 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
+  
   ];
 
 
@@ -263,7 +267,7 @@ function App() {
             onError={(err) => {
               console.log("Deck_ERROR", err);
             }}
-            
+
           >
             <img style={{ left: switchedControl ? "255px" : "10px", top: switchedControl ? "390px" : "540px" }} className='zoom-in' width="20" height="20" src="https://img.icons8.com/ultraviolet/40/plus-2-math.png" alt="plus-2-math" />
             <img style={{ left: switchedControl ? "255px" : "10px", top: switchedControl ? "370px" : "520px" }} className='zoom-out' width="20" height="20" src="https://img.icons8.com/ultraviolet/40/minus-2-math.png" alt="minus-2-math" />
@@ -296,16 +300,16 @@ function App() {
           </div>
           <div className='bottom' >
             <div className="section-bottom">
-              <LeftBottom/>
+              <LeftBottom />
             </div>
             <div className="section-bottom">
-              <MiddleLeftBottom/>
+              <MiddleLeftBottom />
             </div>
             <div className="section-bottom">
-              <MiddleRightBottom/> 
+              <MiddleRightBottom />
             </div>
             <div className="section-bottom">
-              <RightBottom/>
+              <RightBottom />
             </div>
           </div>
         </div>
