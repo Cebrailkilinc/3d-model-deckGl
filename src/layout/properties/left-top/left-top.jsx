@@ -1,5 +1,5 @@
 import React from 'react'
-import "./leftTop.css";
+import "./lefttop.css";
 
 import { useSelector } from "react-redux";
 
