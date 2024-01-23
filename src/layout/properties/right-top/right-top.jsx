@@ -53,22 +53,7 @@ const RightTop = () => {
                         <h1 className='list-item-head'>Isıtma Türü :</h1>
                         <h1 className='list-item-value'>{parsel?.IsıtmaSis ?? "Merkezi sistem"}</h1>
                     </li>
-                    <li className='content-list-item'>
-                        <h1 className='list-item-head'>Isı Yalıtımı:</h1>
-                        <h1 className='list-item-value'>{parsel?.IsıYalıt ?? "Yok"}</h1>
-                    </li>
-                    <li className='content-list-item'>
-                        <h1 className='list-item-head'>Çocuk Oyun Alanı :</h1>
-                        <h1 className='list-item-value'>{parsel?.CocukOyunA ?? "Var"}</h1>
-                    </li>
-                    <li className='content-list-item'>
-                        <h1 className='list-item-head'>Asansör :</h1>
-                        <h1 className='list-item-value'>{parsel?.AsansorMev ?? "Var"}</h1>
-                    </li>
-                    <li className='content-list-item'>
-                        <h1 className='list-item-head'>Asansör :</h1>
-                        <h1 className='list-item-value'>{parsel?.HavuzMev ?? "Var"}</h1>
-                    </li>
+                
                 </ul>
             </div>
         </div>

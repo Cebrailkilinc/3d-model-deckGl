@@ -1,11 +1,12 @@
-import React, { Suspense, useState, useEffect, useRef } from 'react';
+import React, { Suspense, useState, useEffect, useRef, useCallback } from 'react';
 import { MdLocationPin } from "react-icons/md"
 import { Button, Popover } from 'antd';
 import "./styles/container.css"
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Input, Radio, Space, Switch } from 'antd';
 import { Deck } from 'deck.gl';
-
+import DrawControl from './layers/draw/draw-control';
+import ControlPanel from './layers/draw/control-panel';
 
 //Geograpich layers
 import Map, {
@@ -21,6 +22,8 @@ import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
 
 
+
+
 import {
   LightingEffect,
   AmbientLight,
@@ -28,6 +31,7 @@ import {
   OrbitView,
   PointLight,
   DirectionalLight,
+
   _CameraLight as CameraLight
 } from '@deck.gl/core';
 import SunCalc from 'suncalc';
@@ -92,6 +96,11 @@ function App() {
     })
   const [mapLayer, setMapLayer] = useState("mapbox://styles/mapbox/satellite-v9");
   const [clock, setClock] = useState(1)
+  const [data, setData] = useState({
+    type: 'FeatureCollection',
+    features: [],
+  });
+  const [features, setFeatures] = useState({});
   const dispatch = useDispatch();
   const switchRef = useRef();
 
@@ -231,6 +240,10 @@ function App() {
 
 
 
+
+
+
+
   const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
   //all layers are collected here
   const layers = [
@@ -242,8 +255,28 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-  
+
   ];
+
+  const onUpdate = useCallback(e => {
+    setFeatures(currFeatures => {
+      const newFeatures = { ...currFeatures };
+      for (const f of e.features) {
+        newFeatures[f.id] = f;
+      }
+      return newFeatures;
+    });
+  }, []);
+
+  const onDelete = useCallback(e => {
+    setFeatures(currFeatures => {
+      const newFeatures = { ...currFeatures };
+      for (const f of e.features) {
+        delete newFeatures[f.id];
+      }
+      return newFeatures;
+    });
+  }, []);
 
 
 
@@ -251,7 +284,7 @@ function App() {
     <div className='map-container'>
       <LayerModal />
       <div className='navbar'>
-        <Navbar />
+        <Navbar /> 
       </div>
       <div className='content'>
         <div className="section">
@@ -288,7 +321,23 @@ function App() {
                 zoom: 14
               }}
               mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={mapLayer} preventStyleDiffing={true}>
+
+              <DrawControl
+                position="top-left"
+                displayControlsDefault={false}
+                controls={{
+                  polygon: true,
+                  trash: true
+                }}
+                defaultMode="draw_polygon"
+                onCreate={onUpdate}
+                onUpdate={onUpdate}
+                onDelete={onDelete}
+              />
+
             </Map>
+
+            
           </DeckGL>
         </div>
         <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
