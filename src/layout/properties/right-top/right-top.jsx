@@ -3,7 +3,7 @@ import "./righttop.css"
 import { useSelector } from 'react-redux'
 const RightTop = () => {
 
-    const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
+    const { parsel } = useSelector(state => state.properties)
    
     return (
         <div className='right-top'>

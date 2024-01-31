@@ -6,7 +6,7 @@
     color: white;
     background-color: rgb(255, 126, 126);
     height: 260px ;
-    width: 100px;
+    width: 80px;
     display: flex;    
     justify-content: center;
 }
@@ -23,5 +23,5 @@
   }
 
   .left-bottom-content{
-    margin-left: 120px;
+    margin-left: 80px;
   }

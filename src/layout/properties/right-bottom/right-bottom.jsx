@@ -1,24 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import "./rightbottom.css"
 import { useSelector } from 'react-redux'
-
-import { Map } from 'react-map-gl'
-import mapboxgl from 'mapbox-gl';
-
 import 'mapbox-gl/dist/mapbox-gl.css';
-
-
-
-import { createRoot } from 'react-dom/client';
-
-import maplibregl from 'maplibre-gl';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
 import { LightingEffect, AmbientLight, _SunLight as SunLight } from '@deck.gl/core';
 import { scaleThreshold } from 'd3-scale';
 import data from "../../../../data/new/bagimsizBolum.json"
-import daire from "../../../../data/new/daire.json"
-// Source data GeoJSON
+
 
 
 export const COLOR_SCALE = scaleThreshold()
@@ -82,7 +71,7 @@ function getTooltip({ object }) {
 
 const RightBottom = () => {
     const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
-    console.log(data)
+   
     const [effects] = useState(() => {
         const lightingEffect = new LightingEffect({ ambientLight, dirLight });
         lightingEffect.shadowColor = [0, 0, 0, 0.5];

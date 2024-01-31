@@ -108,7 +108,8 @@ function App() {
     setMapLayer(e.target.value);
   };
 
-  const { mimariBina, bagimsizBolum } = useSelector(state => state.properties)
+  const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
+
 
 
   const content = (
@@ -151,7 +152,18 @@ function App() {
       });
       dispatch(addParsel(resultFeatureParcel?.properties))
     }
-    console.log(clickedType)
+
+    if (clickedType === "MimariBina" && mimariBina) {
+      var parcelNo = mimariBina?.parcelNo;
+      var resultFeatureParcel = parsel3d.features.find(function (feature) {
+        return feature.properties.parselNo === parcelNo;
+      });
+      dispatch(addParsel(resultFeatureParcel.properties))
+    }
+    if (clickedType === "parsel" && mimariBina) {
+      dispatch(addParsel(parsel))
+    }
+
   },);
 
 
@@ -284,7 +296,7 @@ function App() {
     <div className='map-container'>
       <LayerModal />
       <div className='navbar'>
-        <Navbar /> 
+        <Navbar />
       </div>
       <div className='content'>
         <div className="section">
@@ -337,7 +349,7 @@ function App() {
 
             </Map>
 
-            
+
           </DeckGL>
         </div>
         <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
@@ -353,6 +365,12 @@ function App() {
             </div>
             <div className="section-bottom">
               <MiddleLeftBottom />
+            </div>
+            <div className="section-bottom">
+              <MiddleRightBottom />
+            </div>
+            <div className="section-bottom">
+              <MiddleRightBottom />
             </div>
             <div className="section-bottom">
               <MiddleRightBottom />
