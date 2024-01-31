@@ -106,7 +106,7 @@ const RightBottom = () => {
 
     return (
         <div  >
-            <DeckGL
+            {/* <DeckGL
                 layers={layers}
                 effects={effects}
                 initialViewState={INITIAL_VIEW_STATE}
@@ -117,7 +117,7 @@ const RightBottom = () => {
                 id="mini-map"
             >
              
-            </DeckGL>
+            </DeckGL> */}
 
 
         </div>

@@ -1,7 +1,7 @@
-.middle-left-bottom{
+.middle-bottom-education{
     color: white;
 }
-.middle-left-bottom-footer{
+.middle-bottom-education-footer{
     position: fixed; 
     color: white;
     background-color: rgb(255, 126, 126);
@@ -24,6 +24,6 @@
   }
 
   
-  .middle-left-bottom-content{
+  .middle-bottom-education-content{
     margin-left: 65px;
   }
