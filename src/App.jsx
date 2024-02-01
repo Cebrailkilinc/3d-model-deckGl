@@ -336,18 +336,7 @@ function App() {
               }}
               mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={mapLayer} preventStyleDiffing={true}>
 
-              <DrawControl
-                position="top-left"
-                displayControlsDefault={false}
-                controls={{
-                  polygon: true,
-                  trash: true
-                }}
-                defaultMode="draw_polygon"
-                onCreate={onUpdate}
-                onUpdate={onUpdate}
-                onDelete={onDelete}
-              />
+       
 
             </Map>
 
