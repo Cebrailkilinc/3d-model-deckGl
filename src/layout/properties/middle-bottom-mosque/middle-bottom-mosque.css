@@ -1,7 +1,7 @@
-.middle-bottom-education{
+.middle-bottom-mosque{
     color: white;
 }
-.middle-bottom-education-footer{
+.middle-bottom-mosque-footer{
     position: fixed; 
     color: white;
     background-color: rgb(255, 126, 126);
@@ -24,6 +24,6 @@
   }
 
   
-  .middle-bottom-education-content{
+  .middle-bottom-mosque-content{
     margin-left: 55px;
   }

@@ -17,8 +17,8 @@ const MiddleLeftBottom = () => {
             <div className='middle-left-bottom-content'>
                 <ul className='content-list'>
                     <li className='content-list-item'>
-                        <h1 className='list-item-head'>İdari Tesisler :</h1>
-                        <h1 className='list-item-value'>{mimariBina?.OKLID_IDAR.toFixed(2) ?? "220"} m</h1>
+                        <h1 className='list-item-head'>İdari <br/> Tesisler :</h1>
+                        <h1 className='list-item-value'><br/>{mimariBina?.OKLID_IDAR.toFixed(2) ?? "220"} m</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Adliye :</h1>

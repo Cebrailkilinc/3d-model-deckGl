@@ -71,6 +71,7 @@ import ekYapi from "../data/new/ekYapi.json";
 //Functions
 import { handleBuildProperties } from './functions';
 import MiddleBottomEducation from './layout/properties/middle-bottom-education/middle-bottom-education';
+import MiddleBottomMosque from './layout/properties/middle-bottom-mosque/middle-bottom-mosque';
 
 
 const INITIAL_VIEW_STATE = {
@@ -374,7 +375,7 @@ function App() {
               <MiddleBottomEducation />
             </div>
             <div className="section-bottom">
-              <MiddleBottomEducation />
+              <MiddleBottomMosque />
             </div>
             <div className="section-bottom">
 
