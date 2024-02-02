@@ -33,7 +33,7 @@ const LeftBottom = () => {
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Kat :</h1>
-                        <h1 className='list-item-value'>{bagimsizBolum?.BulunduguK ?? "3"} m²</h1>
+                        <h1 className='list-item-value'>{bagimsizBolum?.BulunduguK ?? "3"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Manzara :</h1>

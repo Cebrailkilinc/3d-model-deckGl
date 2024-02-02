@@ -72,6 +72,7 @@ import ekYapi from "../data/new/ekYapi.json";
 import { handleBuildProperties } from './functions';
 import MiddleBottomEducation from './layout/properties/middle-bottom-education/middle-bottom-education';
 import MiddleBottomMosque from './layout/properties/middle-bottom-mosque/middle-bottom-mosque';
+import BottomMiddleTransport from './layout/properties/bottom-middle-transport/bottom-middle-transport';
 
 
 const INITIAL_VIEW_STATE = {
@@ -336,7 +337,7 @@ function App() {
               }}
               mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={mapLayer} preventStyleDiffing={true}>
 
-       
+
 
             </Map>
 
@@ -351,14 +352,14 @@ function App() {
             <RightTop />
           </div>
           <div className='bottom' >
+            <div style={{position:"relative"}} className="section-bottom">
+              <RightBottom />
+            </div>
             <div className="section-bottom">
               <LeftBottom />
             </div>
             <div className="section-bottom">
               <MiddleLeftBottom />
-            </div>
-            <div className="section-bottom">
-              <MiddleRightBottom />
             </div>
             <div className="section-bottom">
               <MiddleBottomEducation />
@@ -367,10 +368,10 @@ function App() {
               <MiddleBottomMosque />
             </div>
             <div className="section-bottom">
-
+              <BottomMiddleTransport />
             </div>
             <div className="section-bottom">
-              <RightBottom />
+              <MiddleRightBottom />
             </div>
           </div>
         </div>

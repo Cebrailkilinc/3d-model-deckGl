@@ -66,6 +66,9 @@ const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl }) => {
                     <div style={{ marginBottom: "5px" }} className='bottombar-menus-item'>
                         <Switch size='small' defaultChecked onChange={onChangeSwitched} />
                     </div>
+                    <div  className='bottombar-menus-item'>
+                        <img width="24" height="24" src="https://img.icons8.com/color/48/rgb-circle-2--v1.png" alt="rgb-circle-2--v1" />
+                    </div>
                 </div>
                 <div className='bottombar-container-right' >
                     <h3>lng: {hoveredCoordinates.lat.toFixed(5)}</h3>

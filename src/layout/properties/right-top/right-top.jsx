@@ -23,11 +23,11 @@ const RightTop = () => {
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Taks :</h1>
-                        <h1 className='list-item-value'>{parsel?.TAKS ?? "320"} m²</h1>
+                        <h1 className='list-item-value'>{parsel?.TAKS ?? "320"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Kaks :</h1>
-                        <h1 className='list-item-value'>{parsel?.KAKS ?? "2.0"} m</h1>
+                        <h1 className='list-item-value'>{parsel?.KAKS ?? "2.0"}</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Alan :</h1>
@@ -39,20 +39,17 @@ const RightTop = () => {
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Yapı Nizamı :</h1>
-                        <h1 className='list-item-value'>{parsel?.YAPI_NIZ ?? "20"}</h1>
+                        <h1 className='list-item-value'>{parsel?.YAPI_NIZ === "A" ? "Ayrık" :  "Bitişik"} </h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Eğim :</h1>
                         <h1 className='list-item-value'>{parsel?.EGIM ?? "9"} %</h1>
                     </li>
                     <li className='content-list-item'>
-                        <h1 className='list-item-head'>Eğim :</h1>
+                        <h1 className='list-item-head'>Kullanım:</h1>
                         <h1 className='list-item-value'>{parsel?.PARSEL_KUL ?? "Konut"}</h1>
                     </li>
-                    <li className='content-list-item'>
-                        <h1 className='list-item-head'>Isıtma Türü :</h1>
-                        <h1 className='list-item-value'>{parsel?.IsıtmaSis ?? "Merkezi sistem"}</h1>
-                    </li>
+                 
                 
                 </ul>
             </div>

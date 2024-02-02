@@ -105,19 +105,17 @@ const RightBottom = () => {
 
 
     return (
-        <div  >
-            {/* <DeckGL
+        <div style={{position:"absolute", top:"0px", left:"0px"}} >
+           <DeckGL
                 layers={layers}
                 effects={effects}
                 initialViewState={INITIAL_VIEW_STATE}
-                controller={true}
-                getTooltip={getTooltip}
-                style={{ width: "350px", height: "150px", position: 'fixed', left: "", top: 420 }}
+                controller={true}              
+                style={{ width: "180px", height: "150px", backroundColor:"red", zIndex:"0"}}
                 className="map-layer-area"
                 id="mini-map"
-            >
-             
-            </DeckGL> */}
+            >             
+            </DeckGL> 
 
 
         </div>
