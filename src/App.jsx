@@ -7,7 +7,7 @@ import { Input, Radio, Space, Switch } from 'antd';
 import { Deck } from 'deck.gl';
 import DrawControl from './layers/draw/draw-control';
 import ControlPanel from './layers/draw/control-panel';
-
+//CEBRAİL KILINÇ
 //Geograpich layers
 import Map, {
   Source,
@@ -20,8 +20,7 @@ import Map, {
 } from 'react-map-gl';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
-
-
+import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 
 
 import {
@@ -255,12 +254,16 @@ function App() {
 
 
 
+  const data2 = [
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638] },
 
+  ]
 
 
 
   const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
   //all layers are collected here
+
   const layers = [
     new PolygonLayer({
       id: 'ground',
@@ -271,27 +274,21 @@ function App() {
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
 
+    new ScenegraphLayer({
+      id: 'scenegraph-layer',
+      data:data2,
+      pickable: true,
+      scenegraph: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
+      getPosition: d => d.coordinates,
+      getOrientation: d => [0, Math.random() * 180, 90],
+      _animations: {
+        '*': { speed: 5 }
+      },
+      sizeScale: 500,
+      _lighting: 'pbr'
+    })
+
   ];
-
-  const onUpdate = useCallback(e => {
-    setFeatures(currFeatures => {
-      const newFeatures = { ...currFeatures };
-      for (const f of e.features) {
-        newFeatures[f.id] = f;
-      }
-      return newFeatures;
-    });
-  }, []);
-
-  const onDelete = useCallback(e => {
-    setFeatures(currFeatures => {
-      const newFeatures = { ...currFeatures };
-      for (const f of e.features) {
-        delete newFeatures[f.id];
-      }
-      return newFeatures;
-    });
-  }, []);
 
 
 
@@ -315,12 +312,8 @@ function App() {
             onError={(err) => {
               console.log("Deck_ERROR", err);
             }}
-
           >
-            <img style={{ left: switchedControl ? "255px" : "10px", top: switchedControl ? "390px" : "540px" }} className='zoom-in' width="20" height="20" src="https://img.icons8.com/ultraviolet/40/plus-2-math.png" alt="plus-2-math" />
-            <img style={{ left: switchedControl ? "255px" : "10px", top: switchedControl ? "370px" : "520px" }} className='zoom-out' width="20" height="20" src="https://img.icons8.com/ultraviolet/40/minus-2-math.png" alt="minus-2-math" />
-
-            <div style={{ right: switchedControl ? "260px" : "10px" }} className='layer-button' >
+            <div style={{ right: switchedControl ? "260px" : "0px" }} className='layer-button' >
               <Popover placement="leftTop" title={"Select Map Layer"} content={content}>
                 <img
                   width="24" height="24"
@@ -338,13 +331,12 @@ function App() {
               mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={mapLayer} preventStyleDiffing={true}>
 
 
-
             </Map>
 
 
           </DeckGL>
         </div>
-        <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
+        <div ref={switchRef} style={{ display: "none" }} className='menu-content' >
           <div className="section-top-left">
             <LeftTop />
           </div>
@@ -352,7 +344,7 @@ function App() {
             <RightTop />
           </div>
           <div className='bottom' >
-            <div style={{position:"relative"}} className="section-bottom">
+            <div style={{ position: "relative" }} className="section-bottom">
               <RightBottom />
             </div>
             <div className="section-bottom">
@@ -374,6 +366,33 @@ function App() {
               <MiddleRightBottom />
             </div>
           </div>
+        </div>
+        <div style={{ display: "none" }} className='bottom-mobile' >
+          <div style={{ position: "relative" }} className="section-bottom-mobile">
+            <RightBottom />
+          </div>
+          <div className="section-bottom-mobile">
+            <LeftBottom />
+          </div>
+          <div className="section-bottom-mobile">
+            <MiddleLeftBottom />
+          </div>
+          <div className="section-bottom-mobile">
+            <MiddleBottomEducation />
+          </div>
+          <div className="section-bottom-mobile">
+            <MiddleBottomMosque />
+          </div>
+          <div className="section-bottom-mobile">
+            <BottomMiddleTransport />
+          </div>
+          <div className="section-bottom-mobile">
+            <MiddleRightBottom />
+          </div>
+        </div>
+        <div>
+
+
         </div>
       </div>
       <div className='bottom-bar'>

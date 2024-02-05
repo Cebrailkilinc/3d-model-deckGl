@@ -30,7 +30,7 @@ export const COLOR_SCALE = scaleThreshold()
     ]);
 
 const INITIAL_VIEW_STATE = {
-    latitude: 40.64964,
+    latitude: 40.64955,
     longitude: 35.80915,
     zoom: 19,
     maxZoom: 20,
@@ -105,19 +105,17 @@ const RightBottom = () => {
 
 
     return (
-        <div style={{position:"absolute", top:"0px", left:"0px"}} >
+        <div >
            <DeckGL
                 layers={layers}
                 effects={effects}
                 initialViewState={INITIAL_VIEW_STATE}
                 controller={true}              
-                style={{ width: "180px", height: "150px", backroundColor:"red", zIndex:"0"}}
+                style={{ width: "100%", height: "290px", zIndex:"0"}}
                 className="map-layer-area"
                 id="mini-map"
             >             
             </DeckGL> 
-
-
         </div>
     )
 }
