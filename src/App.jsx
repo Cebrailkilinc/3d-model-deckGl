@@ -336,7 +336,7 @@ function App() {
 
           </DeckGL>
         </div>
-        <div ref={switchRef} style={{ display: "none" }} className='menu-content' >
+        <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
           <div className="section-top-left">
             <LeftTop />
           </div>

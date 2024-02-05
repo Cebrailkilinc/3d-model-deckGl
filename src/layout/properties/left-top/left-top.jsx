@@ -71,7 +71,7 @@ const LeftTop = () => {
                         <h1 className='list-item-value'>{mimariBina?.AsansorMev ?? "Var"}</h1>
                     </li>
                     <li className='content-list-item'>
-                        <h1 className='list-item-head'>Asansör :</h1>
+                        <h1 className='list-item-head'>Havuz :</h1>
                         <h1 className='list-item-value'>{mimariBina?.HavuzMev ?? "Var"}</h1>
                     </li>
                     <li className='content-list-item'>
