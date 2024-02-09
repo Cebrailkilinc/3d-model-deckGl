@@ -257,10 +257,6 @@ function App() {
 
   const data2 = [
     { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
-
   ]
 
   const handleDragStart = event => {
@@ -286,32 +282,8 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-    new ScenegraphLayer({
-      id: 'scenegraph-layer',
-      data: data2,
-      pickable: true,
-      scenegraph: 'Hotel.glb',
-      getPosition: d => d.coordinates,
-      getOrientation: d => [modalPosition.x, modalPosition.y, modalPosition.z],
-      sizeScale: modalPosition.size,
-      _lighting: 'pbr',
-      onDrag: handleDragStart,
-      onDragEnd: handleDragStop,
+  
 
-    }),
-     new ScenegraphLayer({
-      id: 'scenegraph-layer',
-      data: data2,
-      pickable: true,
-      scenegraph: 'Hotel.glb',
-      getPosition: d => d.coordinates,
-      getOrientation: d => [modalPosition.x, modalPosition.y, modalPosition.z],
-      sizeScale: modalPosition.size,
-      _lighting: 'pbr',
-      onDrag: handleDragStart,
-      onDragEnd: handleDragStop,
-
-    }),
   ];
 
 
@@ -363,14 +335,7 @@ function App() {
           </div>
           <div className="section-top-right">
             <RightTop />
-          </div>
-          <div className="section-add-model">
-            <AddModel
-              modalPosition={modalPosition}
-              setModalPosition={setModalPosition}
-
-            />
-          </div>
+          </div>         
           <div className='bottom' >
             <div style={{ position: "relative" }} className="section-bottom">
               <RightBottom />

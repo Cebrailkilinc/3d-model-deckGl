@@ -6,7 +6,7 @@ import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
 import { LightingEffect, AmbientLight, _SunLight as SunLight } from '@deck.gl/core';
 import { scaleThreshold } from 'd3-scale';
-import data from "../../../../data/new/bagimsizBolum.json"  
+import data from "../../../../data/new/bagimsizBolum.json"
 
 
 export const COLOR_SCALE = scaleThreshold()
@@ -28,14 +28,7 @@ export const COLOR_SCALE = scaleThreshold()
         [128, 0, 38]
     ]);
 
-const INITIAL_VIEW_STATE = {
-    latitude: 40.64955,
-    longitude: 35.80915,
-    zoom: 19,
-    maxZoom: 20,
-    pitch: 45,
-    bearing: 0
-};
+
 
 const ambientLight = new AmbientLight({
     color: [255, 255, 255],
@@ -55,8 +48,37 @@ const dirLight = new SunLight({
 
 
 const RightBottom = () => {
+
+    const [center, setCenter] = useState({lat:0, long:0})
+    const INITIAL_VIEW_STATE = {
+        latitude: center.lat,
+        longitude: center.long,
+        zoom: 19,
+        maxZoom: 20,
+        pitch: 45,
+        bearing: 0
+    };
     const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
-   console.log(bagimsizBolum)
+
+    console.log(data)
+
+    const itemWithId8 = data.features.find(item => item.properties.GBB_Id === bagimsizBolum.GBB_Id);
+
+    if (itemWithId8) {
+        console.log("ID'si 8 olan öğe bulundu:", itemWithId8);
+    } else {
+        console.log("ID'si 8 olan bir öğe bulunamadı.");
+    }
+    useEffect(()=>{
+        setCenter(prevState => ({
+            ...prevState,
+            lat:itemWithId8?.geometry?.coordinates[0][0][0][1],
+            long:itemWithId8?.geometry?.coordinates[0][0][0][0],
+          }));
+    },[itemWithId8])
+
+   console.log(center)
+
     const [effects] = useState(() => {
         const lightingEffect = new LightingEffect({ ambientLight, dirLight });
         lightingEffect.shadowColor = [0, 0, 0, 0.5];
@@ -67,14 +89,14 @@ const RightBottom = () => {
         // only needed when using shadows - a plane for shadows to drop on
         new PolygonLayer({
             id: 'ground',
-            data: data.features[0],
+            data: itemWithId8,
             stroked: false,
             getPolygon: f => f,
             getFillColor: [0, 0, 0, 0]
         }),
         new GeoJsonLayer({
             id: 'geojson',
-            data: data.features[0],
+            data: [itemWithId8],
             opacity: 0.8,
             stroked: false,
             filled: true,
@@ -91,16 +113,16 @@ const RightBottom = () => {
 
     return (
         <div >
-           <DeckGL
+            <DeckGL
                 layers={layers}
                 effects={effects}
                 initialViewState={INITIAL_VIEW_STATE}
-                controller={true}              
-                style={{ width: "100%", height: "290px", zIndex:"0"}}
+                controller={true}
+                style={{ width: "100%", height: "290px", zIndex: "0" }}
                 className="map-layer-area"
                 id="mini-map"
-            >             
-            </DeckGL> 
+            >
+            </DeckGL>
         </div>
     )
 }
