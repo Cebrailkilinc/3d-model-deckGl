@@ -21,7 +21,7 @@ import Map, {
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
-
+import {BitmapLayer} from '@deck.gl/layers';
 
 import {
   LightingEffect,
@@ -72,6 +72,7 @@ import { handleBuildProperties } from './functions';
 import MiddleBottomEducation from './layout/properties/middle-bottom-education/middle-bottom-education';
 import MiddleBottomMosque from './layout/properties/middle-bottom-mosque/middle-bottom-mosque';
 import BottomMiddleTransport from './layout/properties/bottom-middle-transport/bottom-middle-transport';
+import AddModel from './layout/content/add-model/add-model';
 
 
 const INITIAL_VIEW_STATE = {
@@ -102,7 +103,11 @@ function App() {
     type: 'FeatureCollection',
     features: [],
   });
-  const [features, setFeatures] = useState({});
+  const [lat, setLat] = useState(35.80941)
+  const [long, setLong] = useState(40.60941)
+  const [mapController, setMapController] = useState(true)
+  const [modalPosition, setModalPosition] = useState({ x: 180, y: 180, z: 270, size: 50 })
+
   const dispatch = useDispatch();
   const switchRef = useRef();
 
@@ -127,9 +132,6 @@ function App() {
   );
 
 
-
-
-
   useEffect(() => {
     //Binaya tıklanıldığında
     if (clickedType === "MimariBina" && mimariBina) {
@@ -139,7 +141,6 @@ function App() {
       });
       dispatch(addParsel(resultFeatureParcel.properties))
     }
-
 
     //Binaya tıklanıldığında
     if (clickedType === "BagimsizBolum" && bagimsizBolum) {
@@ -255,11 +256,23 @@ function App() {
 
 
   const data2 = [
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [-122.466233, 37.684638] },
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
 
   ]
 
+  const handleDragStart = event => {
+    setMapController(false)
+    setLat(event.coordinate[0])
+    setLong(event.coordinate[1])
 
+  };
+  const handleDragStop = event => {
+    setMapController(true)
+    console.log("object")
+  };
 
   const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
   //all layers are collected here
@@ -273,23 +286,33 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-
     new ScenegraphLayer({
       id: 'scenegraph-layer',
-      data:data2,
+      data: data2,
       pickable: true,
-      scenegraph: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
+      scenegraph: 'Hotel.glb',
       getPosition: d => d.coordinates,
-      getOrientation: d => [0, Math.random() * 180, 90],
-      _animations: {
-        '*': { speed: 5 }
-      },
-      sizeScale: 500,
-      _lighting: 'pbr'
-    })
+      getOrientation: d => [modalPosition.x, modalPosition.y, modalPosition.z],
+      sizeScale: modalPosition.size,
+      _lighting: 'pbr',
+      onDrag: handleDragStart,
+      onDragEnd: handleDragStop,
 
+    }),
+     new ScenegraphLayer({
+      id: 'scenegraph-layer',
+      data: data2,
+      pickable: true,
+      scenegraph: 'Hotel.glb',
+      getPosition: d => d.coordinates,
+      getOrientation: d => [modalPosition.x, modalPosition.y, modalPosition.z],
+      sizeScale: modalPosition.size,
+      _lighting: 'pbr',
+      onDrag: handleDragStart,
+      onDragEnd: handleDragStop,
+
+    }),
   ];
-
 
 
   return (
@@ -307,11 +330,13 @@ function App() {
             onHover={handleMapHover}
             layers={layers}
             initialViewState={INITIAL_VIEW_STATE}
-            controller={true}
+            controller={mapController}
             effects={[sunlightEffect]}
+
             onError={(err) => {
               console.log("Deck_ERROR", err);
             }}
+
           >
             <div style={{ right: switchedControl ? "260px" : "0px" }} className='layer-button' >
               <Popover placement="leftTop" title={"Select Map Layer"} content={content}>
@@ -329,11 +354,7 @@ function App() {
                 zoom: 14
               }}
               mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={mapLayer} preventStyleDiffing={true}>
-
-
             </Map>
-
-
           </DeckGL>
         </div>
         <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
@@ -342,6 +363,13 @@ function App() {
           </div>
           <div className="section-top-right">
             <RightTop />
+          </div>
+          <div className="section-add-model">
+            <AddModel
+              modalPosition={modalPosition}
+              setModalPosition={setModalPosition}
+
+            />
           </div>
           <div className='bottom' >
             <div style={{ position: "relative" }} className="section-bottom">
@@ -396,7 +424,10 @@ function App() {
         </div>
       </div>
       <div className='bottom-bar'>
-        <BottomBar switchRef={switchRef} setSwitchedControl={setSwitchedControl} hoveredCoordinates={hoveredCoordinates} />
+        <BottomBar
+          switchRef={switchRef}
+          setSwitchedControl={setSwitchedControl}
+          hoveredCoordinates={hoveredCoordinates} />
       </div>
 
     </div>

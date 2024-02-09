@@ -6,8 +6,7 @@ import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
 import { LightingEffect, AmbientLight, _SunLight as SunLight } from '@deck.gl/core';
 import { scaleThreshold } from 'd3-scale';
-import data from "../../../../data/new/bagimsizBolum.json"
-
+import data from "../../../../data/new/bagimsizBolum.json"  
 
 
 export const COLOR_SCALE = scaleThreshold()
@@ -38,8 +37,6 @@ const INITIAL_VIEW_STATE = {
     bearing: 0
 };
 
-const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json';
-
 const ambientLight = new AmbientLight({
     color: [255, 255, 255],
     intensity: 1.0
@@ -53,25 +50,13 @@ const dirLight = new SunLight({
 });
 
 
-function getTooltip({ object }) {
-    return (
-        object && {
-            html: `\
-  <div><b>Average Property Value</b></div>
-  <div>${object.properties.valuePerParcel} / parcel</div>
-  <div>${object.properties.valuePerSqm} / m<sup>2</sup></div>
-  <div><b>Growth</b></div>
-  <div>${Math.round(object.properties.growth * 100)}%</div>
-  `
-        }
-    );
-}
+
 
 
 
 const RightBottom = () => {
     const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
-   
+   console.log(bagimsizBolum)
     const [effects] = useState(() => {
         const lightingEffect = new LightingEffect({ ambientLight, dirLight });
         lightingEffect.shadowColor = [0, 0, 0, 0.5];

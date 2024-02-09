@@ -23,6 +23,18 @@
     overflow-y: auto;
     overflow-x: auto;
 }
+.section-add-model {
+    position: fixed;
+    height: calc(100% - 80px);
+    width: 250px;
+    background-color: rgb(240, 226, 255);
+    top: 50px;
+    right: 0%;
+    border-left: 1px solid white;
+    overflow-y: auto;
+    overflow-x: auto;
+    z-index: 50;
+}
 
 .bottom {
     position: fixed;

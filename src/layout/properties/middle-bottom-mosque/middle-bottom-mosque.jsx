@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const MiddleBottomMosque = () => {
     const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
-    console.log(mimariBina)
+ 
     return (
         <div className='middle-bottom-mosque'>
             <div className='middle-bottom-mosque-footer'>

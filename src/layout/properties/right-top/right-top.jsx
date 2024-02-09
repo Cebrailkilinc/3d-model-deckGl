@@ -9,7 +9,7 @@ const RightTop = () => {
         <div className='right-top'>
             <div className='right-top-footer'>
                 <img width="80" height="80" src="https://img.icons8.com/bubbles/100/inland.png" alt="inland" />
-                <h1>İmar Bilgisi</h1>
+                <h1 style={{fontSize:"15px"}} >İmar Bilgisi</h1>
             </div>
             <div className='right-top-content'>
                 <ul className='content-list'>

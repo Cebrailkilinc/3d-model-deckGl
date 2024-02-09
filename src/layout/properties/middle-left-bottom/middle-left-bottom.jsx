@@ -5,7 +5,7 @@ import "./middleLeftBottom.css"
 const MiddleLeftBottom = () => {
 
     const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
-    console.log(mimariBina)
+   
     return (
         <div className='middle-left-bottom'>
             <div className='middle-left-bottom-footer'>
