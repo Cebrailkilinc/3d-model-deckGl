@@ -24,10 +24,7 @@ const Navbar = () => {
           <h1 className='menu-head'>2B/3B Taşınmaz Yönetim Platformu</h1>
         </div>
         <div className='menu-user'>
-          <div className='menu-user-profile' >
-            <Avatar className='avatar' shape="square" icon={<CiUser />} />
-          </div>
-          <h6>Cebrail Kılınç</h6>
+         
         </div>
       </div>
     </div>

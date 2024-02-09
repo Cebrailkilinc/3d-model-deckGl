@@ -60,15 +60,10 @@ const RightBottom = () => {
     };
     const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
 
-    console.log(data)
 
     const itemWithId8 = data.features.find(item => item.properties.GBB_Id === bagimsizBolum.GBB_Id);
 
-    if (itemWithId8) {
-        console.log("ID'si 8 olan öğe bulundu:", itemWithId8);
-    } else {
-        console.log("ID'si 8 olan bir öğe bulunamadı.");
-    }
+   
     useEffect(()=>{
         setCenter(prevState => ({
             ...prevState,
@@ -76,8 +71,6 @@ const RightBottom = () => {
             long:itemWithId8?.geometry?.coordinates[0][0][0][0],
           }));
     },[itemWithId8])
-
-   console.log(center)
 
     const [effects] = useState(() => {
         const lightingEffect = new LightingEffect({ ambientLight, dirLight });

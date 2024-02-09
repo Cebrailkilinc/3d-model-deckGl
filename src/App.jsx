@@ -21,7 +21,7 @@ import Map, {
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
-import {BitmapLayer} from '@deck.gl/layers';
+import { BitmapLayer } from '@deck.gl/layers';
 
 import {
   LightingEffect,
@@ -237,38 +237,41 @@ function App() {
   var times = SunCalc.getTimes(new Date(), 35.80, 40.64);
   var sunrisePos = SunCalc.getPosition(times.sunrise, 35.80, 40.64);
 
+  const currentDate = new Date();
+  const currentHour = currentDate.getHours();
+  const currentMinute = currentDate.getMinutes();
+  const currentSecond = currentDate.getSeconds();
+
+  console.log(`Current time is: ${currentHour}:${currentMinute}:${currentSecond}`);
+  console.log(times.sunrise.getHours())
+
   const ambientLight = new AmbientLight({
     color: [255, 255, 255],
     intensity: 1.0,
   });
 
-  const directionalLight = new DirectionalLight({
+  let  directionalLight = new DirectionalLight({
     color: [255, 255, 255],
     intensity: 0.8,
-    direction: [1, 3, -5],
-    _shadow: true,
+    direction: [sunrisePos.azimuth, sunrisePos.altitude, -5],
+    _shadow: false,
   });
+
+  if ((currentHour > times.sunrise.getHours()) && (currentHour < times.sunset.getHours())) {
+    directionalLight = new DirectionalLight({
+      color: [255, 255, 255],
+      intensity: 0.8,
+      direction: [sunrisePos.azimuth, sunrisePos.altitude, -5],
+      _shadow: true,
+    });
+  }
+
   const sunlightEffect = new LightingEffect({
-    directionalLight, ambientLight
+    directionalLight,
+    ambientLight
   });
 
-
-
-
-  const data2 = [
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
-  ]
-
-  const handleDragStart = event => {
-    setMapController(false)
-    setLat(event.coordinate[0])
-    setLong(event.coordinate[1])
-
-  };
-  const handleDragStop = event => {
-    setMapController(true)
-    console.log("object")
-  };
+;
 
   const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
   //all layers are collected here
@@ -282,7 +285,7 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-  
+
 
   ];
 
@@ -335,7 +338,7 @@ function App() {
           </div>
           <div className="section-top-right">
             <RightTop />
-          </div>         
+          </div>
           <div className='bottom' >
             <div style={{ position: "relative" }} className="section-bottom">
               <RightBottom />
