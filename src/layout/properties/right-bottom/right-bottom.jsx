@@ -55,7 +55,7 @@ const RightBottom = () => {
 
 
     const itemWithId8 = data.features.find(item => item.properties.GBB_Id === bagimsizBolum.GBB_Id);
-    console.log(data.features[0])
+
 
 
     useEffect(() => {
@@ -80,7 +80,7 @@ const RightBottom = () => {
         pitch: 45,
         bearing: 0
     };
-    console.log(data.features[0].geometry?.coordinates[0][0][0][1])
+   
     const layers = [
         // only needed when using shadows - a plane for shadows to drop on
         new PolygonLayer({
