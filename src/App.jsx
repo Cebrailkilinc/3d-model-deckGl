@@ -76,9 +76,9 @@ import AddModel from './layout/content/add-model/add-model';
 
 
 const INITIAL_VIEW_STATE = {
-  latitude: 40.649687967664747,
-  longitude: 35.809093508628486,
-  zoom: 15,
+  latitude: 40.64881000131992,
+  longitude: 35.80987460443845,
+  zoom: 17,
   maxZoom: 20,
   pitch: 45,
   bearing: 0
