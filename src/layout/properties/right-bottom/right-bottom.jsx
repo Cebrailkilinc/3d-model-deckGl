@@ -49,28 +49,22 @@ const dirLight = new SunLight({
 
 const RightBottom = () => {
 
-    const [center, setCenter] = useState({lat:0, long:0})
-    const INITIAL_VIEW_STATE = {
-        latitude: center.lat,
-        longitude: center.long,
-        zoom: 19,
-        maxZoom: 20,
-        pitch: 45,
-        bearing: 0
-    };
+    const [center, setCenter] = useState({ lat: 0, long: 0 })
+
     const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
 
 
     const itemWithId8 = data.features.find(item => item.properties.GBB_Id === bagimsizBolum.GBB_Id);
+    console.log(data.features[0])
 
-   
-    useEffect(()=>{
+
+    useEffect(() => {
         setCenter(prevState => ({
             ...prevState,
-            lat:itemWithId8?.geometry?.coordinates[0][0][0][1],
-            long:itemWithId8?.geometry?.coordinates[0][0][0][0],
-          }));
-    },[itemWithId8])
+            lat: itemWithId8?.geometry?.coordinates[0][0][0][1],
+            long: itemWithId8?.geometry?.coordinates[0][0][0][0],
+        }));
+    }, [itemWithId8])
 
     const [effects] = useState(() => {
         const lightingEffect = new LightingEffect({ ambientLight, dirLight });
@@ -78,18 +72,27 @@ const RightBottom = () => {
         return [lightingEffect];
     });
 
+    const INITIAL_VIEW_STATE = {
+        latitude: itemWithId8 != null ? center.lat : data.features[0].geometry?.coordinates[0][0][0][1],
+        longitude: itemWithId8 != null ? center.long : data.features[0].geometry?.coordinates[0][0][0][0],
+        zoom: 19,
+        maxZoom: 20,
+        pitch: 45,
+        bearing: 0
+    };
+    console.log(data.features[0].geometry?.coordinates[0][0][0][1])
     const layers = [
         // only needed when using shadows - a plane for shadows to drop on
         new PolygonLayer({
             id: 'ground',
-            data: itemWithId8,
+            data: data.features[0],
             stroked: false,
             getPolygon: f => f,
             getFillColor: [0, 0, 0, 0]
         }),
         new GeoJsonLayer({
             id: 'geojson',
-            data: [itemWithId8],
+            data: itemWithId8 != null ? [itemWithId8] : data.features[0],
             opacity: 0.8,
             stroked: false,
             filled: true,

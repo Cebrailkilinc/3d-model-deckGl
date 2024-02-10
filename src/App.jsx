@@ -271,8 +271,6 @@ function App() {
     ambientLight
   });
 
-;
-
   const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
   //all layers are collected here
 
