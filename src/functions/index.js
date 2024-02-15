@@ -45,6 +45,7 @@ export const handleBuildProperties = (e,
       setClickedType("yol");
     }
 
+    console.log(clickedObject)
 
     setColor(clickedObject.properties);
   } else {

@@ -179,7 +179,6 @@ function App() {
       });
     }
   }
-
   const createGeoJsonLayer = (id, data) => {
     return new GeoJsonLayer({
       id: id,
@@ -192,11 +191,20 @@ function App() {
       getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
       getFillColor: (object) => {
         // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
-        const value = object.properties
+        const value = object.properties  
+            
         if (value === color) {
           return [205, 204, 34]; // Tıklanıldığı andakli renk #kırmızı    
         } else {
-          return [255, 0, 0]; //beyaz
+          
+          if (value._5 === "Balkon") {
+            return [132, 210, 108]; 
+          }
+          if (value.PARCELID && value.nitelik) {
+            return [164, 165, 164]; 
+          }
+        
+          return [255, 210, 108]; //beyaz
         }
       }, // Rengi seçilen nesneye göre değiştir
       updateTriggers: {
@@ -242,15 +250,12 @@ function App() {
   const currentMinute = currentDate.getMinutes();
   const currentSecond = currentDate.getSeconds();
 
-  console.log(`Current time is: ${currentHour}:${currentMinute}:${currentSecond}`);
-  console.log(times.sunrise.getHours())
-
   const ambientLight = new AmbientLight({
     color: [255, 255, 255],
     intensity: 1.0,
   });
 
-  let  directionalLight = new DirectionalLight({
+  let directionalLight = new DirectionalLight({
     color: [255, 255, 255],
     intensity: 0.8,
     direction: [sunrisePos.azimuth, sunrisePos.altitude, -5],
@@ -283,8 +288,6 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-
-
   ];
 
 
