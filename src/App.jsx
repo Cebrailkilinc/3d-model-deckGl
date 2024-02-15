@@ -256,11 +256,7 @@ function App() {
 
 
   const data2 = [
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },
-
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },   
   ]
 
   const handleDragStart = event => {
@@ -319,7 +315,7 @@ function App() {
     <div className='map-container'>
       <LayerModal />
       <div className='navbar'>
-        <Navbar />
+        <Navbar /> 
       </div>
       <div className='content'>
         <div className="section">
@@ -357,6 +353,7 @@ function App() {
             </Map>
           </DeckGL>
         </div>
+        
         <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
           <div className="section-top-left">
             <LeftTop />
@@ -368,7 +365,6 @@ function App() {
             <AddModel
               modalPosition={modalPosition}
               setModalPosition={setModalPosition}
-
             />
           </div>
           <div className='bottom' >
