@@ -8,9 +8,9 @@ const LeftBottom = () => {
     return (
         <div className='left-bottom'>
             <div className='left-bottom-footer'>
-                <div className='footer-content'>
+                <div className='left-footer-bagimsiz-content'>
                     <img width="50" height="50" src="https://img.icons8.com/dusk/64/floor-plan.png" alt="floor-plan" />
-                    <h1>Bağımsız  <br></br> Bölüm</h1>
+                    <h1>Bağımsız  Bölüm</h1>
                 </div>
             </div>
             <div className='left-bottom-content'>

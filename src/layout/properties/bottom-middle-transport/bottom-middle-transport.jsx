@@ -9,9 +9,9 @@ const BottomMiddleTransport = () => {
     return (
         <div className='middle-bottom-transport'>
             <div className='middle-bottom-transport-footer'>
-                <div className='middle-footer-content'>
+                <div className='middle-footer-transport-content'>
                     <img width="40" height="40" src="https://img.icons8.com/officel/40/ground-transportation.png" alt="ground-transportation"/>
-                    <h1 className='middle-footer-content-head'> Ulaşım <br></br> Noktaları <br></br> Mesafeleri</h1>
+                    <h1 className='middle-footer-content-head'> Ulaşım  Noktaları Mesafeleri</h1>
                 </div>
             </div>
             <div className='middle-bottom-transport-content'>

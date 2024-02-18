@@ -8,9 +8,9 @@ const MiddleBottomMosque = () => {
     return (
         <div className='middle-bottom-mosque'>
             <div className='middle-bottom-mosque-footer'>
-                <div className='middle-footer-content'>
+                <div className='middle-footer-mosque-content'>
                     <img width="48" height="48" src="https://img.icons8.com/color-glass/48/mosque.png" alt="mosque" />
-                    <h1 className='middle-footer-content-head'>Dini <br></br> Tesislere <br></br> Mesafe</h1>
+                    <h1 className='middle-footer-content-head'>Dini Tesislere Mesafe</h1>
                 </div>
             </div>
             <div className='middle-bottom-mosque-content'>

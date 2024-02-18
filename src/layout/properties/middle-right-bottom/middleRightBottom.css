@@ -1,9 +1,9 @@
 .middle-right-bottom{
     color: white;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
+
 .middle-right-bottom-footer{    
     color: white;
     background-color: rgb(255, 126, 126);
@@ -18,8 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: start; 
-    gap: 20px;
-    padding: 5px;
+    gap: 5px;
+    height: 70px;
 }
 
 .list-item {

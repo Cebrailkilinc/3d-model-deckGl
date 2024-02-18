@@ -1,16 +1,25 @@
-.left-bottom{
+.left-bottom {
     color: white;
-}
-.left-bottom-footer{
-    position: fixed; 
-    color: white;
-    background-color: rgb(255, 126, 126);
-    height: 100% ;
-    width: 60px;
-    display: flex;    
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
+.left-bottom-footer {
+    color: white;
+    background-color: rgb(255, 126, 126);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.left-footer-bagimsiz-content{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    height: 70px;
+}
 
 .list-item {
     display: flex;
@@ -18,8 +27,8 @@
     width: 100%;
     align-items: center;
     gap: 5px;
-  }
+}
 
-  .left-bottom-content{
-    margin-left: 55px;
-  }
+.left-bottom-content {
+    padding: 5px;
+}

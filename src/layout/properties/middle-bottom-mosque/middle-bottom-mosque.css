@@ -1,16 +1,25 @@
 .middle-bottom-mosque{
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 .middle-bottom-mosque-footer{
-    position: fixed; 
     color: white;
     background-color: rgb(255, 126, 126);
     height: 100%;
-    width: 60px;
-    display: flex;    
-    justify-content: center;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
+.middle-footer-mosque-content{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    height: 70px;
+}
 
 .list-item {
     display: flex;
@@ -22,5 +31,5 @@
 
   
   .middle-bottom-mosque-content{
-    margin-left: 55px;
+    padding: 5px;
   }

@@ -1,26 +1,37 @@
-.middle-bottom-education{
+.middle-bottom-education {
     color: white;
+    display: flex;
+    flex-direction: column;
 }
-.middle-bottom-education-footer{
-    position: fixed; 
+
+.middle-bottom-education-footer {
     color: white;
     background-color: rgb(255, 126, 126);
     height: 100%;
-    width: 60px;
-    display: flex;    
-    justify-content: center;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  
 }
 
-
+.middle-footer-education-content{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    height: 70px;
+}
 .list-item {
     display: flex;
     align-items: center;
     width: 100%;
     align-items: center;
     gap: 5px;
-  }
+}
 
-  
-  .middle-bottom-education-content{
-    margin-left: 55px;
+
+.middle-left-bottom-content {
+    padding: 5px;
   }
+  

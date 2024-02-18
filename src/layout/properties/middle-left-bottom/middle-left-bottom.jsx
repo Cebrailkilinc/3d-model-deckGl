@@ -9,9 +9,9 @@ const MiddleLeftBottom = () => {
     return (
         <div className='middle-left-bottom'>
             <div className='middle-left-bottom-footer'>
-                <div className='middle-footer-content'>
+                <div className='middle-left-footer-content'>
                     <img width="50" height="50" src="https://img.icons8.com/stickers/100/university-building.png" alt="university-building" />
-                    <h1 className='middle-footer-content-head'>Kamu <br></br> Hizmetlerine<br></br> Mesafe</h1>
+                    <h1 className='middle-footer-content-head'>Kamu  Hizmetlerine Mesafe</h1>
                 </div>
             </div>
             <div className='middle-left-bottom-content'>

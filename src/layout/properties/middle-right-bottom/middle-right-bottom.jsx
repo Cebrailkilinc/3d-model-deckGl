@@ -15,7 +15,7 @@ const MiddleRightBottom = () => {
                 </div>
             </div>
             <div className='middle-right-bottom-content'>
-                <ul className='middle-right-bottom-content-list'>
+                <ul className='content-list'>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Acil :</h1>
                         <h1 className='list-item-value'>{mimariBina?.OKLID_ACIL.toFixed(2) ?? "220"} m</h1>
