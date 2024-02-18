@@ -38,6 +38,22 @@ const RightTop = () => {
                         <h1 className='list-item-value'>{parsel?.Mulkiyet_D ?? "Kat Mülkiyeti"}</h1>
                     </li>
                     <li className='content-list-item'>
+                        <h1 className='list-item-head'>Parsel Konumu :</h1>
+                        <h1 className='list-item-value'>{parsel?.PARSEL_KON} </h1>
+                    </li>
+                    <li className='content-list-item'>
+                        <h1 className='list-item-head'>Cephe Sayısı:</h1>
+                        <h1 className='list-item-value'>{parsel?.ON_CEPHE_S} </h1>
+                    </li>
+                    <li className='content-list-item'>
+                        <h1 className='list-item-head'>Ön Cephe Uzunluğu:</h1>
+                        <h1 className='list-item-value'>{parsel?.ON_CEPHE_U} </h1>
+                    </li>
+                    <li className='content-list-item'>
+                        <h1 className='list-item-head'>Yan Cephe Uzunluğu:</h1>
+                        <h1 className='list-item-value'>{parsel?.ON_CEPHE_Y} </h1>
+                    </li>
+                    <li className='content-list-item'>
                         <h1 className='list-item-head'>Yapı Nizamı :</h1>
                         <h1 className='list-item-value'>{parsel?.YAPI_NIZ === "A" ? "Ayrık" :  "Bitişik"} </h1>
                     </li>

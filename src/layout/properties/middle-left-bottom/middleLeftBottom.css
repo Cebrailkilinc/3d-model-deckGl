@@ -10,10 +10,7 @@
     display: flex;    
     justify-content: center;
 }
-.middle-footer-content{
-    margin-top: 15px;
-   
-}
+
 
 .list-item {
     display: flex;
@@ -27,3 +24,7 @@
   .middle-left-bottom-content{
     margin-left: 55px;
   }
+
+
+
+

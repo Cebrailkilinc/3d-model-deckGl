@@ -88,7 +88,7 @@ const RightBottom = () => {
             data: data.features[0],
             stroked: false,
             getPolygon: f => f,
-            getFillColor: [0, 0, 0, 0]
+            getFillColor: [248,248,248]
         }),
         new GeoJsonLayer({
             id: 'geojson',
@@ -99,8 +99,8 @@ const RightBottom = () => {
             extruded: true,
             wireframe: true,
             getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
-            getFillColor: f => COLOR_SCALE(f.properties.growth),
-            getLineColor: [255, 255, 255],
+            getFillColor: [248,248,248],
+            getLineColor: [248,248,248],
             pickable: true
         })
     ];

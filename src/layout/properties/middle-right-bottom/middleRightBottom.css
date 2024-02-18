@@ -1,17 +1,25 @@
 .middle-right-bottom{
     color: white;
+    display: flex;
+    flex-direction: column;
+    
 }
-.middle-right-bottom-footer{
-    position: fixed; 
+.middle-right-bottom-footer{    
     color: white;
     background-color: rgb(255, 126, 126);
     height: 100% ;
-    width: 60px;
+    width: 100%;
     display: flex;    
     justify-content: center;
+    align-items: center;
 }
-.middle-footer-content{
-    margin-top: 15px;   
+.middle-footer-right-content{
+    width: 100%;  
+    display: flex;
+    align-items: center;
+    justify-content: start; 
+    gap: 20px;
+    padding: 5px;
 }
 
 .list-item {
@@ -24,5 +32,5 @@
 
   
 .middle-right-bottom-content{
-    margin-left: 55px;
+    padding: 5px;
 }
