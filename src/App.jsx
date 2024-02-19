@@ -73,6 +73,7 @@ import MiddleBottomEducation from './layout/properties/middle-bottom-education/m
 import MiddleBottomMosque from './layout/properties/middle-bottom-mosque/middle-bottom-mosque';
 import BottomMiddleTransport from './layout/properties/bottom-middle-transport/bottom-middle-transport';
 import AddModel from './layout/content/add-model/add-model';
+import BuildLayer from './layout/content/build-layer/build-layer';
 
 
 const INITIAL_VIEW_STATE = {
@@ -103,10 +104,20 @@ function App() {
     type: 'FeatureCollection',
     features: [],
   });
+
   const [lat, setLat] = useState(35.80941)
   const [long, setLong] = useState(40.60941)
   const [mapController, setMapController] = useState(true)
-  const [modalPosition, setModalPosition] = useState({ x: 180, y: 180, z: 270, size: 50 })
+
+  const [layerState, setLayerState] = useState({
+    bina3D: true,
+    bagimsizBolum3D: true,
+    kapiGirisi: true,
+    yol: true,
+    parsel2d: true,
+    ekYapi: true
+  });
+
 
   const dispatch = useDispatch();
   const switchRef = useRef();
@@ -130,6 +141,8 @@ function App() {
       </Space>
     </Radio.Group>
   );
+
+
 
 
   useEffect(() => {
@@ -191,19 +204,19 @@ function App() {
       getElevation: f => Math.sqrt(f.properties.valuePerSqm) * 10,
       getFillColor: (object) => {
         // object ile çalışarak, öğenin özelliklerine erişebilir ve rengini belirleyebilirsiniz.
-        const value = object.properties  
-            
+        const value = object.properties
+
         if (value === color) {
           return [205, 204, 34]; // Tıklanıldığı andakli renk #kırmızı    
         } else {
-          
+
           if (value._5 === "Balkon") {
-            return [132, 210, 108]; 
+            return [132, 210, 108];
           }
           if (value.PARCELID && value.nitelik) {
-            return [164, 165, 164]; 
+            return [164, 165, 164];
           }
-        
+
           return [255, 210, 108]; //beyaz
         }
       }, // Rengi seçilen nesneye göre değiştir
@@ -276,8 +289,16 @@ function App() {
     ambientLight
   });
 
-  const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
-  //all layers are collected here
+  //const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d] 
+
+  const datas = []
+  Object.keys(layerState).forEach(key => {
+    if (layerState[key]) {
+      datas.push(eval(key))
+    }
+  })
+
+ 
 
   const layers = [
     new PolygonLayer({
@@ -316,6 +337,11 @@ function App() {
           >
             <div style={{ right: switchedControl ? "260px" : "0px" }} className='layer-button' >
               <Popover placement="leftTop" title={"Select Map Layer"} content={content}>
+                <img width="24" height="24" src="https://img.icons8.com/glassmorphism/48/experimental-map-marker-glassmorphism.png" alt="experimental-map-marker-glassmorphism" />
+              </Popover>
+            </div>
+            <div style={{ right: switchedControl ? "260px" : "0px" }} className='layer-button-2' >
+              <Popover placement="leftTop" title={"Select Map Layer"} content={<BuildLayer setLayerState={setLayerState} layerState={layerState} />}>
                 <img
                   width="24" height="24"
                   src="https://img.icons8.com/fluency/48/layers.png"
@@ -401,7 +427,6 @@ function App() {
           setSwitchedControl={setSwitchedControl}
           hoveredCoordinates={hoveredCoordinates} />
       </div>
-
     </div>
 
   );

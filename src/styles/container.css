@@ -63,7 +63,20 @@
     cursor: pointer;
 }
 
+.layer-button-2 {
+    position: absolute;
+    z-index: 1;
+    right: 260px;
+    top: 100px;
+    cursor: pointer;
+}
+
 .layer-button:hover {
+    border-radius: 2px;
+    background-color: rgb(221, 221, 221);
+}
+
+.layer-button-2:hover {
     border-radius: 2px;
     background-color: rgb(221, 221, 221);
 }
