@@ -74,6 +74,8 @@ import MiddleBottomMosque from './layout/properties/middle-bottom-mosque/middle-
 import BottomMiddleTransport from './layout/properties/bottom-middle-transport/bottom-middle-transport';
 import AddModel from './layout/content/add-model/add-model';
 import BuildLayer from './layout/content/build-layer/build-layer';
+import MiddleBottomInterest from './layout/properties/middle-bottom-interest/middle-bottom-interest';
+import BottomMiddleIndustry from './layout/properties/bottom-middle-industry/bottom-middle-industry';
 
 
 const INITIAL_VIEW_STATE = {
@@ -309,6 +311,11 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
+    new BitmapLayer({
+      id: 'bitmap-layer',
+      bounds: [-122.45, 37.75, -122.43, 37.78],
+      image: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-districts.png'
+    })
   ];
 
 
@@ -336,7 +343,7 @@ function App() {
 
           >
             <div style={{ right: switchedControl ? "260px" : "0px" }} className='layer-button' >
-              <Popover placement="leftTop" title={"Select Map Layer"} content={content}>
+              <Popover placement="leftTop" title={"Select Base Map"} content={content}>
                 <img width="24" height="24" src="https://img.icons8.com/glassmorphism/48/experimental-map-marker-glassmorphism.png" alt="experimental-map-marker-glassmorphism" />
               </Popover>
             </div>
@@ -389,7 +396,10 @@ function App() {
               <MiddleRightBottom />
             </div>
             <div className="section-bottom">
-              <MiddleRightBottom />
+              <MiddleBottomInterest/>
+            </div>
+            <div className="section-bottom">
+              <BottomMiddleIndustry/>
             </div>
           </div>
         </div>
