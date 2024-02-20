@@ -278,9 +278,9 @@ function App() {
     ambientLight
   });
 
-  const veri = [{ bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: false, parsel2d: false }]
+  const veri = [{ bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: false, parsel2d: true }]
 
-  const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d]
+  const datas = []
   veri.forEach(item => {
     // Anahtarları kontrol edelim ve true olanları seçelim
     Object.keys(item).forEach(key => {
@@ -346,8 +346,8 @@ function App() {
               </Popover>
             </div>
             <div style={{ right: switchedControl ? "260px" : "10px" }} className='layer-button-3' >
-              <img className='zoom-out-button' onClick={() => setZoom(zoom - 1)} width="30" height="30" src="https://img.icons8.com/fluency/48/zoom-out.png" alt="zoom-out" />
-              <img className='zoom-in-button' onClick={() => setZoom(zoom + 1)} width="30" height="30" src="https://img.icons8.com/fluency/48/zoom-in--v1.png" alt="zoom-in--v1" />
+              <img className='zoom-out-button' onClick={() => setZoom(zoom - 0.5)} width="30" height="30" src="https://img.icons8.com/fluency/48/zoom-out.png" alt="zoom-out" />
+              <img className='zoom-in-button' onClick={() => setZoom(zoom + 0.5)} width="30" height="30" src="https://img.icons8.com/fluency/48/zoom-in--v1.png" alt="zoom-in--v1" />
             </div>
             <Map
               mapLib={import('mapbox-gl')}
