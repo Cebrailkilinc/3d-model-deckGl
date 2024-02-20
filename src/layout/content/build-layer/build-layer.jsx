@@ -20,7 +20,7 @@ const BuildLayer = ({ setLayerState, layerState }) => {
                         <Checkbox value="bina3D">Bina</Checkbox>
                     </Col>                  
                     <Col span={8}>
-                        <Checkbox value="bagimsizBolum3D">Bina</Checkbox>
+                        <Checkbox value="yol">Yol</Checkbox>
                     </Col> 
                 </Row>
             </Checkbox.Group>
