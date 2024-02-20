@@ -15,22 +15,22 @@ const BuildLayer = ({ setLayerState, layerState }) => {
     console.log(layerState)
     return (
         <div>
-            <Checkbox.Group checked={activeLayer}  style={{ width: '100%' }} onChange={onChange}>
+            <Checkbox.Group style={{ width: '100%' }} onChange={onChange}>
                 <Row>
                     <Col span={8}>
-                        <Checkbox value="bina3D" checked={true} >Bina</Checkbox>
+                        <Checkbox value="bina3D">Bina</Checkbox>
                     </Col>
                     <Col span={8}>
-                        <Checkbox value="bagimsizBolum3D" checked={layerState.bagimsizBolum3D}>Bağımsız Bölüm</Checkbox>
+                        <Checkbox value="bagimsizBolum3D" >Bağımsız Bölüm</Checkbox>
                     </Col>
                     <Col span={8}>
-                        <Checkbox value="parsel2d" checked={layerState.parsel2d}>Parsel</Checkbox>
+                        <Checkbox value="parsel2d" >Parsel</Checkbox>
                     </Col>
                     <Col span={8}>
-                        <Checkbox value="yol" checked={true}>Yol</Checkbox>
+                        <Checkbox value="yol">Yol</Checkbox>
                     </Col>
                     <Col span={8}>
-                        <Checkbox value="ekYapi" checked={layerState.ekYapi}>Ek Yapı</Checkbox>
+                        <Checkbox value="ekYapi" >Ek Yapı</Checkbox>
                     </Col>                 
                 </Row>
             </Checkbox.Group>
