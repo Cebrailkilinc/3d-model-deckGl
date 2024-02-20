@@ -3,11 +3,10 @@ import { Checkbox, Col, Row } from 'antd';
 
 const BuildLayer = ({ setLayerState, layerState }) => {
 
-    const onChange = (checkedValues) => {
-        console.log(checkedValues)
+    const onChange = (checkedValues) => {        
         setLayerState(checkedValues)
     };
-    console.log(layerState)
+    
     return (
         <div>
             <Checkbox.Group style={{ width: '100%' }} onChange={onChange}>
