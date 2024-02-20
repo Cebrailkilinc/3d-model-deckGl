@@ -112,8 +112,7 @@ function App() {
   const [mapController, setMapController] = useState(true)
 
   const [layerState, setLayerState] = useState({
-    bina3D: true,
-    bagimsizBolum3D: true,
+    bina3D: true,    
     kapiGirisi: true,
     yol: true,
     parsel2d: true,
