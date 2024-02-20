@@ -278,22 +278,20 @@ function App() {
     ambientLight
   });
 
-  const veri = [{ bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: false, parsel2d: true }]
+  const veri = [{ bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: false, parsel2d: false }]
 
-  const datas = []
+  const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d ]
   veri.forEach(item => {
     // Anahtarları kontrol edelim ve true olanları seçelim
     Object.keys(item).forEach(key => {
-        if (item[key] === true) {
-            // Eğer anahtarın değeri true ise, anahtarı seçilenler dizisine ekleyelim
+     
+        if (item[key]) {
+            // Eğer anahtarın değeri true ise, anahtarı window nesnesi içinde arayarak ekleyelim
             datas.push(eval(key));
+            
         }
     });
 });
-  console.log(Object.keys(veri[0]))
-
-  
-
 
   const layers = [
     new PolygonLayer({
