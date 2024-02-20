@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import { Checkbox, Col, Row } from 'antd';
 
 const BuildLayer = ({ setLayerState, layerState }) => {
-    
+
     const onChange = (checkedValues) => {
         const newLayer = { ...layerState };
         Object.keys(newLayer).forEach((key) => {
             newLayer[key] = checkedValues.includes(key) && checkedValues.includes(key) ? true : false;
         });
         setLayerState(newLayer);
-        
-        
     };
-    console.log(layerState)
+
     return (
         <div>
             <Checkbox.Group style={{ width: '100%' }} onChange={onChange}>
@@ -31,7 +29,7 @@ const BuildLayer = ({ setLayerState, layerState }) => {
                     </Col>
                     <Col span={8}>
                         <Checkbox value="ekYapi" >Ek Yapı</Checkbox>
-                    </Col>                 
+                    </Col>
                 </Row>
             </Checkbox.Group>
         </div>

@@ -6,7 +6,7 @@ import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
 import { LightingEffect, AmbientLight, _SunLight as SunLight } from '@deck.gl/core';
 import { scaleThreshold } from 'd3-scale';
-import data from "../../../../data/new/bagimsizBolum.json"
+import data from "../../../../data/new/bagimsizBolum3D.json"
 
 
 export const COLOR_SCALE = scaleThreshold()

@@ -59,7 +59,7 @@ import RightBottom from './layout/properties/right-bottom/right-bottom';
 import { landCover } from './utilities/landCover';
 
 //import datas
-import bagimsizBolum3D from "../data/new/bagimsizBolum.json"
+import bagimsizBolum3D from "../data/new/bagimsizBolum3D.json"
 import bina3D from "../data/new/bina3D.json"
 import kapiGirisi from "../data/new/kapiGirisi.json"
 import yol from "../data/new/yol.json"
@@ -308,7 +308,6 @@ function App() {
       image: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-districts.png'
     })
   ];
-
 
   return (
     <div className='map-container'>
