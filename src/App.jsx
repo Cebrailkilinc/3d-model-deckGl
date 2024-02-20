@@ -59,8 +59,9 @@ import RightBottom from './layout/properties/right-bottom/right-bottom';
 import { landCover } from './utilities/landCover';
 
 //import datas
-import bagimsizBolum3D from "../data/new/bagimsizBolum3D.json"
+
 import bina3D from "../data/new/bina3D.json"
+import bagimsizBolum3D from "../data/new/bagimsizBolum3D.json"
 import kapiGirisi from "../data/new/kapiGirisi.json"
 import yol from "../data/new/yol.json"
 import parsel2d from "../data/new/parsel2d.json"
@@ -283,8 +284,9 @@ function App() {
 
    const datas = []
    Object.keys(layerState).forEach(key => {
+    console.log(key)
      if (layerState[key]) {
-       datas.push(eval(key))
+       datas.push(eval(key ? key : null))
      }
    })
 
