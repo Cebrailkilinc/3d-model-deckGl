@@ -105,7 +105,7 @@ function App() {
   const [long, setLong] = useState(40.60941)
   const [mapController, setMapController] = useState(true)
   const [zoom, setZoom] = useState(17)
-  const [layerState, setLayerState] = useState({});
+  const [layerState, setLayerState] = useState([]);
 
 
 
@@ -278,21 +278,13 @@ function App() {
     ambientLight
   });
 
-  const veri = [{ bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: true, parsel2d: true }]
+  const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d]
 
-  const datas = []
-  veri.forEach(item => {
-    // Anahtarları kontrol edelim ve true olanları seçelim
-    Object.keys(item).forEach(key => {
+  const datass = [
+    { bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: false, parsel2d: true }]
 
-      if (item[key]) {
-        // Eğer anahtarın değeri true ise, anahtarı window nesnesi içinde arayarak ekleyelim
-        datas.push(eval(key));
 
-      }
-    });
-  });
-
+  
   const layers = [
     new PolygonLayer({
       id: 'ground',
@@ -301,7 +293,10 @@ function App() {
       getPolygon: f => f,
       getFillColor: [0, 0, 0, 0],
     }),
-    datas && datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
+    datas && layerState.map(index => datas[index]).map((geojsonData, index) => {      
+      
+      return createGeoJsonLayer(`geojson${index + 1}`, geojsonData)
+    }),
     new BitmapLayer({
       id: 'bitmap-layer',
       bounds: [-122.45, 37.75, -122.43, 37.78],

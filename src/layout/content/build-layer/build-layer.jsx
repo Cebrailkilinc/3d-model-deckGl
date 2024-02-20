@@ -4,7 +4,8 @@ import { Checkbox, Col, Row } from 'antd';
 const BuildLayer = ({ setLayerState, layerState }) => {
 
     const onChange = (checkedValues) => {
-        
+        console.log(checkedValues)
+        setLayerState(checkedValues)
     };
     console.log(layerState)
     return (
@@ -12,11 +13,20 @@ const BuildLayer = ({ setLayerState, layerState }) => {
             <Checkbox.Group style={{ width: '100%' }} onChange={onChange}>
                 <Row>
                     <Col span={8}>
-                        <Checkbox value="bina3D">Bina</Checkbox>
+                        <Checkbox value={0} >Bina</Checkbox>
                     </Col>                  
                     <Col span={8}>
-                        <Checkbox value="yol">Yol</Checkbox>
+                        <Checkbox value={1}>Yol</Checkbox>
                     </Col> 
+                    <Col span={8}>
+                        <Checkbox value={2}>Bina</Checkbox>
+                    </Col>                  
+                    <Col span={8}>
+                        <Checkbox value={3}>Yol</Checkbox>
+                    </Col>
+                    <Col span={8}>
+                        <Checkbox value={4}>Parsel</Checkbox>
+                    </Col>
                 </Row>
             </Checkbox.Group>
         </div>
