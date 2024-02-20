@@ -113,10 +113,8 @@ function App() {
 
   const [layerState, setLayerState] = useState({
     bina3D: true,    
-    kapiGirisi: true,
-    yol: true,
-    parsel2d: true,
-    ekYapi: true
+    
+   
   });
 
 
