@@ -20,11 +20,11 @@ const Navbar = () => {
     <div style={{ zIndex: 2 }} className='navbar-container' >
       <div style={{ zIndex: 2 }} className='navbar-container-menu'>
         <div style={{ zIndex: 2 }} className='menu-left'  >
-          <img className='menu-logo' src={home} />
+          <img width="40" height="40" src="https://img.icons8.com/arcade/64/home.png" alt="home" />
           <h1 className='menu-head'>2B/3B Taşınmaz Yönetim Platformu</h1>
         </div>
         <div className='menu-user'>
-         
+
         </div>
       </div>
     </div>

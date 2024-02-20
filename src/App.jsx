@@ -242,15 +242,10 @@ function App() {
           addYol,
           setColor);
       },
-      // onHover: ({ object, x, y, isPicking }) => {
+       onHover: () => {console.log("object")}
 
 
-      //   const htmlElement = document.getElementById('map-section'); // Değiştirmek istediğiniz HTML elemanının ID'sini girin
-      //   if (htmlElement) {
-      //     htmlElement.style.cursor = "pointer"
-      //   }
-
-      // },
+      
 
     });
   };
