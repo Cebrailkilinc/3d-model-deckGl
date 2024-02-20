@@ -16,13 +16,13 @@ const BuildLayer = ({ setLayerState, layerState }) => {
                         <Checkbox value={0} >Bina</Checkbox>
                     </Col>                  
                     <Col span={8}>
-                        <Checkbox value={1}>Yol</Checkbox>
+                        <Checkbox value={1}>Bağımsız Bölüm</Checkbox>
                     </Col> 
                     <Col span={8}>
-                        <Checkbox value={2}>Bina</Checkbox>
+                        <Checkbox value={2}>Yol</Checkbox>
                     </Col>                  
                     <Col span={8}>
-                        <Checkbox value={3}>Yol</Checkbox>
+                        <Checkbox value={3}>Ek Yapı</Checkbox>
                     </Col>
                     <Col span={8}>
                         <Checkbox value={4}>Parsel</Checkbox>
