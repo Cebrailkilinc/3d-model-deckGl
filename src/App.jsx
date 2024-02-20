@@ -282,14 +282,14 @@ function App() {
     ambientLight
   });
 
-  //const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d] 
+  const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d] 
 
-  const datas = []
-  Object.keys(layerState).forEach(key => {
-    if (layerState[key]) {
-      datas.push(eval(key))
-    }
-  })
+  // const datas = []
+  // Object.keys(layerState).forEach(key => {
+  //   if (layerState[key]) {
+  //     datas.push(eval(key))
+  //   }
+  // })
 
 
 
