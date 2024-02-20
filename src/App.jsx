@@ -79,14 +79,7 @@ import MiddleBottomInterest from './layout/properties/middle-bottom-interest/mid
 import BottomMiddleIndustry from './layout/properties/bottom-middle-industry/bottom-middle-industry';
 
 
-const INITIAL_VIEW_STATE = {
-  latitude: 40.64881000131992,
-  longitude: 35.80987460443845,
-  zoom: 17,
-  maxZoom: 20,
-  pitch: 45,
-  bearing: 0
-};
+
 
 function App() {
 
@@ -111,7 +104,7 @@ function App() {
   const [lat, setLat] = useState(35.80941)
   const [long, setLong] = useState(40.60941)
   const [mapController, setMapController] = useState(true)
-
+  const [zoom, setZoom] = useState(17)
   const [layerState, setLayerState] = useState({});
 
 
@@ -126,7 +119,14 @@ function App() {
 
   const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
 
-
+  const INITIAL_VIEW_STATE = {
+    latitude: 40.64881000131992,
+    longitude: 35.80987460443845,
+    zoom: zoom,
+    maxZoom: 20,
+    pitch: 45,
+    bearing: 0
+  };
 
   const content = (
     <Radio.Group onChange={onChangeLayer} value={mapLayer} >
@@ -280,18 +280,18 @@ function App() {
 
   const veri = [{ bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: false, parsel2d: false }]
 
-  const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d ]
+  const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d]
   veri.forEach(item => {
     // Anahtarları kontrol edelim ve true olanları seçelim
     Object.keys(item).forEach(key => {
-     
-        if (item[key]) {
-            // Eğer anahtarın değeri true ise, anahtarı window nesnesi içinde arayarak ekleyelim
-            datas.push(eval(key));
-            
-        }
+
+      if (item[key]) {
+        // Eğer anahtarın değeri true ise, anahtarı window nesnesi içinde arayarak ekleyelim
+        datas.push(eval(key));
+
+      }
     });
-});
+  });
 
   const layers = [
     new PolygonLayer({
@@ -330,19 +330,24 @@ function App() {
               console.log("Deck_ERROR", err);
             }}
 
+
           >
-            <div style={{ right: switchedControl ? "260px" : "0px" }} className='layer-button' >
+            <div style={{ right: switchedControl ? "260px" : "10px" }} className='layer-button' >
               <Popover placement="leftTop" title={"Select Base Map"} content={content}>
                 <img width="24" height="24" src="https://img.icons8.com/glassmorphism/48/experimental-map-marker-glassmorphism.png" alt="experimental-map-marker-glassmorphism" />
               </Popover>
             </div>
-            <div style={{ right: switchedControl ? "260px" : "0px" }} className='layer-button-2' >
+            <div style={{ right: switchedControl ? "260px" : "10px" }} className='layer-button-2' >
               <Popover placement="leftTop" title={"Select Map Layer"} content={<BuildLayer setLayerState={setLayerState} layerState={layerState} />}>
                 <img
                   width="24" height="24"
                   src="https://img.icons8.com/fluency/48/layers.png"
                   alt="layers" />
               </Popover>
+            </div>
+            <div style={{ right: switchedControl ? "260px" : "10px" }} className='layer-button-3' >
+              <img className='zoom-out-button' onClick={() => setZoom(zoom - 1)} width="30" height="30" src="https://img.icons8.com/fluency/48/zoom-out.png" alt="zoom-out" />
+              <img className='zoom-in-button' onClick={() => setZoom(zoom + 1)} width="30" height="30" src="https://img.icons8.com/fluency/48/zoom-in--v1.png" alt="zoom-in--v1" />
             </div>
             <Map
               mapLib={import('mapbox-gl')}
@@ -352,6 +357,7 @@ function App() {
                 zoom: 14
               }}
               mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN} reuseMaps mapStyle={mapLayer} preventStyleDiffing={true}>
+
             </Map>
           </DeckGL>
         </div>

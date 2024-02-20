@@ -77,11 +77,27 @@
     top: 100px;
     cursor: pointer;
 }
+.layer-button-3 {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    right: 260px;
+    top: 150px;
+    cursor: pointer;
+}
 .layer-button:hover {
     border-radius: 2px;
     background-color: rgb(221, 221, 221);
 }
-
+.zoom-in-button:hover {
+    border-radius: 2px;
+    background-color: rgb(221, 221, 221);
+}
+.zoom-out-button:hover {
+    border-radius: 2px;
+    background-color: rgb(221, 221, 221);
+}
 .layer-button-2:hover {
     border-radius: 2px;
     background-color: rgb(221, 221, 221);
