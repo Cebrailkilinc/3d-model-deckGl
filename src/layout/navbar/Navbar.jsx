@@ -23,9 +23,7 @@ const Navbar = () => {
           <img width="40" height="40" src="https://img.icons8.com/arcade/64/home.png" alt="home" />
           <h1 className='menu-head'>2B/3B Taşınmaz Yönetim Platformu</h1>
         </div>
-        <div className='menu-user'>
-
-        </div>
+        
       </div>
     </div>
   )
