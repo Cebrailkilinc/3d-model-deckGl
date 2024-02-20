@@ -18,7 +18,9 @@ const BuildLayer = ({ setLayerState, layerState }) => {
                     <Col span={8}>
                         <Checkbox value="bina3D">Bina</Checkbox>
                     </Col>                  
-                    
+                    <Col span={8}>
+                        <Checkbox value="bagimsizBolum3D">Bina</Checkbox>
+                    </Col> 
                 </Row>
             </Checkbox.Group>
         </div>

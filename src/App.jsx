@@ -113,7 +113,7 @@ function App() {
 
   const [layerState, setLayerState] = useState({
     bina3D: true,    
-    
+    bagimsizBolum3D : true,   
    
   });
 
