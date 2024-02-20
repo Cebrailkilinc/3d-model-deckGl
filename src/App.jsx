@@ -278,7 +278,7 @@ function App() {
     ambientLight
   });
 
-  const veri = [{ bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: false, parsel2d: true }]
+  const veri = [{ bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: true, parsel2d: true }]
 
   const datas = []
   veri.forEach(item => {
