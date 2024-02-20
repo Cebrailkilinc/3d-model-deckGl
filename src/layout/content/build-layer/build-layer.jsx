@@ -4,12 +4,7 @@ import { Checkbox, Col, Row } from 'antd';
 const BuildLayer = ({ setLayerState, layerState }) => {
 
     const onChange = (checkedValues) => {
-        const newLayer = { ...layerState };
-        Object.keys(newLayer).forEach((key) => {
-            newLayer[key] = checkedValues.includes(key) && checkedValues.includes(key) ? true : false;
-        });
-        setLayerState(newLayer);
-        console.log(checkedValues)
+        
     };
     console.log(layerState)
     return (

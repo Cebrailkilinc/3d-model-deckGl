@@ -22,7 +22,7 @@ import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 import { BitmapLayer } from '@deck.gl/layers';
-
+import { Col, InputNumber, Row, Slider, } from 'antd';
 import {
   LightingEffect,
   AmbientLight,
@@ -112,11 +112,9 @@ function App() {
   const [long, setLong] = useState(40.60941)
   const [mapController, setMapController] = useState(true)
 
-  const [layerState, setLayerState] = useState({
-    bina3D: true,    
-    yol: true
-   
-  });
+  const [layerState, setLayerState] = useState({});
+
+
 
 
   const dispatch = useDispatch();
@@ -240,7 +238,7 @@ function App() {
           addYol,
           setColor);
       },
-      onHover: () => { console.log("object") }
+
     });
   };
 
@@ -280,17 +278,13 @@ function App() {
     ambientLight
   });
 
-  //const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d] 
+  const veri = [{ bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: false, parsel2d: false }]
 
-   const datas = []
-   Object.keys(layerState).forEach(key => {
-    console.log(key)
-     if (layerState[key]) {
-       datas.push(eval(key ? key : null))
-     }
-   })
+  const datas = []
 
-  
+
+  console.log(datas)
+
 
   const layers = [
     new PolygonLayer({
@@ -300,7 +294,7 @@ function App() {
       getPolygon: f => f,
       getFillColor: [0, 0, 0, 0],
     }),
-    datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
+    datas && datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
     new BitmapLayer({
       id: 'bitmap-layer',
       bounds: [-122.45, 37.75, -122.43, 37.78],
@@ -325,7 +319,6 @@ function App() {
             initialViewState={INITIAL_VIEW_STATE}
             controller={mapController}
             effects={[sunlightEffect]}
-
             onError={(err) => {
               console.log("Deck_ERROR", err);
             }}
