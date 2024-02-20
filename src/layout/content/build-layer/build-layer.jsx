@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Checkbox, Col, Row } from 'antd';
 
 const BuildLayer = ({ setLayerState, layerState }) => {
-    const [activeLayer, setActiveLayer] = useState(["bina3D","yol"])
+    
     const onChange = (checkedValues) => {
         const newLayer = { ...layerState };
         Object.keys(newLayer).forEach((key) => {
             newLayer[key] = checkedValues.includes(key) && checkedValues.includes(key) ? true : false;
         });
         setLayerState(newLayer);
-        setActiveLayer(checkedValues)
-        console.log(checkedValues)
+        
+        
     };
     console.log(layerState)
     return (

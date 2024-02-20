@@ -242,11 +242,7 @@ function App() {
           addYol,
           setColor);
       },
-       onHover: () => {console.log("object")}
-
-
-      
-
+      onHover: () => { console.log("object") }
     });
   };
 
@@ -295,7 +291,7 @@ function App() {
     }
   })
 
- 
+
 
   const layers = [
     new PolygonLayer({
@@ -391,10 +387,10 @@ function App() {
               <MiddleRightBottom />
             </div>
             <div className="section-bottom">
-              <MiddleBottomInterest/>
+              <MiddleBottomInterest />
             </div>
             <div className="section-bottom">
-              <BottomMiddleIndustry/>
+              <BottomMiddleIndustry />
             </div>
           </div>
         </div>
