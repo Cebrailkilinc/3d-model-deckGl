@@ -7,7 +7,7 @@ import { GeoJsonLayer, PolygonLayer } from '@deck.gl/layers';
 import { LightingEffect, AmbientLight, _SunLight as SunLight } from '@deck.gl/core';
 import { scaleThreshold } from 'd3-scale';
 import data from "../../../../data/new/bagimsizBolum3D.json"
-
+import {BitmapLayer} from '@deck.gl/layers';
 
 export const COLOR_SCALE = scaleThreshold()
     .domain([-0.6, -0.45, -0.3, -0.15, 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2])
@@ -41,7 +41,11 @@ const dirLight = new SunLight({
     intensity: 1.0,
     _shadow: true
 });
-
+const bitLayer = new BitmapLayer({
+    id: 'bitmap-layer',
+    bounds: [-122.5190, 37.7045, -122.355, 37.829],
+    image: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-districts.png'
+  });
 
 
 
@@ -80,7 +84,13 @@ const RightBottom = () => {
         pitch: 45,
         bearing: 0
     };
-   
+  const boundry = []
+   itemWithId8?.geometry?.coordinates?.map((item)=>(
+    item.map((coord)=>(
+        boundry.push(coord[0]),
+        boundry.push(coord[1])
+    ))
+   ))
     const layers = [
         // only needed when using shadows - a plane for shadows to drop on
         new PolygonLayer({
@@ -102,7 +112,31 @@ const RightBottom = () => {
             getFillColor: [248,248,248],
             getLineColor: [248,248,248],
             pickable: true
-        })
+        }),
+        new BitmapLayer({
+            id: 'BitmapLayer',
+            
+            /* props from BitmapLayer class */
+            
+            bounds: [-121.519, 37.7045, -122.355, 37.829],
+            // desaturate: 0,
+            image: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-districts.png',
+            // textureParameters: null,
+            // tintColor: [255, 255, 255],
+            // transparentColor: [0, 0, 0, 0],
+            
+            /* props inherited from Layer class */
+            
+            // autoHighlight: false,
+            // coordinateOrigin: [0, 0, 0],
+            // coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
+            // highlightColor: [0, 0, 128, 128],
+            // modelMatrix: null,
+            // opacity: 1,
+            // pickable: false,
+            // visible: true,
+            // wrapLongitude: false,
+          })
     ];
 
 

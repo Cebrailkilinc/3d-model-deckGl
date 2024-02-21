@@ -100,9 +100,6 @@ function App() {
     type: 'FeatureCollection',
     features: [],
   });
-
-  const [lat, setLat] = useState(35.80941)
-  const [long, setLong] = useState(40.60941)
   const [mapController, setMapController] = useState(true)
   const [zoom, setZoom] = useState(17)
   const [layerState, setLayerState] = useState([]);
