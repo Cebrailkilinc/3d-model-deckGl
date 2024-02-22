@@ -21,8 +21,8 @@ import Map, {
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PolygonLayer, ScatterplotLayer, IconLayer } from '@deck.gl/layers';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
-import {BitmapLayer} from '@deck.gl/layers';
-
+import { BitmapLayer } from '@deck.gl/layers';
+import { Drawer } from 'antd';
 import {
   LightingEffect,
   AmbientLight,
@@ -55,6 +55,8 @@ import LeftBottom from './layout/properties/left-bottom/left-bottom';
 import MiddleLeftBottom from './layout/properties/middle-left-bottom/middle-left-bottom';
 import MiddleRightBottom from './layout/properties/middle-right-bottom/middle-right-bottom';
 import RightBottom from './layout/properties/right-bottom/right-bottom';
+import AddModel from './layout/content/add-model/add-model';
+import PositionModel from './layout/content/add-model/position-model';
 //Utilities
 import { landCover } from './utilities/landCover';
 
@@ -72,7 +74,7 @@ import { handleBuildProperties } from './functions';
 import MiddleBottomEducation from './layout/properties/middle-bottom-education/middle-bottom-education';
 import MiddleBottomMosque from './layout/properties/middle-bottom-mosque/middle-bottom-mosque';
 import BottomMiddleTransport from './layout/properties/bottom-middle-transport/bottom-middle-transport';
-import AddModel from './layout/content/add-model/add-model';
+
 
 
 const INITIAL_VIEW_STATE = {
@@ -110,6 +112,8 @@ function App() {
 
   const dispatch = useDispatch();
   const switchRef = useRef();
+  const [open3DModelDrawer, setOpen3DModelDrawer] = useState(true);
+  const [openNew3DModelDrawer, setNewOpen3DModelDrawer] = useState(true);
 
   const onChangeLayer = (e) => {
     setMapLayer(e.target.value);
@@ -256,7 +260,8 @@ function App() {
 
 
   const data2 = [
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [lat, long] },   
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.82239,40.43298], path:"" },
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.83239,40.42298],path:"" },
   ]
 
   const handleDragStart = event => {
@@ -295,7 +300,7 @@ function App() {
       onDragEnd: handleDragStop,
 
     }),
-     new ScenegraphLayer({
+    new ScenegraphLayer({
       id: 'scenegraph-layer',
       data: data2,
       pickable: true,
@@ -315,7 +320,7 @@ function App() {
     <div className='map-container'>
       <LayerModal />
       <div className='navbar'>
-        <Navbar /> 
+        <Navbar />
       </div>
       <div className='content'>
         <div className="section">
@@ -353,7 +358,7 @@ function App() {
             </Map>
           </DeckGL>
         </div>
-        
+
         <div ref={switchRef} style={{ display: "block" }} className='menu-content' >
           <div className="section-top-left">
             <LeftTop />
@@ -361,10 +366,16 @@ function App() {
           <div className="section-top-right">
             <RightTop />
           </div>
-          <div className="section-add-model">
-            <AddModel
+          <div >
+            <PositionModel
               modalPosition={modalPosition}
               setModalPosition={setModalPosition}
+              setOpen3DModelDrawer={setOpen3DModelDrawer}
+              open3DModelDrawer={open3DModelDrawer}
+            />
+            <AddModel
+              openNew3DModelDrawer={openNew3DModelDrawer}
+              setNewOpen3DModelDrawer={setNewOpen3DModelDrawer}
             />
           </div>
           <div className='bottom' >
@@ -423,7 +434,11 @@ function App() {
         <BottomBar
           switchRef={switchRef}
           setSwitchedControl={setSwitchedControl}
-          hoveredCoordinates={hoveredCoordinates} />
+          hoveredCoordinates={hoveredCoordinates}
+          setOpen3DModelDrawer={setOpen3DModelDrawer}
+          openNew3DModelDrawer={openNew3DModelDrawer}
+          setNewOpen3DModelDrawer={setNewOpen3DModelDrawer}
+        />
       </div>
 
     </div>

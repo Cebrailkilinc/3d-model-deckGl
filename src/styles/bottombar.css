@@ -51,3 +51,12 @@
 .bottombar-container-right h3{
     width: 80px;
 }
+.bottombar-menus-item-3d{
+    cursor: pointer;
+    color: white;
+   
+}
+.bottombar-menus-item-3d:hover{
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
