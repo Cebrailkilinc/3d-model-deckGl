@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 const RightTop = () => {
 
     const { parsel } = useSelector(state => state.properties)
-   
+    console.log(parsel)
     return (
         <div className='right-top'>
             <div className='right-top-footer'>
@@ -64,8 +64,11 @@ const RightTop = () => {
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Kullanım:</h1>
                         <h1 className='list-item-value'>{parsel?.PARSEL_KUL ?? "Konut"}</h1>
+                    </li>ON_CEPHE_Y
+                    <li className='content-list-item'>
+                        <h1 className='list-item-head'>Yol:</h1>
+                        <h1 className='list-item-value'>{parsel?.ON_CEPHE_Y ?? "Konut"}m</h1>
                     </li>
-                 
                 
                 </ul>
             </div>

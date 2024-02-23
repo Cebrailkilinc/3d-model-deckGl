@@ -10,7 +10,7 @@ const LeftBottom = () => {
             <div className='left-bottom-footer'>
                 <div className='left-footer-bagimsiz-content'>
                     <img width="50" height="50" src="https://img.icons8.com/dusk/64/floor-plan.png" alt="floor-plan" />
-                    <h1>Bağımsız  Bölüm</h1>
+                    <h1>Bağımsız  Bölüm Özellikleri</h1>
                 </div>
             </div>
             <div className='left-bottom-content'>
@@ -46,11 +46,7 @@ const LeftBottom = () => {
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Oda Planlama :</h1>
                         <h1 className='list-item-value'>{bagimsizBolum?.Oda_Tipi ?? "3+1"}</h1>
-                    </li>
-                    <li className='content-list-item'>
-                        <h1 className='list-item-head'>Block :</h1>
-                        <h1 className='list-item-value'>{bagimsizBolum?.blockName ?? "A"}</h1>
-                    </li>
+                    </li>                    
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Cephe :</h1>
                         <h1 className='list-item-value'>{bagimsizBolum?.directionT ?? "Kuzey"}</h1>

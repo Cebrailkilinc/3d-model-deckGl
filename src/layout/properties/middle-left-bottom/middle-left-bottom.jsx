@@ -5,7 +5,7 @@ import "./middleLeftBottom.css"
 const MiddleLeftBottom = () => {
 
     const { mimariBina, bagimsizBolum, parsel } = useSelector(state => state.properties)
-   
+
     return (
         <div className='middle-left-bottom'>
             <div className='middle-left-bottom-footer'>
@@ -17,8 +17,8 @@ const MiddleLeftBottom = () => {
             <div className='middle-left-bottom-content'>
                 <ul className='content-list'>
                     <li className='content-list-item'>
-                        <h1 className='list-item-head'>İdari <br/> Tesisler :</h1>
-                        <h1 className='list-item-value'><br/>{mimariBina?.OKLID_IDAR.toFixed(2) ?? "220"} m</h1>
+                        <h1 className='list-item-head'>İdari <br /> Tesisler :</h1>
+                        <h1 className='list-item-value'><br />{mimariBina?.OKLID_IDAR.toFixed(2) ?? "220"} m</h1>
                     </li>
                     <li className='content-list-item'>
                         <h1 className='list-item-head'>Adliye :</h1>
@@ -52,11 +52,6 @@ const MiddleLeftBottom = () => {
                         <h1 className='list-item-head'>Pazar:</h1>
                         <h1 className='list-item-value'>{mimariBina?.OKLID_PAZA.toFixed(2) ?? "211"} m</h1>
                     </li>
-                    <li className='content-list-item'>
-                        <h1 className='list-item-head'>Otoban :</h1>
-                        <h1 className='list-item-value'>{mimariBina?.OKLID_OTOB.toFixed(2) ?? "220"} m</h1>
-                    </li>                
-                   
                 </ul>
             </div>
         </div>

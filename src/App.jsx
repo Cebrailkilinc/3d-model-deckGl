@@ -388,6 +388,9 @@ function App() {
             <div className="section-bottom">
               <BottomMiddleIndustry />
             </div>
+            <div className="section-bottom">
+              <BottomMiddleIndustry />
+            </div>
           </div>
         </div>
         <div style={{ display: "none" }} className='bottom-mobile' >
