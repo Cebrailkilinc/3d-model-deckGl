@@ -260,8 +260,8 @@ function App() {
 
 
   const data2 = [
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.82239,40.43298], path:"" },
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.83239,40.42298],path:"" },
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.82239,40.43298], path:"Hotel.glb" },
+    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.83239,40.42298],path:"Hotel.glb" },
   ]
 
   const handleDragStart = event => {
@@ -275,8 +275,9 @@ function App() {
     console.log("object")
   };
 
-  const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
   //all layers are collected here
+  const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
+  
 
   const layers = [
     new PolygonLayer({
@@ -287,32 +288,23 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-    new ScenegraphLayer({
-      id: 'scenegraph-layer',
-      data: data2,
-      pickable: true,
-      scenegraph: 'Hotel.glb',
-      getPosition: d => d.coordinates,
-      getOrientation: d => [modalPosition.x, modalPosition.y, modalPosition.z],
-      sizeScale: modalPosition.size,
-      _lighting: 'pbr',
-      onDrag: handleDragStart,
-      onDragEnd: handleDragStop,
+    data2.map((model)=>{
+     return new ScenegraphLayer({
+        id: 'scenegraph-layer',
+        data: model,
+        pickable: true,
+        scenegraph: model.path,
+        getPosition: d => d.coordinates,
+        getOrientation: d => [modalPosition.x, modalPosition.y, modalPosition.z],
+        sizeScale: modalPosition.size,
+        _lighting: 'pbr',
+        onDrag: handleDragStart,
+        onDragEnd: handleDragStop,
+    })
+    
 
     }),
-    new ScenegraphLayer({
-      id: 'scenegraph-layer',
-      data: data2,
-      pickable: true,
-      scenegraph: 'Hotel.glb',
-      getPosition: d => d.coordinates,
-      getOrientation: d => [modalPosition.x, modalPosition.y, modalPosition.z],
-      sizeScale: modalPosition.size,
-      _lighting: 'pbr',
-      onDrag: handleDragStart,
-      onDragEnd: handleDragStop,
-
-    }),
+,
   ];
 
 
