@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 const RightTop = () => {
 
     const { parsel } = useSelector(state => state.properties)
-    console.log(parsel)
+
     return (
         <div className='right-top'>
             <div className='right-top-footer'>

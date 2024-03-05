@@ -7,7 +7,7 @@ import buffer from "../../assets/square.png";
 import layer from "../../assets/layers.png";
 import { Input, Radio, Space, Switch } from 'antd';
 
-const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl }) => {
+const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl, setIsReportModalOpen }) => {
     const propertiesValues = useSelector((state) => state.properties.propertiesValue)
 
     const dispatch = useDispatch();
@@ -29,6 +29,9 @@ const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl }) => {
         dispatch(handleModalContent(modalContentValue))
         dispatch(openModal())
     }
+    const handleOpenReportModal = (modalContentValue) => {
+        setIsReportModalOpen(true) 
+    }
 
     return (
         <div
@@ -47,6 +50,9 @@ const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl }) => {
                     </div>
                     <div style={{ marginBottom: "5px" }} className='bottombar-menus-item'>
                         <Switch size='small' defaultChecked onChange={onChangeSwitched} />
+                    </div>
+                    <div onClick={handleOpenReportModal} style={{ marginBottom: "5px" }} className='bottombar-menus-item'>
+                        <img className='bottombar-menus-item-img' width="32" height="32" src="https://img.icons8.com/fluency/48/graph-report.png" alt="graph-report" />
                     </div>
                     {/* <div  className='bottombar-menus-item'>
                         <img width="24" height="24" src="https://img.icons8.com/color/48/rgb-circle-2--v1.png" alt="rgb-circle-2--v1" />

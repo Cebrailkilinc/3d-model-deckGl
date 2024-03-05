@@ -1,0 +1,45 @@
+.content-writer{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+   
+}
+.content-table-writer{    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    
+ }
+
+.content-table-writer-body{
+    border-top: 1px solid gray;  
+}
+
+.a4-container {
+    width: 210mm; /* A4 kağıt genişliği */
+    height: 297mm; /* A4 kağıt uzunluğu */
+    margin: auto;
+    overflow: hidden; /* Resmin A4 boyutuna sığdırılması için gereklidir */
+}
+
+.a4-image {
+    width: 100%;
+    height: auto;
+}
+.content-table-writer-body-head{
+    width: 100%;
+    text-align: center;
+    border-top:1px solid ;
+    border-left:1px solid ;
+    border-right:1px solid ;   
+}
+.content-table-writer-body-head>h1{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(218, 218, 218);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+

@@ -15,7 +15,7 @@ const BottomMiddleIndustry = () => {
             <div className='middle-right-bottom-content-industry'>
                 <ul className='content-list'>
                     <li className='content-list-item'>
-                        <h1 className='list-item-head'>Akaryakıt istasyonu :</h1>
+                        <h1 className='list-item-head'>Akaryakıt <br/> istasyonu :</h1>
                         <h1 className='list-item-value'>{mimariBina?.OKLID_AKAR.toFixed(2) ?? "220"} m</h1>
                     </li>
                     <li className='content-list-item'>

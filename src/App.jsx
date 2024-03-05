@@ -77,8 +77,10 @@ import AddModel from './layout/content/add-model/add-model';
 import BuildLayer from './layout/content/build-layer/build-layer';
 import MiddleBottomInterest from './layout/properties/middle-bottom-interest/middle-bottom-interest';
 import BottomMiddleIndustry from './layout/properties/bottom-middle-industry/bottom-middle-industry';
-
-
+import Report from './layout/content/report/report';
+import PdfWriter from './layout/content/report/pdf-writer';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import BottomMiddleAvm from './layout/properties/bottom-middle-avm/bottom-middle-avm';
 
 
 function App() {
@@ -104,7 +106,7 @@ function App() {
   const [zoom, setZoom] = useState(17)
   const [layerState, setLayerState] = useState([]);
 
-
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
 
   const dispatch = useDispatch();
@@ -123,6 +125,16 @@ function App() {
     maxZoom: 20,
     pitch: 45,
     bearing: 0
+  };
+
+
+
+  const showReportModal = () => {
+    setIsReportModalOpen(true);
+  };
+  
+  const handleReportCancel = () => {
+    setIsReportModalOpen(false);
   };
 
   const content = (
@@ -275,13 +287,8 @@ function App() {
     ambientLight
   });
 
-  const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d]
+  const datas = [bina3D, bagimsizBolum3D, yol, ekYapi, parsel2d]  
 
-  const datass = [
-    { bina3D: true, bagimsizBolum3D: true, yol: true, ekYapi: false, parsel2d: true }]
-
-
-  
   const layers = [
     new PolygonLayer({
       id: 'ground',
@@ -290,8 +297,8 @@ function App() {
       getPolygon: f => f,
       getFillColor: [0, 0, 0, 0],
     }),
-    datas && layerState.map(index => datas[index]).map((geojsonData, index) => {      
-      
+    datas && layerState.map(index => datas[index]).map((geojsonData, index) => {
+
       return createGeoJsonLayer(`geojson${index + 1}`, geojsonData)
     }),
     new BitmapLayer({
@@ -304,6 +311,14 @@ function App() {
   return (
     <div className='map-container'>
       <LayerModal />
+      <Report
+        isReportModalOpen={isReportModalOpen}
+        handleReportCancel={handleReportCancel}        
+        mimariBina={mimariBina}
+        bagimsizBolum={bagimsizBolum}
+        parsel={parsel}
+      />
+
       <div className='navbar'>
         <Navbar />
       </div>
@@ -389,7 +404,7 @@ function App() {
               <BottomMiddleIndustry />
             </div>
             <div className="section-bottom">
-              <BottomMiddleIndustry />
+              <BottomMiddleAvm/>
             </div>
           </div>
         </div>
@@ -425,7 +440,10 @@ function App() {
         <BottomBar
           switchRef={switchRef}
           setSwitchedControl={setSwitchedControl}
-          hoveredCoordinates={hoveredCoordinates} />
+          hoveredCoordinates={hoveredCoordinates}
+          setIsReportModalOpen={setIsReportModalOpen}
+        />
+
       </div>
     </div>
 

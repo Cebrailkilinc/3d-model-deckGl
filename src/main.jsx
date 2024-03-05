@@ -4,11 +4,12 @@ import App from './App.jsx'
 import './index.css'
 import { store } from './redux/store/store.js'
 import { Provider } from 'react-redux'
+import PdfWriter from './layout/content/report/pdf-writer.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store} >
-      <App />
+      <App />      
     </Provider>
   </React.StrictMode>,
 )
