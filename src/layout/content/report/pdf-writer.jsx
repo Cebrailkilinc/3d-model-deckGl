@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Chart } from "react-google-charts";
 import headerImg from "../../../assets/pdf-img/forHeader.png";
 import { useSelector } from 'react-redux';
 import "./writer.css"
@@ -9,9 +10,53 @@ const PdfWriter = ({
     parsel,
     bagimsizBolum
 }) => {
+    const [data, setData] = useState(getData);   
+    function getData() {
+        return [
+            ["Label", "Value"],
+            ["BİNA",  bagimsizBolum?.PUANBINA ?? "20"],
+            ["KENT",  bagimsizBolum?.PUAN_KENTF ?? "20"],
+            ["PARSEL",  bagimsizBolum?.PuanPARSEL ?? "20"],           
+            ["ULAŞIM",  bagimsizBolum?.PUAN_ULASI ?? "20"],
+            ["B_1",  bagimsizBolum?.PuanBB_1 ?? "20"],
+            ["MAHALLE",  bagimsizBolum?.PuanMahall ?? "20"],
+        ];
+    }
+    const options = {
+        width:500,
+        height:400,
+        redFrom: 90,
+        redTo: 100,
+        yellowFrom: 75,
+        yellowTo: 90,
+        minorTicks: 5,
+        display:"flex",
+        
+    };
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setData(getData());
+        }, 3000);
+
+        return () => {
+            clearInterval(id);
+        };
+    });
+
+
 
     return (
-        <div style={{padding:"50px"}} >
+        <div className='background' style={{ padding: "50px" }} >
+            <div className='chart-container ' >
+                <h1>Puan Tablosu</h1>
+                <Chart
+                    chartType="Gauge"
+                    width="100%"
+                    data={data}
+                    options={options}
+                />
+            </div>
             <div className='content-writer' >
                 <div className='content-table-writer'>
                     <div className='content-table-writer-body-head'>
@@ -328,9 +373,9 @@ const PdfWriter = ({
 
                     </div>
 
-                    <div className='content-table-writer-body-head'>
+                    <div className='content-table-writer-body-head .no-page-break'>
                         <h1>Ulaşım Noktaraına Mesafe</h1>
-                        <table className='content-table-writer-body'>
+                        <table className='content-table-writer-body' >
                             <tbody>
                                 <tr>
                                     <td className='list-item-head-writer'>Otobüs :</td>
@@ -364,7 +409,7 @@ const PdfWriter = ({
                         </table>
 
                     </div>
-                    <div className='content-table-writer-body-head'>
+                    <div className='content-table-writer-body-head .no-page-break'>
                         <h1>Sağlık Tesislerine  Mesafe</h1>
                         <table className='content-table-writer-body'>
                             <tbody>
@@ -388,7 +433,7 @@ const PdfWriter = ({
                         </table>
 
                     </div>
-                    <div className='content-table-writer-body-head'>
+                    <div className='content-table-writer-body-head .no-page-break'>
                         <h1>Alışveriş Tesislerine Mesafe</h1>
                         <table className='content-table-writer-body'>
                             <tbody>

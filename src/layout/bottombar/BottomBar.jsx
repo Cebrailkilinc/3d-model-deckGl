@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../../styles/bottombar.css"
 import { useSelector, useDispatch } from 'react-redux'
 import { handleModalContent, openModal } from '../../redux/slices/modalSlice'
@@ -7,10 +7,11 @@ import buffer from "../../assets/square.png";
 import layer from "../../assets/layers.png";
 import { Input, Radio, Space, Switch } from 'antd';
 
-const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl, setIsReportModalOpen }) => {
+const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl, setIsReportModalOpen, clickedType }) => {
     const propertiesValues = useSelector((state) => state.properties.propertiesValue)
 
     const dispatch = useDispatch();
+    const [message, setMessage] = useState("")
 
     //Table opening
     const onChangeSwitched = (checked) => {
@@ -30,9 +31,13 @@ const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl, setIsRep
         dispatch(openModal())
     }
     const handleOpenReportModal = (modalContentValue) => {
-        setIsReportModalOpen(true) 
+        if (!clickedType === "BagimsizBolum") {
+            setMessage("Lütfen bir bağımsız bölüm seççiniz...")
+        }
+        setIsReportModalOpen(true)
     }
 
+    console.log(clickedType)
     return (
         <div
             style={{
@@ -51,13 +56,18 @@ const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl, setIsRep
                     <div style={{ marginBottom: "5px" }} className='bottombar-menus-item'>
                         <Switch size='small' defaultChecked onChange={onChangeSwitched} />
                     </div>
-                    <div onClick={handleOpenReportModal} style={{ marginBottom: "5px" }} className='bottombar-menus-item'>
+                    <div onClick={clickedType === "BagimsizBolum" ? handleOpenReportModal : null} style={{ marginBottom: "5px", opacity: clickedType === "BagimsizBolum" ? 1 : 0.5 }} className='bottombar-menus-item'>
                         <img className='bottombar-menus-item-img' width="32" height="32" src="https://img.icons8.com/fluency/48/graph-report.png" alt="graph-report" />
                     </div>
+
                     {/* <div  className='bottombar-menus-item'>
                         <img width="24" height="24" src="https://img.icons8.com/color/48/rgb-circle-2--v1.png" alt="rgb-circle-2--v1" />
                     </div> */}
                 </div>
+                <div className='' >
+                    <h1>{message}</h1>
+                </div>
+
                 <div className='bottombar-container-right' >
                     <h3>lng: {hoveredCoordinates.lat.toFixed(5)}</h3>
                     <h3>lat: {hoveredCoordinates.long.toFixed(5)}</h3>

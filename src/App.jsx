@@ -442,6 +442,7 @@ function App() {
           setSwitchedControl={setSwitchedControl}
           hoveredCoordinates={hoveredCoordinates}
           setIsReportModalOpen={setIsReportModalOpen}
+          clickedType={clickedType}
         />
 
       </div>
