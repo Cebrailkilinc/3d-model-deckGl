@@ -260,11 +260,13 @@ function App() {
 
 
   const data2 = [
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.82239,40.43298], path:"Hotel.glb" },
-    { name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.83239,40.42298],path:"Hotel.glb" },
+    { id: 1, name: 'Colma (COLM)', address: '365 D Street, Colma CA 94014', exits: 4214, coordinates: [35.82239, 40.43298], path: "bbb.glb" },
+    { id: 2, name: 'Adana', address: '365 D Street, Colma CA 94014', exits: 4, coordinates: [35.89239, 40.42298], path: "bbb.glb" },
+    { id: 3, name: 'Adana', address: '365 D Street, Colma CA 94014', exits: 4, coordinates: [35.86239, 40.42298], path: "Hotel.glb" },
   ]
 
   const handleDragStart = event => {
+    console.log(event)
     setMapController(false)
     setLat(event.coordinate[0])
     setLong(event.coordinate[1])
@@ -277,7 +279,7 @@ function App() {
 
   //all layers are collected here
   const datas = [bina3D, bagimsizBolum3D, kapiGirisi, yol, parsel2d, ekYapi]
-  
+
 
   const layers = [
     new PolygonLayer({
@@ -288,10 +290,11 @@ function App() {
       getFillColor: [0, 0, 0, 0],
     }),
     datas.map((geojsonData, index) => createGeoJsonLayer(`geojson${index + 1}`, geojsonData)),
-    data2.map((model)=>{
-     return new ScenegraphLayer({
-        id: 'scenegraph-layer',
-        data: model,
+
+    data2.map((model,i) => {
+      return new ScenegraphLayer({
+        id: model.id,
+        data: [model],
         pickable: true,
         scenegraph: model.path,
         getPosition: d => d.coordinates,
@@ -300,11 +303,11 @@ function App() {
         _lighting: 'pbr',
         onDrag: handleDragStart,
         onDragEnd: handleDragStop,
-    })
-    
-
+      })
     }),
-,
+
+
+
   ];
 
 
