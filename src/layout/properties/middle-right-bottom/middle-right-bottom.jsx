@@ -10,7 +10,7 @@ const MiddleRightBottom = () => {
         <div className='middle-right-bottom'>
             <div className='middle-right-bottom-footer'>
                 <div className='middle-footer-right-content'>
-                    <img width="50" height="50" src="https://img.icons8.com/external-filled-outline-perfect-kalash/64/external-hospital-healthcare-and-medicine-filled-outline-perfect-kalash.png" alt="external-hospital-healthcare-and-medicine-filled-outline-perfect-kalash" />
+                <img width="48" height="48" src="https://img.icons8.com/dusk/64/hospital.png" alt="hospital"/>
                     <h1 className='middle-footer-content-head'>Sağlık Tesislerine  Mesafe</h1>
                 </div>
             </div>

@@ -1,47 +1,53 @@
-.content-writer{
+.content-writer {
     display: flex;
     width: 100%;
     gap: 20px;
-   
+    padding-top: 20px;
+
 }
-.content-table-writer{    
+
+.content-table-writer {
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 100%;
     page-break-inside: avoid;
-    
- }
 
-.content-table-writer-body{
-    border-top: 1px solid rgb(198, 154, 241);  
+}
+
+.content-table-writer-body {
+    border-top: 1px solid rgb(198, 154, 241);
 
 }
 
 .a4-container {
-    width: 210mm; /* A4 kağıt genişliği */
-    height: 297mm; /* A4 kağıt uzunluğu */
+    width: 210mm;
+    /* A4 kağıt genişliği */
+    height: 297mm;
+    /* A4 kağıt uzunluğu */
     margin: auto;
-    overflow: hidden; /* Resmin A4 boyutuna sığdırılması için gereklidir */
+    overflow: hidden;
+    /* Resmin A4 boyutuna sığdırılması için gereklidir */
 }
 
 .a4-image {
     width: 100%;
     height: auto;
 }
-.content-table-writer-body-head{
+
+.content-table-writer-body-head {
     width: 100%;
     text-align: center;
-    border-top:1px solid rgb(198, 154, 241) ;
-    border-left:1px solid rgb(198, 154, 241);
-    border-right:1px solid rgb(198, 154, 241);   
+    border-top: 1px solid rgb(198, 154, 241);
+    border-left: 1px solid rgb(198, 154, 241);
+    border-right: 1px solid rgb(198, 154, 241);
 }
-.content-table-writer-body-head>h1{
+
+.property-header-text {
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: rgb(198, 154, 241);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     color: black;
 }
 
@@ -55,7 +61,7 @@
 
 
 
-.chart-container>h1{
+.chart-container>h1 {
     font-size: 40px;
     margin-bottom: 20px;
 }
@@ -66,15 +72,26 @@
 
 .background {
     /* Arka plan resminin URL'sini belirtin */
-    background-image: url('../../../../src/assets/home.png');
-  
+    background-color: beige;
+    border-radius: 10px;
+
     /* Arka plan resminin boyutunu ayarlayın */
     background-size: 100%;
-  
+
     /* Arka plan resminin tekrarlanmasını engelleyin */
     background-repeat: repeat-y;
-  
+
     /* Arka plan rengini belirtin (eğer resim yüklenemezse veya resim ile uyumlu olması için) */
     background-color: #f2f2f2;
-  }
-  
+}
+
+.property-header {
+    display: flex;
+    align-items: center;
+   gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: bisque;
+}

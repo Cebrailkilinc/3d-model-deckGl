@@ -10,28 +10,28 @@ const PdfWriter = ({
     parsel,
     bagimsizBolum
 }) => {
-    const [data, setData] = useState(getData);   
+    const [data, setData] = useState(getData);
     function getData() {
         return [
             ["Label", "Value"],
-            ["BİNA",  bagimsizBolum?.PUANBINA ?? "20"],
-            ["KENT",  bagimsizBolum?.PUAN_KENTF ?? "20"],
-            ["PARSEL",  bagimsizBolum?.PuanPARSEL ?? "20"],           
-            ["ULAŞIM",  bagimsizBolum?.PUAN_ULASI ?? "20"],
-            ["B_1",  bagimsizBolum?.PuanBB_1 ?? "20"],
-            ["MAHALLE",  bagimsizBolum?.PuanMahall ?? "20"],
+            ["BİNA", bagimsizBolum?.PUANBINA ?? "20"],
+            ["KENT", bagimsizBolum?.PUAN_KENTF ?? "20"],
+            ["PARSEL", bagimsizBolum?.PuanPARSEL ?? "20"],
+            ["ULAŞIM", bagimsizBolum?.PUAN_ULASI ?? "20"],
+            ["B_1", bagimsizBolum?.PuanBB_1 ?? "20"],
+            ["MAHALLE", bagimsizBolum?.PuanMahall ?? "20"],
         ];
     }
     const options = {
-        width:500,
-        height:400,
+        width: 500,
+        height: 400,
         redFrom: 90,
         redTo: 100,
         yellowFrom: 75,
         yellowTo: 90,
         minorTicks: 5,
-        display:"flex",
-        
+        display: "flex",
+
     };
 
     useEffect(() => {
@@ -47,7 +47,7 @@ const PdfWriter = ({
 
 
     return (
-        <div className='background' style={{ padding: "50px" }} >
+        <div className='background' style={{ padding: "10px" }} >
             <div className='chart-container ' >
                 <h1>Puan Tablosu</h1>
                 <Chart
@@ -60,7 +60,11 @@ const PdfWriter = ({
             <div className='content-writer' >
                 <div className='content-table-writer'>
                     <div className='content-table-writer-body-head'>
-                        <h1>Bina Özellikleri</h1>
+                        <div className='property-header' >
+                            <img width="80" height="80" src="https://img.icons8.com/plasticine/100/building.png" alt="building" />
+                            <h1 className='property-header-text'>Bina Özellikleri</h1>
+                        </div>
+
                         <table className='content-table-writer-body'>
                             <tbody>
                                 <tr>
@@ -115,7 +119,11 @@ const PdfWriter = ({
                         </table>
                     </div>
                     <div className='content-table-writer-body-head'>
-                        <h1>İmar özellikleri</h1>
+                        <div className='property-header' >
+                            <img width="80" height="80" src="https://img.icons8.com/bubbles/100/inland.png" alt="inland" />
+                            <h1 className='property-header-text'>İmar özellikleri</h1>
+                        </div>
+                        <h1></h1>
                         <table className='content-table-writer-body'>
                             <tbody>
                                 <tr>
@@ -180,7 +188,10 @@ const PdfWriter = ({
                 </div>
                 <div className='content-table-writer'>
                     <div className='content-table-writer-body-head'>
-                        <h1>Sanayi Alanlarına Mesafe</h1>
+                        <div className='property-header' >
+                            <img width="50" height="50" src="https://img.icons8.com/papercut/60/manufacturing.png" alt="manufacturing" />
+                            <h1 className='property-header-text'>Sanayi Alanlarına Mesafe</h1>
+                        </div>
                         <table className='content-table-writer-body'>
                             <tbody>
                                 <tr>
@@ -200,7 +211,10 @@ const PdfWriter = ({
                     </div>
 
                     <div className='content-table-writer-body-head'>
-                        <h1>Eğitim Tesislerine Mesafe</h1>
+                        <div className='property-header' >
+                            <img width="48" height="48" src="https://img.icons8.com/color-glass/48/education.png" alt="education" />
+                            <h1 className='property-header-text'>Eğitim Tesislerine Mesafe</h1>
+                        </div>
                         <table className='content-table-writer-body'>
                             <tbody>
                                 <tr>
@@ -222,35 +236,12 @@ const PdfWriter = ({
                             </tbody>
                         </table>
                     </div>
+
                     <div className='content-table-writer-body-head'>
-                        <h1>İlgi Alanlarına Mesafe</h1>
-                        <table className='content-table-writer-body'>
-                            <tbody>
-                                <tr>
-                                    <td className='list-item-head-writer'>Kültürel Tesis :</td>
-                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_KULT.toFixed(2) ?? "220"} m</td>
-                                </tr>
-                                <tr>
-                                    <td className='list-item-head-writer'>Sahil:</td>
-                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_SAHI.toFixed(2) ?? "299"} m</td>
-                                </tr>
-                                <tr>
-                                    <td className='list-item-head-writer'>Yeşil Alan :</td>
-                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_PARK.toFixed(2) ?? "400"} m</td>
-                                </tr>
-                                <tr>
-                                    <td className='list-item-head-writer'>Spor Tesisi :</td>
-                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_SPOR.toFixed(2) ?? "658"} m</td>
-                                </tr>
-                                <tr>
-                                    <td className='list-item-head-writer'>Restoran :</td>
-                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_REST.toFixed(2) ?? "658"} m</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className='content-table-writer-body-head'>
-                        <h1>Kamu Hizmetlerine Mesafe</h1>
+                        <div className='property-header' >
+                            <img width="50" height="50" src="https://img.icons8.com/stickers/100/university-building.png" alt="university-building" />
+                            <h1 className='property-header-text'>Kamu Hizmetlerine Mesafe</h1>
+                        </div>
                         <table className='content-table-writer-body'>
                             <tbody>
                                 <tr>
@@ -291,11 +282,43 @@ const PdfWriter = ({
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div className='content-table-writer-body-head .no-page-break'>
+                        <div className='property-header' >
+                            <img width="50" height="50" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-interest-dating-app-flaticons-lineal-color-flat-icons-2.png" alt="external-interest-dating-app-flaticons-lineal-color-flat-icons-2" />
+                            <h1 className='property-header-text'>İlgi Alanlarına Mesafe</h1>
+                        </div>
 
-
+                        <table className='content-table-writer-body'>
+                            <tbody>
+                                <tr>
+                                    <td className='list-item-head-writer'>Kültürel Tesis :</td>
+                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_KULT.toFixed(2) ?? "220"} m</td>
+                                </tr>
+                                <tr>
+                                    <td className='list-item-head-writer'>Sahil:</td>
+                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_SAHI.toFixed(2) ?? "299"} m</td>
+                                </tr>
+                                <tr>
+                                    <td className='list-item-head-writer'>Yeşil Alan :</td>
+                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_PARK.toFixed(2) ?? "400"} m</td>
+                                </tr>
+                                <tr>
+                                    <td className='list-item-head-writer'>Spor Tesisi :</td>
+                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_SPOR.toFixed(2) ?? "658"} m</td>
+                                </tr>
+                                <tr>
+                                    <td className='list-item-head-writer'>Restoran :</td>
+                                    <td className='list-item-value-writer'>{mimariBina?.OKLID_REST.toFixed(2) ?? "658"} m</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div className='content-table-writer-body-head'>
-                        <h1>Dini Tesislere Mesafe</h1>
+                        <div className='property-header' >
+                            <img width="48" height="48" src="https://img.icons8.com/color-glass/48/mosque.png" alt="mosque" />
+                            <h1 className='property-header-text'>Dini Tesislere Mesafe</h1>
+                        </div>
 
                         <table className='content-table-writer-body'>
                             <tbody>
@@ -317,7 +340,10 @@ const PdfWriter = ({
                 </div>
                 <div className='content-table-writer'>
                     <div className='content-table-writer-body-head'>
-                        <h1>Bağımsız Bölüm Özellikleri</h1>
+                        <div className='property-header' >
+                            <img width="50" height="50" src="https://img.icons8.com/dusk/64/floor-plan.png" alt="floor-plan" />
+                            <h1 className='property-header-text'>Bağımsız Bölüm Özellikleri</h1>
+                        </div>
                         <table className='content-table-writer-body'>
                             <tbody>
                                 <tr>
@@ -374,7 +400,10 @@ const PdfWriter = ({
                     </div>
 
                     <div className='content-table-writer-body-head .no-page-break'>
-                        <h1>Ulaşım Noktaraına Mesafe</h1>
+                        <div className='property-header' >
+                            <img width="40" height="40" src="https://img.icons8.com/officel/40/ground-transportation.png" alt="ground-transportation" />
+                            <h1 className='property-header-text'>Ulaşım Noktaraına Mesafe</h1>
+                        </div>
                         <table className='content-table-writer-body' >
                             <tbody>
                                 <tr>
@@ -410,7 +439,10 @@ const PdfWriter = ({
 
                     </div>
                     <div className='content-table-writer-body-head .no-page-break'>
-                        <h1>Sağlık Tesislerine  Mesafe</h1>
+                        <div className='property-header' >
+                            <img width="48" height="48" src="https://img.icons8.com/dusk/64/hospital.png" alt="hospital" />
+                            <h1 className='property-header-text'>Sağlık Tesislerine  Mesafe</h1>
+                        </div>
                         <table className='content-table-writer-body'>
                             <tbody>
                                 <tr>
@@ -434,7 +466,10 @@ const PdfWriter = ({
 
                     </div>
                     <div className='content-table-writer-body-head .no-page-break'>
-                        <h1>Alışveriş Tesislerine Mesafe</h1>
+                        <div className='property-header' >
+                            <img width="50" height="50" src="https://img.icons8.com/arcade/64/fast-cart.png" alt="fast-cart" />
+                            <h1 className='property-header-text'>Alışveriş Tesislerine Mesafe</h1>
+                        </div>
                         <table className='content-table-writer-body'>
                             <tbody>
                                 <tr>
