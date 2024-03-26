@@ -48,7 +48,7 @@ const PdfWriter = ({
 
             <div >
                 <div style={{ position: 'relative',  display: 'inline-block' }}>
-                    <img style={{textAlign:"center"}} src={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/,15.25,0,0/850x300?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`} alt="Map Image" />
+                    <img style={{textAlign:"center"}} src={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/35,36,15.25,0,0/850x300?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`} alt="Map Image" />
                     <svg style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }} width="100" height="100" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="50" cy="50" r="40" fill="none" stroke="red" strokeWidth="2" />
                     </svg>
