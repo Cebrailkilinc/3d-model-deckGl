@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Chart } from "react-google-charts";
 import headerImg from "../../../assets/pdf-img/forHeader.png";
 import { useSelector } from 'react-redux';
 import "./writer.css"
+import GaugeChart from 'react-gauge-chart';
+import axios from 'axios';
 
 
 const PdfWriter = ({
@@ -10,53 +11,52 @@ const PdfWriter = ({
     parsel,
     bagimsizBolum
 }) => {
-    const [data, setData] = useState(getData);
-    function getData() {
-        return [
-            ["Label", "Value"],
-            ["BİNA", bagimsizBolum?.PUANBINA ?? "20"],
-            ["KENT", bagimsizBolum?.PUAN_KENTF ?? "20"],
-            ["PARSEL", bagimsizBolum?.PuanPARSEL ?? "20"],
-            ["ULAŞIM", bagimsizBolum?.PUAN_ULASI ?? "20"],
-            ["B_1", bagimsizBolum?.PuanBB_1 ?? "20"],
-            ["MAHALLE", bagimsizBolum?.PuanMahall ?? "20"],
-        ];
-    }
-    const options = {
-        width: 500,
-        height: 400,
-        redFrom: 90,
-        redTo: 100,
-        yellowFrom: 75,
-        yellowTo: 90,
-        minorTicks: 5,
-        display: "flex",
-
-    };
-
-    useEffect(() => {
-        const id = setInterval(() => {
-            setData(getData());
-        }, 3000);
-
-        return () => {
-            clearInterval(id);
-        };
-    });
 
 
+    const allPointArray = [
+        { key: "PUANBINA", value: bagimsizBolum && bagimsizBolum.PUANBINA ? bagimsizBolum.PUANBINA : "20" },
+        { key: "PUAN_KENTF", value: bagimsizBolum && bagimsizBolum.PUAN_KENTF ? bagimsizBolum.PUAN_KENTF : "20" },
+        { key: "PuanPARSEL", value: bagimsizBolum && bagimsizBolum.PuanPARSEL ? bagimsizBolum.PuanPARSEL : "20" },
+        { key: "PUAN_ULASI", value: bagimsizBolum && bagimsizBolum.PUAN_ULASI ? bagimsizBolum.PUAN_ULASI : "20" },
+        { key: "PuanMahall", value: bagimsizBolum && bagimsizBolum.PuanMahall ? bagimsizBolum.PuanMahall : "20" }
+    ];
+
+    // useEffect(()=>{
+    //     axios.get(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4241,37.78,14.25,0,0/600x400?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`).then(res => console.log(res.data))
+
+    // },[])
+
+    console.log("bagimsizBolum.geometry.coordinates[0][0][0]")
 
     return (
         <div className='background' style={{ padding: "10px" }} >
             <div className='chart-container ' >
                 <h1>Puan Tablosu</h1>
-                <Chart
-                    chartType="Gauge"
-                    width="100%"
-                    data={data}
-                    options={options}
-                />
+                <div className='chart-container-content '>
+                    {
+                        allPointArray.map((item, i) => {
+                            return <GaugeChart key={i} id="gauge-chart2"
+                                nrOfLevels={20}
+                                percent={item.value / 100}
+                                textColor='black'
+
+                            />
+                        })
+                    }
+                </div>
             </div>
+
+            <div >
+                <div style={{ position: 'relative',  display: 'inline-block' }}>
+                    <img style={{textAlign:"center"}} src={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/,15.25,0,0/850x300?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`} alt="Map Image" />
+                    <svg style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }} width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="red" strokeWidth="2" />
+                    </svg>
+                </div>
+            </div>
+
+
+
             <div className='content-writer' >
                 <div className='content-table-writer'>
                     <div className='content-table-writer-body-head'>

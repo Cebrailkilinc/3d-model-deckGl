@@ -40,4 +40,6 @@
       th {
         background-color: #f2f2f2; /* Başlık hücrelerine gri arka plan ekle */
       }
-      
+      .pointer{
+        color: red;
+      }

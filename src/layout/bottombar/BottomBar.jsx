@@ -37,7 +37,6 @@ const BottomBar = ({ hoveredCoordinates, switchRef, setSwitchedControl, setIsRep
         setIsReportModalOpen(true)
     }
 
-    console.log(clickedType)
     return (
         <div
             style={{

@@ -21,8 +21,6 @@ const Report = ({
         return <Alert message="Success Text" type="success" />
     }
 
-    console.log(bagimsizBolum)
-
     const contentToPrint = useRef(null);
     const handlePrint = useReactToPrint({
         documentTitle: "Taşınma Değerleme Raporu ",
